@@ -35,9 +35,10 @@ fun FirstScreenContent(
         Row (
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
         ) {
             InputOutlinedTextField(
+                modifier = Modifier.fillMaxWidth(),
                 value = workoutInput.roundNumber,
                 onValueChange = { newRoundNumber ->
                     onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
@@ -50,7 +51,8 @@ fun FirstScreenContent(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
         ) {
-            InputOutlinedTextField(modifier = Modifier.weight(1.2f),
+            InputOutlinedTextField(
+                modifier = Modifier.weight(1.2f),
                 value = workoutInput.roundMinutes,
                 onValueChange = { newRoundMinutes ->
                     onInputChange(workoutInput.copy(roundMinutes = newRoundMinutes))
@@ -58,13 +60,13 @@ fun FirstScreenContent(
                 label = "Round Min"
             )
 
-            InputOutlinedTextField(modifier = Modifier.weight(1f),
+            InputOutlinedTextField(
+                modifier = Modifier.weight(1f),
                 value = workoutInput.roundNumber,
                 onValueChange = { newRoundNumber ->
                     onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
                 },
                 label = "Round Sec"
-
             )
         }
         Row (
@@ -72,7 +74,8 @@ fun FirstScreenContent(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
         ) {
-            InputOutlinedTextField(modifier = Modifier.weight(1.4f),
+            InputOutlinedTextField(
+                modifier = Modifier.weight(1.4f),
                 value = workoutInput.roundNumber,
                 onValueChange = { newRoundNumber ->
                     onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
@@ -80,7 +83,8 @@ fun FirstScreenContent(
                 label = "Rest Min"
             )
 
-            InputOutlinedTextField(modifier = Modifier.weight(1f),
+            InputOutlinedTextField(
+                modifier = Modifier.weight(1f),
                 value = workoutInput.roundNumber,
                 onValueChange = { newRoundNumber ->
                     onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
