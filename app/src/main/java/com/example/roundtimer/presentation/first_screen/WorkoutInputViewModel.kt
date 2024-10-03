@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 
 class WorkoutInputViewModel : ViewModel() {
-    private var _workoutInput = mutableStateOf(WorkoutInput(1, 0, 0, 0, 0))
+    private var _workoutInput = mutableStateOf(WorkoutInput(0, 0, 0, 0, 0))
     val workoutInput: State<WorkoutInput> = _workoutInput
 
     fun updateWorkoutInput(newInput: WorkoutInput) {
