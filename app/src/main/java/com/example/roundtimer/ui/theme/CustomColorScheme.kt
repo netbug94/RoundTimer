@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun CustomColorScheme(): Color {
+fun customColorScheme(): Color {
     val darkTheme = isSystemInDarkTheme()
     return if (darkTheme) Color.White else Color.Black
 }
