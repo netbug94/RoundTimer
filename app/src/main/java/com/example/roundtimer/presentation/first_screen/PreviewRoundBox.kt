@@ -24,11 +24,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun PreviewRoundBox() {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
-    val previewRoundBoxColor = MaterialTheme.colorScheme.onSurface
+    val previewBoxColor = MaterialTheme.colorScheme.onSurface
 
     Row(modifier = Modifier
         .fillMaxSize()
-        .border(BorderStroke(1.dp, previewRoundBoxColor), RoundedCornerShape(6.dp)),
+        .border(BorderStroke(1.dp, previewBoxColor), RoundedCornerShape(6.dp)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center) {
 
@@ -46,7 +46,7 @@ fun PreviewRoundBox() {
         VerticalDivider(modifier = Modifier
             .fillMaxHeight()
             .width(1.dp),
-            color = previewRoundBoxColor
+            color = previewBoxColor
         )
 
         Column(modifier = Modifier
@@ -64,7 +64,7 @@ fun PreviewRoundBox() {
             }
 
             HorizontalDivider(
-                color = previewRoundBoxColor
+                color = previewBoxColor
             )
 
             Row(verticalAlignment = Alignment.CenterVertically,
@@ -73,14 +73,14 @@ fun PreviewRoundBox() {
                     workoutInput.restMinutes.toString().padStart(2, '0')
                 } : ${workoutInput.restSeconds.toString().padStart(2, '0')}",
                     style = MaterialTheme.typography.headlineSmall,
-                    color = previewRoundBoxColor
+                    color = previewBoxColor
                 )
             }
         }
         VerticalDivider(modifier = Modifier
             .fillMaxHeight()
             .width(1.dp),
-            color = previewRoundBoxColor
+            color = previewBoxColor
         )
         Column(modifier = Modifier
             .fillMaxSize()
