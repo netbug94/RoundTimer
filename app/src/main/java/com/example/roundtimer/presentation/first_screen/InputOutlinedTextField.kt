@@ -1,5 +1,6 @@
 package com.example.roundtimer.presentation.first_screen
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -23,6 +24,6 @@ fun InputOutlinedTextField(
         label = { Text(label) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
-        modifier = modifier
+        modifier = modifier.fillMaxWidth()
     )
 }
