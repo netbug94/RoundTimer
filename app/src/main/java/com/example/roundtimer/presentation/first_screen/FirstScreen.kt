@@ -69,7 +69,7 @@ fun FirstScreenContent(
                     onValueChange = { newRoundNumber ->
                         onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
                     },
-                    label = "Rounds Number"
+                    label = "Rounds Number",
                 )
             }
 
@@ -91,7 +91,7 @@ fun FirstScreenContent(
                     onValueChange = { newRoundMinutes ->
                         onInputChange(workoutInput.copy(roundMinutes = newRoundMinutes))
                     },
-                    label = "Round Min"
+                    label = "Round Min",
                 )
 
                 Spacer(Modifier.weight(0.01f))
@@ -102,7 +102,7 @@ fun FirstScreenContent(
                     onValueChange = { newRoundSeconds ->
                         onInputChange(workoutInput.copy(roundSeconds = newRoundSeconds))
                     },
-                    label = "Round Sec"
+                    label = "Round Sec",
                 )
             }
 
@@ -117,7 +117,7 @@ fun FirstScreenContent(
                     onValueChange = { newRestMinutes ->
                         onInputChange(workoutInput.copy(restMinutes = newRestMinutes))
                     },
-                    label = "Rest Min"
+                    label = "Rest Min",
                 )
 
                 Spacer(Modifier.weight(0.01f))
@@ -128,7 +128,7 @@ fun FirstScreenContent(
                     onValueChange = { newRestSeconds ->
                         onInputChange(workoutInput.copy(restSeconds = newRestSeconds))
                     },
-                    label = "Rest Sec"
+                    label = "Rest Sec",
                 )
             }
         }

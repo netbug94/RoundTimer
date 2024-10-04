@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
 fun PreviewRoundBox() {
@@ -26,9 +27,13 @@ fun PreviewRoundBox() {
     val workoutInput by workoutInputVM.workoutInput
     val previewBoxColor = MaterialTheme.colorScheme.onSurface
 
+    val customColors = customColorScheme()
+    //val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else customColors.customBorderColor
+    //val ifFocusActiveBorder = if (isFocused) 3.dp else 1.dp
+
     Row(modifier = Modifier
         .fillMaxSize()
-        .border(BorderStroke(1.dp, previewBoxColor), RoundedCornerShape(6.dp)),
+        .border(BorderStroke(1.dp, customColors.customBorderColor), RoundedCornerShape(6.dp)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center) {
 
