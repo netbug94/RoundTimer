@@ -2,7 +2,6 @@ package com.example.roundtimer.presentation.first_screen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,18 +17,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun SaveRoundBox() {
+fun PreviewRoundBox() {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
+    val previewRoundBoxColor = MaterialTheme.colorScheme.onSurface
 
     Row(modifier = Modifier
         .fillMaxSize()
-        .border(BorderStroke(2.dp, MaterialTheme.colorScheme.primary), RoundedCornerShape(8.dp)),
+        .border(BorderStroke(1.dp, previewRoundBoxColor), RoundedCornerShape(6.dp)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center) {
 
@@ -47,7 +46,7 @@ fun SaveRoundBox() {
         VerticalDivider(modifier = Modifier
             .fillMaxHeight()
             .width(1.dp),
-            color = MaterialTheme.colorScheme.primary
+            color = previewRoundBoxColor
         )
 
         Column(modifier = Modifier
@@ -65,7 +64,7 @@ fun SaveRoundBox() {
             }
 
             HorizontalDivider(
-                color = MaterialTheme.colorScheme.primary
+                color = previewRoundBoxColor
             )
 
             Row(verticalAlignment = Alignment.CenterVertically,
@@ -74,27 +73,21 @@ fun SaveRoundBox() {
                     workoutInput.restMinutes.toString().padStart(2, '0')
                 } : ${workoutInput.restSeconds.toString().padStart(2, '0')}",
                     style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.primary
+                    color = previewRoundBoxColor
                 )
             }
         }
         VerticalDivider(modifier = Modifier
             .fillMaxHeight()
             .width(1.dp),
-            color = MaterialTheme.colorScheme.primary
+            color = previewRoundBoxColor
         )
         Column(modifier = Modifier
             .fillMaxSize()
             .weight(1f),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "+", color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .scale(1.5f)
-                    .clickable {
-
-                    }
-            )
+            ClickablePlusSign()
         }
     }
 }

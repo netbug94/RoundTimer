@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -21,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 internal fun FirstScreen() {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
+
 
     FirstScreenContent(
         workoutInput = workoutInput,
@@ -48,7 +50,7 @@ fun FirstScreenContent(
             .padding(horizontal = firstScreenHorizontalPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            SaveRoundBox()
+            PreviewRoundBox()
         }
 
         Column(Modifier.fillMaxSize().weight(4f)
@@ -58,8 +60,8 @@ fun FirstScreenContent(
             HorizontalDivider(modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 12.dp, bottom = 4.dp),
-                thickness = 2.dp,
-                color = MaterialTheme.colorScheme.primary
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Row(
