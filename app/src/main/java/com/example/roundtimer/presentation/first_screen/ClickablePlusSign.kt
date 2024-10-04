@@ -18,15 +18,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.example.roundtimer.ui.theme.CustomColorScheme
+import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
 fun ClickablePlusSign() {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-    val customColorScheme = CustomColorScheme()
+    val customColors = customColorScheme()
 
-    val textColor = if (isPressed) MaterialTheme.colorScheme.primary else customColorScheme.customBorderColor
+    val textColor = if (isPressed) MaterialTheme.colorScheme.primary else customColors.customBorderColor
 
     Box(
         modifier = Modifier
