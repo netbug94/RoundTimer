@@ -2,7 +2,9 @@ package com.example.roundtimer.presentation.first_screen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +17,9 @@ fun InputOutlinedTextField(
     onValueChange: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val unFocusedColorTextField = MaterialTheme.colorScheme.onSurface
+    val focusedColorTextField = MaterialTheme.colorScheme.onSurface
+
     OutlinedTextField(
         value = if (value == 0) "" else value.toString(),
         onValueChange = { newValue ->
@@ -24,6 +29,15 @@ fun InputOutlinedTextField(
         label = { Text(label) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedBorderColor = unFocusedColorTextField,
+            focusedBorderColor = focusedColorTextField,
+            unfocusedTextColor = unFocusedColorTextField,
+            focusedTextColor = focusedColorTextField,
+            unfocusedLabelColor = unFocusedColorTextField,
+            focusedLabelColor = focusedColorTextField,
+            cursorColor = unFocusedColorTextField
+        )
     )
 }
