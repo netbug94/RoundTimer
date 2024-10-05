@@ -46,7 +46,9 @@ fun FirstScreenContent(
     val firstScreenHorizontalPadding = 12.dp
     val ifFocusColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
-    Column(modifier = Modifier.fillMaxSize().systemBarsPadding(),
+    Column(
+        modifier = Modifier.fillMaxSize()
+            .systemBarsPadding(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -66,19 +68,12 @@ fun FirstScreenContent(
 
             Spacer(Modifier.height(16.dp))
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                InputOutlinedTextField(
-                    value = workoutInput.roundNumber,
-                    onValueChange = { newRoundNumber ->
-                        onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
-                    },
-                    label = "Rounds Number",
-                )
-            }
+            InputSingleField(
+                value = workoutInput.roundNumber,
+                onValueChange = { newRoundNumber ->
+                    onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
+                }
+            )
 
             HorizontalDivider(modifier = Modifier
                 .fillMaxWidth()
@@ -87,61 +82,86 @@ fun FirstScreenContent(
                 color = ifFocusColor
             )
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                InputOutlinedTextField(
-                    modifier = Modifier.weight(1f),
-                    value = workoutInput.roundMinutes,
-                    onValueChange = { newRoundMinutes ->
-                        onInputChange(workoutInput.copy(roundMinutes = newRoundMinutes))
-                    },
-                    label = "Round Min",
-                )
+            InputDoubleFieldRow(
+                firstValue = workoutInput.roundMinutes,
+                onFirstValueChange = { newRoundMinutes ->
+                    onInputChange(workoutInput.copy(roundMinutes = newRoundMinutes))
+                },
+                firstLabel = "Round Min",
+                secondValue = workoutInput.roundSeconds,
+                onSecondValueChange = { newRoundSeconds ->
+                    onInputChange(workoutInput.copy(roundSeconds = newRoundSeconds))
+                },
+                secondLabel = "Round Sec"
+            )
 
-                Spacer(Modifier.weight(0.01f))
+            InputDoubleFieldRow(
+                firstValue = workoutInput.restMinutes,
+                onFirstValueChange = { newRestMinutes ->
+                    onInputChange(workoutInput.copy(restMinutes = newRestMinutes))
+                },
+                firstLabel = "Rest Min",
+                secondValue = workoutInput.restSeconds,
+                onSecondValueChange = { newRestSeconds ->
+                    onInputChange(workoutInput.copy(restSeconds = newRestSeconds))
+                },
+                secondLabel = "Rest Sec"
+            )
 
-                InputOutlinedTextField(
-                    modifier = Modifier.weight(1f),
-                    value = workoutInput.roundSeconds,
-                    onValueChange = { newRoundSeconds ->
-                        onInputChange(workoutInput.copy(roundSeconds = newRoundSeconds))
-                    },
-                    label = "Round Sec",
-                )
-            }
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                InputOutlinedTextField(
-                    modifier = Modifier.weight(1.5f),
-                    value = workoutInput.restMinutes,
-                    onValueChange = { newRestMinutes ->
-                        onInputChange(workoutInput.copy(restMinutes = newRestMinutes))
-                    },
-                    label = "Rest Min",
-                )
-
-                Spacer(Modifier.weight(0.01f))
-
-                InputOutlinedTextField(
-                    modifier = Modifier.weight(1f),
-                    value = workoutInput.restSeconds,
-                    onValueChange = { newRestSeconds ->
-                        onInputChange(workoutInput.copy(restSeconds = newRestSeconds))
-                    },
-                    label = "Rest Sec",
-                )
-            }
             Column(modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
                 verticalArrangement = Arrangement.Center) {
                 StartAndClearButton()
             }
         }
+    }
+}
+
+@Composable
+private fun InputSingleField(
+    value: Int,
+    onValueChange: (Int) -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        InputOutlinedTextField(
+            label = "Rounds Number",
+            value = value,
+            onValueChange = onValueChange
+        )
+    }
+}
+
+@Composable
+private fun InputDoubleFieldRow(
+    firstValue: Int,
+    onFirstValueChange: (Int) -> Unit,
+    firstLabel: String,
+    secondValue: Int,
+    onSecondValueChange: (Int) -> Unit,
+    secondLabel: String
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        InputOutlinedTextField(
+            modifier = Modifier.weight(1f),
+            label = firstLabel,
+            value = firstValue,
+            onValueChange = onFirstValueChange
+        )
+
+        Spacer(Modifier.weight(0.01f))
+
+        InputOutlinedTextField(
+            modifier = Modifier.weight(1f),
+            label = secondLabel,
+            value = secondValue,
+            onValueChange = onSecondValueChange
+        )
     }
 }
