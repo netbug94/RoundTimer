@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 data class CustomColor(
     val customBorderColor: Color,
-    val customTextColor: Color? = null,
+    val customTextColor: Color,
     val customButtonColor: Color,
-    val customRippleColor: Color? = null
+    val customRippleColor: Color
 )

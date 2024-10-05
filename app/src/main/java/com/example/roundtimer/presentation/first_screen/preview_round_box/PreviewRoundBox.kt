@@ -23,7 +23,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 
 @Composable
-fun PreviewRoundBox() {
+fun PreviewRoundBox(onBannerShow: () -> Unit) {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
 
@@ -97,7 +97,9 @@ fun PreviewRoundBox() {
             .weight(1f),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            ClickablePlusSign()
+            ClickablePlusSign {
+                onBannerShow()
+            }
         }
     }
 }

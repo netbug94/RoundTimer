@@ -11,16 +11,16 @@ fun customColorScheme(): CustomColor {
     return if (darkTheme) {
         CustomColor(
             customBorderColor = Color.White,
-            customTextColor = null,
+            customTextColor = Color.Black,
             customButtonColor = Color.LightGray,
-            customRippleColor = null
+            customRippleColor = Color.LightGray
         )
     } else {
         CustomColor(
             customBorderColor = Color.Black,
-            customTextColor = null,
+            customTextColor = Color.White,
             customButtonColor = Color.DarkGray,
-            customRippleColor = null
+            customRippleColor = Color.DarkGray
         )
     }
 }

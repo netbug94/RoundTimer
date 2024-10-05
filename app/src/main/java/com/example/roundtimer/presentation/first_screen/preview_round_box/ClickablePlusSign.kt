@@ -5,7 +5,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
-fun ClickablePlusSign() {
+fun ClickablePlusSign(onClick: () -> Unit) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val customColors = customColorScheme()
@@ -30,14 +30,14 @@ fun ClickablePlusSign() {
 
     Box(
         modifier = Modifier
-            .size(56.dp)
-            .clip(CircleShape)
+            .size(width = 56.dp, height = 66.dp)
+            .clip(RoundedCornerShape(12.dp))
             .clickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
                 role = Role.Button
             ) {
-                // SaveRoundBanner() goes here!!!
+                onClick()
             },
         contentAlignment = Alignment.Center
     ) {

@@ -12,15 +12,21 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.FocusViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
+import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
+import kotlinx.coroutines.delay
 
 @Composable
 internal fun FirstScreen() {
@@ -46,6 +52,16 @@ fun FirstScreenContent(
     val firstScreenHorizontalPadding = 12.dp
     val ifFocusColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
+    var showBanner by remember { mutableStateOf(false) }
+    if (showBanner) {
+        LaunchedEffect(Unit) {
+            delay(1500)
+            showBanner = false
+        }
+    }
+
+    SaveRoundBanner(showBanner = showBanner)
+
     Column(
         modifier = Modifier.fillMaxSize()
             .systemBarsPadding(),
@@ -59,7 +75,10 @@ fun FirstScreenContent(
             .padding(horizontal = firstScreenHorizontalPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            PreviewRoundBox()
+
+            PreviewRoundBox {
+                showBanner = true
+            }
         }
 
         Column(Modifier.fillMaxSize().weight(4f)

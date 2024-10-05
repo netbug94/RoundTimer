@@ -13,16 +13,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
-fun SaveRoundBanner() {
-    val showBanner = false
-
+fun SaveRoundBanner(showBanner: Boolean) {
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val dynamicHeight = screenWidth * 0.25f // %
+
+    val bannerTextColor = customColorScheme()
 
     Box(modifier = Modifier.fillMaxSize()) {
         AnimatedVisibility(
@@ -30,13 +30,14 @@ fun SaveRoundBanner() {
             enter = fadeIn(),
             exit = fadeOut()
         ) {
-            Box(modifier = Modifier
-                .fillMaxWidth()
-                .height(dynamicHeight) // Use dynamic height
-                .background(MaterialTheme.colorScheme.primary),
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dynamicHeight) // Use dynamic height
+                    .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {
-                Text("Saved", color = Color.White)
+                Text("Saved", color = bannerTextColor.customTextColor)
             }
         }
     }
