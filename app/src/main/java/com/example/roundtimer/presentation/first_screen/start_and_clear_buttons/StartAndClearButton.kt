@@ -59,7 +59,7 @@ fun StartAndClearButton() {
             Button(modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(clearButtonColor),
                 onClick = {
-                    workoutInputVM.resetWorkoutInput()
+                    workoutInputVM.clearWorkoutInput()
                     focusManager.clearFocus()
                 }
             ) {
