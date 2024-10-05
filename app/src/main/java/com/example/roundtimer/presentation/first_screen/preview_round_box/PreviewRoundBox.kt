@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -18,23 +17,23 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
-import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
 fun PreviewRoundBox() {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
+
     val previewBoxColor = MaterialTheme.colorScheme.onSurface
 
-    val customColors = customColorScheme()
     val focusViewModel: FocusViewModel = viewModel()
     val isFocused by focusViewModel.isFocused.collectAsState()
 
-    val ifFocusActiveBorder = if (isFocused) 1.dp else 2.dp
-    val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else customColors.customBorderColor
+    val ifFocusActiveBorder = if (isFocused) 2.dp else 1.dp
+    val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
     Row(modifier = Modifier
         .fillMaxSize()
@@ -48,15 +47,15 @@ fun PreviewRoundBox() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
 
-            Text(text = "Rounds", style = MaterialTheme.typography.bodyLarge)
+            Text(text = "Rounds", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
             Text(text = workoutInput.roundNumber.toString(), style = MaterialTheme.typography.headlineLarge
             )
         }
 
         VerticalDivider(modifier = Modifier
-            .fillMaxHeight()
-            .width(1.dp),
-            color = previewBoxColor
+            .fillMaxHeight(),
+            color = ifFocusActiveColor,
+            thickness = ifFocusActiveBorder
         )
 
         Column(modifier = Modifier
@@ -74,7 +73,8 @@ fun PreviewRoundBox() {
             }
 
             HorizontalDivider(
-                color = previewBoxColor
+                color = ifFocusActiveColor,
+                thickness = ifFocusActiveBorder
             )
 
             Row(verticalAlignment = Alignment.CenterVertically,
@@ -88,9 +88,9 @@ fun PreviewRoundBox() {
             }
         }
         VerticalDivider(modifier = Modifier
-            .fillMaxHeight()
-            .width(1.dp),
-            color = previewBoxColor
+            .fillMaxHeight(),
+            color = ifFocusActiveColor,
+            thickness = ifFocusActiveBorder
         )
         Column(modifier = Modifier
             .fillMaxSize()

@@ -12,12 +12,15 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.roundtimer.presentation.first_screen.preview_round_box.FocusViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
+import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
 
 @Composable
 internal fun FirstScreen() {
@@ -36,7 +39,10 @@ fun FirstScreenContent(
     onInputChange: (WorkoutInput) -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
-    val dividerColors = MaterialTheme.colorScheme.onSurface
+
+    val focusViewModel: FocusViewModel = viewModel()
+    val isFocused by focusViewModel.isFocused.collectAsState()
+    val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -78,7 +84,7 @@ fun FirstScreenContent(
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 2.dp),
                 thickness = 1.dp,
-                color = dividerColors
+                color = ifFocusActiveColor
             )
 
             Row(
@@ -131,6 +137,10 @@ fun FirstScreenContent(
                     },
                     label = "Rest Sec",
                 )
+            }
+            Column(modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
+                verticalArrangement = Arrangement.Center) {
+                StartAndClearButton()
             }
         }
     }

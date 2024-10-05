@@ -11,4 +11,8 @@ class WorkoutInputViewModel : ViewModel() {
     fun updateWorkoutInput(newInput: WorkoutInput) {
         _workoutInput.value = newInput
     }
+
+    fun resetWorkoutInput() {
+        _workoutInput.value = WorkoutInput(0,0,0,0,0)
+    }
 }

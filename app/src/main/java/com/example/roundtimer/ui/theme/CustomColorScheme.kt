@@ -12,14 +12,14 @@ fun customColorScheme(): CustomColor {
         CustomColor(
             customBorderColor = Color.White,
             customTextColor = null,
-            customButtonColor = null,
+            customButtonColor = Color.LightGray,
             customRippleColor = null
         )
     } else {
         CustomColor(
             customBorderColor = Color.Black,
             customTextColor = null,
-            customButtonColor = null,
+            customButtonColor = Color.DarkGray,
             customRippleColor = null
         )
     }
