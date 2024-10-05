@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.first_screen
+package com.example.roundtimer.presentation.first_screen.save_round_banner
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

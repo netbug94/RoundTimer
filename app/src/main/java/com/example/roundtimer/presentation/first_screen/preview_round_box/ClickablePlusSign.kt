@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.first_screen
+package com.example.roundtimer.presentation.first_screen.preview_round_box
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

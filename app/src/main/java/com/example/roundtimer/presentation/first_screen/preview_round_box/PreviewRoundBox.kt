@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.first_screen
+package com.example.roundtimer.presentation.first_screen.preview_round_box
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -14,11 +14,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
@@ -28,12 +30,15 @@ fun PreviewRoundBox() {
     val previewBoxColor = MaterialTheme.colorScheme.onSurface
 
     val customColors = customColorScheme()
-    //val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else customColors.customBorderColor
-    //val ifFocusActiveBorder = if (isFocused) 3.dp else 1.dp
+    val focusViewModel: FocusViewModel = viewModel()
+    val isFocused by focusViewModel.isFocused.collectAsState()
+
+    val ifFocusActiveBorder = if (isFocused) 1.dp else 2.dp
+    val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else customColors.customBorderColor
 
     Row(modifier = Modifier
         .fillMaxSize()
-        .border(BorderStroke(1.dp, customColors.customBorderColor), RoundedCornerShape(6.dp)),
+        .border(BorderStroke(ifFocusActiveBorder, ifFocusActiveColor), RoundedCornerShape(6.dp)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center) {
 
@@ -43,7 +48,7 @@ fun PreviewRoundBox() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
 
-            Text(text = "Rounds")
+            Text(text = "Rounds", style = MaterialTheme.typography.bodyLarge)
             Text(text = workoutInput.roundNumber.toString(), style = MaterialTheme.typography.headlineLarge
             )
         }
