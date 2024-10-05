@@ -27,26 +27,26 @@ internal fun FirstScreen() {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
 
+    val focusViewModel: FocusViewModel = viewModel()
+    val isFocused by focusViewModel.isFocused.collectAsState()
+
     FirstScreenContent(
         workoutInput = workoutInput,
-        onInputChange = { newInput -> workoutInputVM.updateWorkoutInput(newInput) }
+        onInputChange = { newInput -> workoutInputVM.updateWorkoutInput(newInput) },
+        isFocused = isFocused,
     )
 }
 
 @Composable
 fun FirstScreenContent(
     workoutInput: WorkoutInput,
-    onInputChange: (WorkoutInput) -> Unit
+    onInputChange: (WorkoutInput) -> Unit,
+    isFocused: Boolean
 ) {
     val firstScreenHorizontalPadding = 12.dp
+    val ifFocusColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
-    val focusViewModel: FocusViewModel = viewModel()
-    val isFocused by focusViewModel.isFocused.collectAsState()
-    val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
-
-    Column(
-        modifier = Modifier.fillMaxSize()
-            .systemBarsPadding(),
+    Column(modifier = Modifier.fillMaxSize().systemBarsPadding(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -84,7 +84,7 @@ fun FirstScreenContent(
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 2.dp),
                 thickness = 1.dp,
-                color = ifFocusActiveColor
+                color = ifFocusColor
             )
 
             Row(
