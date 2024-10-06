@@ -26,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.FocusViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
+import com.example.roundtimer.presentation.first_screen.settings.SettingsButton
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
 import kotlinx.coroutines.delay
 
@@ -70,7 +71,13 @@ fun FirstScreenContent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Spacer(Modifier.fillMaxSize().weight(1f))
+        Row(modifier = Modifier
+            .fillMaxSize()
+            .weight(1f)
+            .padding(end = firstScreenHorizontalPadding, top = 30.dp),
+            horizontalArrangement = Arrangement.End) {
+            SettingsButton()
+        }
 
         Column(Modifier.fillMaxSize().weight(1f)
             .padding(horizontal = firstScreenHorizontalPadding),
