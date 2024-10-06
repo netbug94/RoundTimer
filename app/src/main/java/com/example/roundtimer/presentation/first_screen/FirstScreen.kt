@@ -65,8 +65,7 @@ fun FirstScreenContent(
 
     Column(
         modifier = Modifier.fillMaxSize()
-            .systemBarsPadding()
-            .imePadding(),
+            .imePadding().systemBarsPadding(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
