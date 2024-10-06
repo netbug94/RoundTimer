@@ -27,7 +27,7 @@ fun SettingsButton() {
             contentDescription = if (isDarkTheme) "Dark theme dots" else "Light theme dots",
             contentScale = ContentScale.Fit,
             modifier = Modifier.fillMaxSize().padding(horizontal = 4.dp)
-                .clip(RoundedCornerShape(3.dp))
+                .clip(RoundedCornerShape(2.5.dp))
                 .clickable { /*TODO*/ }
         )
     }
