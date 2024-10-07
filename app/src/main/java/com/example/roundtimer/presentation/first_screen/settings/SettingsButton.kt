@@ -39,7 +39,9 @@ fun SettingsButton() {
     val imageId = if (isDarkTheme) R.drawable.lightdots else R.drawable.darkdots
 
     val customColor = customColorScheme()
-    val textDropdownColor = customColorScheme().customTextColor
+    val textDropdownColor = customColor.customTextColor
+
+    val menuItems = listOf("Settings", "Tricks", "About")
 
     Box(modifier = Modifier.size(25.dp)) {
         Image(
@@ -57,56 +59,31 @@ fun SettingsButton() {
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
-                modifier = Modifier.width(84.dp)
-                    .background(customColor.customRippleColor)
+                modifier = Modifier.width(84.dp).background(customColor.customRippleColor)
             ) {
-                DropdownMenuItem(modifier = Modifier.fillMaxWidth(),
-                    text = {
-                        Text(
-                            text = "Settings",
-                            color = textDropdownColor,
-                            modifier = Modifier.fillMaxWidth(),
-                            textAlign = TextAlign.Center) },
-                    onClick = {
-                        // Handle option 2 click
-                        expanded = false
+                menuItems.forEachIndexed { index, item ->
+                    DropdownMenuItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = {
+                            Text(
+                                text = item,
+                                color = textDropdownColor,
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center
+                            )
+                        },
+                        onClick = {
+
+                            expanded = false
+                        }
+                    )
+
+                    if (index < menuItems.lastIndex) {
+                        HorizontalDivider(Modifier.height(2.dp).padding(horizontal = 8.dp), color = customColor.customTextColor)
                     }
-                )
-
-                HorizontalDivider(Modifier.height(2.dp), color = customColor.customTextColor)
-
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = "Tricks",
-                            color = textDropdownColor,
-                            modifier = Modifier.fillMaxWidth(),
-                            textAlign = TextAlign.Center
-                        )
-                    },
-                    onClick = {
-                        // Handle option 2 click
-                        expanded = false
-                    }
-                )
-
-                HorizontalDivider(Modifier.height(2.dp), color = customColor.customTextColor)
-
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            text = "About",
-                            color = textDropdownColor,
-                            modifier = Modifier.fillMaxWidth(),
-                            textAlign = TextAlign.Center
-                        )
-                    },
-                    onClick = {
-                        // Handle option 2 click
-                        expanded = false
-                    }
-                )
+                }
             }
         }
     }
 }
+
