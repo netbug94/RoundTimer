@@ -1,5 +1,6 @@
 package com.example.roundtimer.presentation.round_screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun RoundScreen(onNavigation: () -> Unit) {
+fun RoundScreen(onSwipeBack: () -> Unit) {
+
+    BackHandler {
+        onSwipeBack()
+    }
+
     Column(
         modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 300.dp),
         horizontalAlignment = Alignment.CenterHorizontally,

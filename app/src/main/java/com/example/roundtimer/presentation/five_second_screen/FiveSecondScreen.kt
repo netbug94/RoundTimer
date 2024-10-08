@@ -1,5 +1,6 @@
 package com.example.roundtimer.presentation.five_second_screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import kotlinx.coroutines.delay
 
 @Composable
-fun FiveSecondScreen(onNavigation: () -> Unit) {
+fun FiveSecondScreen(onNavigation: () -> Unit, onSwipeBack: () -> Unit) {
     var secondsRemaining by remember { mutableIntStateOf(5) }
     val secondsRemainingState by rememberUpdatedState(secondsRemaining)
 
@@ -29,6 +30,10 @@ fun FiveSecondScreen(onNavigation: () -> Unit) {
         }
         delay(1000)
         onNavigation()
+    }
+
+    BackHandler {
+        onSwipeBack()
     }
 
     Column(

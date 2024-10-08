@@ -21,15 +21,19 @@ fun NavigationManager(modifier: Modifier = Modifier) {
             )
         }
         composable<NavDestination.FiveSecondScreenNavi> {
-            FiveSecondScreen(onNavigation =  {
-                navController.navigate(NavDestination.RoundScreenNavi) }
+            FiveSecondScreen(
+                onNavigation = {
+                    navController.navigate(NavDestination.RoundScreenNavi)
+                },
+                onSwipeBack = {
+                    navController.navigateUp()
+                }
             )
         }
         composable<NavDestination.RoundScreenNavi> {
-
-            RoundScreen {
-                navController.navigateUp()
-            }
+            RoundScreen(onSwipeBack = {
+                navController.popBackStack(NavDestination.FirstScreenNavi, false)
+            })
         }
     }
 }
