@@ -49,7 +49,7 @@ fun RoundScreen(onSwipeBack: () -> Unit) {
             }
 
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-                Text("00:000", fontSize = 70.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                Text("00:00", fontSize = 70.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
             }
         }
     }
