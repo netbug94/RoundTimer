@@ -26,8 +26,9 @@ fun NavigationManager(modifier: Modifier = Modifier) {
             )
         }
         composable<NavDestination.RoundScreenNavi> {
-            RoundScreen {
 
+            RoundScreen {
+                navController.navigateUp()
             }
         }
     }

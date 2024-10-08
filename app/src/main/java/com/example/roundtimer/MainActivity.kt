@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RoundTimerTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    NavigationManager()
+                    NavigationManager(modifier = Modifier)
                     Herrete("netBug94")
                 }
             }
