@@ -31,7 +31,7 @@ import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.
 import kotlinx.coroutines.delay
 
 @Composable
-internal fun FirstScreen(onNavigation: () -> Unit) {
+internal fun FirstScreen(onStartClick: () -> Unit) {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val workoutInput by workoutInputVM.workoutInput
 
@@ -42,6 +42,7 @@ internal fun FirstScreen(onNavigation: () -> Unit) {
         workoutInput = workoutInput,
         onInputChange = { newInput -> workoutInputVM.updateWorkoutInput(newInput) },
         isFocused = isFocused,
+        onStartClick = onStartClick
     )
 }
 
@@ -49,7 +50,8 @@ internal fun FirstScreen(onNavigation: () -> Unit) {
 fun FirstScreenContent(
     workoutInput: WorkoutInput,
     onInputChange: (WorkoutInput) -> Unit,
-    isFocused: Boolean
+    isFocused: Boolean,
+    onStartClick: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
     val ifFocusColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
@@ -137,7 +139,7 @@ fun FirstScreenContent(
 
             Column(modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
                 verticalArrangement = Arrangement.Center) {
-                StartAndClearButton()
+                StartAndClearButton(onStartClick)
             }
         }
     }

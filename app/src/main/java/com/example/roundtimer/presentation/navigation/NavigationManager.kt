@@ -12,17 +12,18 @@ import com.example.roundtimer.presentation.round_screen.RoundScreen
 @Composable
 fun NavigationManager(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = NavDestination.FirstScreenNavi) {
+
+    NavHost(modifier = modifier, navController = navController, startDestination = NavDestination.FirstScreenNavi) {
 
         composable<NavDestination.FirstScreenNavi> {
-            FirstScreen {
-                navController.navigate(NavDestination.FiveSecondScreenNavi)
-            }
+            FirstScreen(onStartClick = {
+                navController.navigate(NavDestination.FiveSecondScreenNavi) }
+            )
         }
         composable<NavDestination.FiveSecondScreenNavi> {
-            FiveSecondScreen {
-                navController.navigate(NavDestination.RoundScreenNavi)
-            }
+            FiveSecondScreen(onNavigation =  {
+                navController.navigate(NavDestination.RoundScreenNavi) }
+            )
         }
         composable<NavDestination.RoundScreenNavi> {
             RoundScreen {

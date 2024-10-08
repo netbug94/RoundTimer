@@ -21,7 +21,7 @@ import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
-fun StartAndClearButton() {
+fun StartAndClearButton(onStartClick: () -> Unit) {
     val workoutInputVM: WorkoutInputViewModel = viewModel()
     val startButtonColor = MaterialTheme.colorScheme.primary
     val customBtnColor = customColorScheme()
@@ -45,7 +45,9 @@ fun StartAndClearButton() {
         ) {
             Button(modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(startButtonColor),
-                onClick = {  }
+                onClick = {
+                    onStartClick()
+                }
             ) {
                 Text(text = "Ready", style = buttonsStyling)
             }

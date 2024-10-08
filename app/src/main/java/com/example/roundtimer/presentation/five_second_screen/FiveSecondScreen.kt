@@ -23,12 +23,12 @@ fun FiveSecondScreen(onNavigation: () -> Unit) {
     val secondsRemainingState by rememberUpdatedState(secondsRemaining)
 
     LaunchedEffect(Unit) {
-        while (secondsRemainingState > 1) {
+        while (secondsRemainingState > 2) {
             delay(1000)
             secondsRemaining -= 1
         }
         delay(1000)
-        //navController.navigate(route = "round_count_down")
+        onNavigation()
     }
 
     Column(
