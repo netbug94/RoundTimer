@@ -16,7 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import com.example.roundtimer.ui.theme.CustomWallPaper
+import com.example.roundtimer.presentation.wallpaper.CustomWallPaper
 import kotlinx.coroutines.delay
 
 @Composable

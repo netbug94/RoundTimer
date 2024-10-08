@@ -1,4 +1,4 @@
-package com.example.roundtimer.ui.theme
+package com.example.roundtimer.presentation.wallpaper
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,7 @@ import com.example.roundtimer.R
 
 @Composable
 fun CustomWallPaper() {
-    val vectorBackground = painterResource(id = R.drawable.customwallpaper)
+    val vectorBackground = painterResource(id = R.drawable.five_sec_wallpaper)
     Image(
         painter = vectorBackground,
         contentDescription = null,
