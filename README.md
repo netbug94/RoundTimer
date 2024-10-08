@@ -1,1 +1,1 @@
-# RoundTimer Stand Alone App
+# RoundTimer StandAlone App
