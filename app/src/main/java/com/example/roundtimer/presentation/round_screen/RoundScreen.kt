@@ -30,8 +30,7 @@ fun RoundScreen(onSwipeBack: () -> Unit) {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize()
-            .border(BorderStroke(3.dp, MaterialTheme.colorScheme.primary), RoundedCornerShape(6.dp)),
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {

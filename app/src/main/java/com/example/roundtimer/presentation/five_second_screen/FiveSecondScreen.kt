@@ -16,7 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import com.example.roundtimer.presentation.wallpaper.CustomWallPaper
+import com.example.roundtimer.presentation.wallpaper.FiveSecScreenWallpaper
 import kotlinx.coroutines.delay
 
 @Composable
@@ -37,7 +37,7 @@ fun FiveSecondScreen(onNavigation: () -> Unit, onSwipeBack: () -> Unit) {
         onSwipeBack()
     }
 
-    CustomWallPaper()
+    FiveSecScreenWallpaper()
 
     Column(
         modifier = Modifier.fillMaxSize(),
