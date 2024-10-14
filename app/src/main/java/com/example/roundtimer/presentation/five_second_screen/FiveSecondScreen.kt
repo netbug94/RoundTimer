@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -22,26 +21,19 @@ import kotlinx.coroutines.delay
 @Composable
 fun FiveSecondScreen(onNavigation: () -> Unit, onSwipeBack: () -> Unit) {
     var secondsRemaining by remember { mutableIntStateOf(5) }
-    var hasNavigated by remember { mutableStateOf(false) } // Global navigation lock
 
+    // LaunchedEffect for countdown and navigation
     LaunchedEffect(Unit) {
-        while (secondsRemaining > 1 && !hasNavigated) {
+        while (secondsRemaining > 1) {
             delay(1000)
             secondsRemaining -= 1
         }
-        if (!hasNavigated) {
-            delay(1000)
-            hasNavigated = true
-            onNavigation()
-            onSwipeBack()
-        }
+        delay(1000)
+        onNavigation()
     }
 
     BackHandler {
-        if (!hasNavigated) { // Will only proceed if navigation hasn't happened
-            hasNavigated = true
             onSwipeBack()
-        }
     }
 
     FiveSecScreenWallpaper()
