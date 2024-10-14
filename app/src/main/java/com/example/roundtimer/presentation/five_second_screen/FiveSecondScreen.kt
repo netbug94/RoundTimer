@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,19 +22,26 @@ import kotlinx.coroutines.delay
 @Composable
 fun FiveSecondScreen(onNavigation: () -> Unit, onSwipeBack: () -> Unit) {
     var secondsRemaining by remember { mutableIntStateOf(5) }
-    val secondsRemainingState by rememberUpdatedState(secondsRemaining)
+    var hasNavigated by remember { mutableStateOf(false) } // Global navigation lock
 
     LaunchedEffect(Unit) {
-        while (secondsRemainingState > 2) {
+        while (secondsRemaining > 1 && !hasNavigated) {
             delay(1000)
             secondsRemaining -= 1
         }
-        delay(1000)
-        onNavigation()
+        if (!hasNavigated) {
+            delay(1000)
+            hasNavigated = true
+            onNavigation()
+            onSwipeBack()
+        }
     }
 
     BackHandler {
-        onSwipeBack()
+        if (!hasNavigated) { // Will only proceed if navigation hasn't happened
+            hasNavigated = true
+            onSwipeBack()
+        }
     }
 
     FiveSecScreenWallpaper()
