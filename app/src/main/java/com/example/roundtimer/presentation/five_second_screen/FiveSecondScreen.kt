@@ -22,7 +22,6 @@ import kotlinx.coroutines.delay
 fun FiveSecondScreen(onNavigation: () -> Unit, onSwipeBack: () -> Unit) {
     var secondsRemaining by remember { mutableIntStateOf(5) }
 
-    // LaunchedEffect for countdown and navigation
     LaunchedEffect(Unit) {
         while (secondsRemaining > 1) {
             delay(1000)

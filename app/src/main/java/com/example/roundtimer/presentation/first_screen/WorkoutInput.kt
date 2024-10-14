@@ -5,5 +5,5 @@ data class WorkoutInput(
     val roundMinutes: Int,
     val roundSeconds: Int,
     val restMinutes: Int,
-    val restSeconds: Int,
+    val restSeconds: Int
 )
