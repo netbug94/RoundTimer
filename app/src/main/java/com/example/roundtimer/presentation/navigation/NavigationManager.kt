@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
-import com.example.roundtimer.presentation.round_screen.RoundScreen
+import com.example.roundtimer.presentation.round_screen.TestLogic
 
 @Composable
 fun NavigationManager(modifier: Modifier = Modifier) {
@@ -31,7 +31,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
             )
         }
         composable<NavDestination.RoundScreenNavi> {
-            RoundScreen(onSwipeBack = {
+            TestLogic(onSwipeBack = {
                 navController.popBackStack(NavDestination.FirstScreenNavi, false)
             })
         }
