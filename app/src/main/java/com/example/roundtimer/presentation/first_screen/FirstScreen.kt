@@ -16,18 +16,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.presentation.common.rememberFocusHandler
+import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
 import com.example.roundtimer.presentation.first_screen.settings_button.SettingsButton
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
-import com.example.roundtimer.presentation.view_model.WorkoutInputViewModel
 import kotlinx.coroutines.delay
 
 @Composable
@@ -72,14 +72,9 @@ fun FirstScreenContent(
 ) {
     val firstScreenHorizontalPadding = 12.dp
 
-    var anyFieldFocused by remember { mutableStateOf(false) }
-    var focusedFieldCount by remember { mutableIntStateOf(0) }
-
-    val focusChanged: (Boolean) -> Unit = { focused ->
-        focusedFieldCount = (focusedFieldCount + if (focused) 1 else -1).coerceAtLeast(0)
-        anyFieldFocused = focusedFieldCount > 0
-    }
-
+    val focusHandler = rememberFocusHandler()
+    val anyFieldFocused = focusHandler.anyFieldFocused.value
+    val focusChanged = focusHandler.focusChanged
     val dividerColor = if (anyFieldFocused) {
         MaterialTheme.colorScheme.primary
     } else {
@@ -128,6 +123,7 @@ fun FirstScreenContent(
                 roundSeconds = roundSeconds,
                 restMinutes = restMinutes,
                 restSeconds = restSeconds,
+                isFocused = anyFieldFocused, // Pass the focus state here
                 onBannerShow = {
                     showBanner = true
                 }

@@ -13,13 +13,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun PreviewRoundBox(
@@ -28,12 +25,10 @@ fun PreviewRoundBox(
     roundSeconds: Int,
     restMinutes: Int,
     restSeconds: Int,
+    isFocused: Boolean,
     onBannerShow: () -> Unit
 ) {
     val previewBoxColor = MaterialTheme.colorScheme.onSurface
-
-    val focusViewModel: FocusViewModel = viewModel()
-    val isFocused by focusViewModel.isFocused.collectAsState()
 
     val ifFocusActiveBorder = if (isFocused) 2.dp else 1.dp
     val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface

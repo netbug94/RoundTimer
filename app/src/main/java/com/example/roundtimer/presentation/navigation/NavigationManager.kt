@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roundtimer.presentation.first_screen.FirstScreen
-import com.example.roundtimer.presentation.view_model.WorkoutInputViewModel
+import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
 import com.example.roundtimer.presentation.round_screen.TestLogic
 
