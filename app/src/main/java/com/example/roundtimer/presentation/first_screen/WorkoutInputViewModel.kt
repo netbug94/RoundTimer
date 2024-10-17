@@ -9,7 +9,7 @@ class WorkoutInputViewModel : ViewModel() {
     val workoutInput: State<WorkoutInput> = _workoutInput
 
     fun updateWorkoutInput(newInput: WorkoutInput) {
-        _workoutInput.value = newInput
+            _workoutInput.value = newInput
     }
 
     fun clearWorkoutInput() {

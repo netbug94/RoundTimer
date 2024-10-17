@@ -6,9 +6,9 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -34,7 +34,7 @@ fun ClickablePlusSign(onClick: () -> Unit) {
             .clip(RoundedCornerShape(12.dp))
             .clickable(
                 interactionSource = interactionSource,
-                indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
+                indication = ripple(color = MaterialTheme.colorScheme.primary),
                 role = Role.Button
             ) {
                 onClick()
