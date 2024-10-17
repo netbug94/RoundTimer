@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.first_screen.settings
+package com.example.roundtimer.presentation.first_screen.settings_button
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

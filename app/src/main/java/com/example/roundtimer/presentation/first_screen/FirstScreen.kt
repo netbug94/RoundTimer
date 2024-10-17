@@ -16,17 +16,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.roundtimer.presentation.first_screen.preview_round_box.FocusViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
-import com.example.roundtimer.presentation.first_screen.settings.SettingsButton
+import com.example.roundtimer.presentation.first_screen.settings_button.SettingsButton
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
 import com.example.roundtimer.presentation.view_model.WorkoutInputViewModel
 import kotlinx.coroutines.delay
@@ -34,9 +33,6 @@ import kotlinx.coroutines.delay
 @Composable
 fun FirstScreen(onStartClick: () -> Unit, workoutInputVM: WorkoutInputViewModel) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
-    val focusViewModel: FocusViewModel = viewModel()
-    val isFocused by focusViewModel.isFocused.collectAsState()
-
     val roundNumber = workoutInput.roundNumber
     val roundMinutes = workoutInput.roundMinutes
     val roundSeconds = workoutInput.roundSeconds
@@ -54,7 +50,6 @@ fun FirstScreen(onStartClick: () -> Unit, workoutInputVM: WorkoutInputViewModel)
         onRestMinutesChange = workoutInputVM::updateRestMinutes,
         restSeconds = restSeconds,
         onRestSecondsChange = workoutInputVM::updateRestSeconds,
-        isFocused = isFocused,
         onStartClick = onStartClick,
         onClearClick = workoutInputVM::clearWorkoutInput
     )
@@ -72,12 +67,24 @@ fun FirstScreenContent(
     onRestMinutesChange: (Int) -> Unit,
     restSeconds: Int,
     onRestSecondsChange: (Int) -> Unit,
-    isFocused: Boolean,
     onStartClick: () -> Unit,
     onClearClick: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
-    val ifFocusColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+
+    var anyFieldFocused by remember { mutableStateOf(false) }
+    var focusedFieldCount by remember { mutableIntStateOf(0) }
+
+    val focusChanged: (Boolean) -> Unit = { focused ->
+        focusedFieldCount = (focusedFieldCount + if (focused) 1 else -1).coerceAtLeast(0)
+        anyFieldFocused = focusedFieldCount > 0
+    }
+
+    val dividerColor = if (anyFieldFocused) {
+        MaterialTheme.colorScheme.primary
+    } else {
+        MaterialTheme.colorScheme.onSurface
+    }
 
     var showBanner by remember { mutableStateOf(false) }
     if (showBanner) {
@@ -138,7 +145,8 @@ fun FirstScreenContent(
 
             InputSingleField(
                 value = roundNumber,
-                onValueChange = onRoundNumberChange
+                onValueChange = onRoundNumberChange,
+                onFocusChanged = focusChanged
             )
 
             HorizontalDivider(
@@ -146,7 +154,7 @@ fun FirstScreenContent(
                     .fillMaxWidth()
                     .padding(top = 8.dp, bottom = 2.dp),
                 thickness = 1.dp,
-                color = ifFocusColor
+                color = dividerColor
             )
 
             InputDoubleFieldRow(
@@ -155,7 +163,8 @@ fun FirstScreenContent(
                 firstLabel = "Round Min",
                 secondValue = roundSeconds,
                 onSecondValueChange = onRoundSecondsChange,
-                secondLabel = "Round Sec"
+                secondLabel = "Round Sec",
+                onFocusChanged = focusChanged
             )
 
             InputDoubleFieldRow(
@@ -164,7 +173,8 @@ fun FirstScreenContent(
                 firstLabel = "Rest Min",
                 secondValue = restSeconds,
                 onSecondValueChange = onRestSecondsChange,
-                secondLabel = "Rest Sec"
+                secondLabel = "Rest Sec",
+                onFocusChanged = focusChanged
             )
 
             Column(
@@ -185,7 +195,8 @@ fun FirstScreenContent(
 @Composable
 private fun InputSingleField(
     value: Int,
-    onValueChange: (Int) -> Unit
+    onValueChange: (Int) -> Unit,
+    onFocusChanged: (Boolean) -> Unit // Add this parameter
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -196,7 +207,8 @@ private fun InputSingleField(
             modifier = Modifier.fillMaxWidth(),
             label = "Number Of Rounds",
             value = value,
-            onValueChange = onValueChange
+            onValueChange = onValueChange,
+            onFocusChanged = onFocusChanged // Pass the callback
         )
     }
 }
@@ -208,7 +220,8 @@ private fun InputDoubleFieldRow(
     firstLabel: String,
     secondValue: Int,
     onSecondValueChange: (Int) -> Unit,
-    secondLabel: String
+    secondLabel: String,
+    onFocusChanged: (Boolean) -> Unit // Add this parameter
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -219,7 +232,8 @@ private fun InputDoubleFieldRow(
             modifier = Modifier.weight(1f),
             label = firstLabel,
             value = firstValue,
-            onValueChange = onFirstValueChange
+            onValueChange = onFirstValueChange,
+            onFocusChanged = onFocusChanged // Pass the callback
         )
 
         Spacer(Modifier.weight(0.01f))
@@ -228,7 +242,8 @@ private fun InputDoubleFieldRow(
             modifier = Modifier.weight(1f),
             label = secondLabel,
             value = secondValue,
-            onValueChange = onSecondValueChange
+            onValueChange = onSecondValueChange,
+            onFocusChanged = onFocusChanged // Pass the callback
         )
     }
 }
