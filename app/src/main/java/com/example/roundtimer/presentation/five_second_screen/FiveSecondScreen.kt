@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +20,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun FiveSecondScreen(onNavigation: () -> Unit, onSwipeBack: () -> Unit) {
-    var secondsRemaining by remember { mutableIntStateOf(5) }
+    var secondsRemaining by rememberSaveable { mutableIntStateOf(5) }
 
     LaunchedEffect(Unit) {
         while (secondsRemaining > 1) {
