@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.first_screen
+package com.example.roundtimer.domain
 
 data class WorkoutInput(
     val roundNumber: Int,

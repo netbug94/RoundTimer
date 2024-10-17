@@ -1,7 +1,6 @@
 package com.example.roundtimer.presentation.first_screen.start_and_clear_buttons
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,13 +15,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
-fun StartAndClearButton(onStartClick: () -> Unit) {
-    val workoutInputVM: WorkoutInputViewModel = viewModel()
+fun StartAndClearButton(
+    onStartClick: () -> Unit,
+    onClearClick: () -> Unit
+) {
     val startButtonColor = MaterialTheme.colorScheme.primary
     val customBtnColor = customColorScheme()
     val clearButtonColor = customBtnColor.customButtonColor
@@ -38,35 +37,33 @@ fun StartAndClearButton(onStartClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        Box(
+        // Start Button
+        Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
-        ) {
-            Button(modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(startButtonColor),
-                onClick = {
-                    onStartClick()
-                }
-            ) {
-                Text(text = "Ready", style = buttonsStyling)
+                .weight(1f),
+            colors = ButtonDefaults.buttonColors(startButtonColor),
+            onClick = {
+                onStartClick()
             }
+        ) {
+            Text(text = "Ready", style = buttonsStyling)
         }
+
         Spacer(Modifier.width(15.dp))
-        Box(
+
+        // Clear Button
+        Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
-        ) {
-            Button(modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(clearButtonColor),
-                onClick = {
-                    workoutInputVM.clearWorkoutInput()
-                    focusManager.clearFocus()
-                }
-            ) {
-                Text(text = "Clear", style = buttonsStyling)
+                .weight(1f),
+            colors = ButtonDefaults.buttonColors(clearButtonColor),
+            onClick = {
+                onClearClick()
+                focusManager.clearFocus()
             }
+        ) {
+            Text(text = "Clear", style = buttonsStyling)
         }
     }
 }

@@ -28,30 +28,53 @@ import com.example.roundtimer.presentation.first_screen.preview_round_box.Previe
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
 import com.example.roundtimer.presentation.first_screen.settings.SettingsButton
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
+import com.example.roundtimer.presentation.view_model.WorkoutInputViewModel
 import kotlinx.coroutines.delay
 
 @Composable
-internal fun FirstScreen(onStartClick: () -> Unit) {
-    val workoutInputVM: WorkoutInputViewModel = viewModel()
-    val workoutInput by workoutInputVM.workoutInput
-
+fun FirstScreen(onStartClick: () -> Unit, workoutInputVM: WorkoutInputViewModel) {
+    val workoutInput by workoutInputVM.workoutInput.collectAsState()
     val focusViewModel: FocusViewModel = viewModel()
     val isFocused by focusViewModel.isFocused.collectAsState()
 
+    val roundNumber = workoutInput.roundNumber
+    val roundMinutes = workoutInput.roundMinutes
+    val roundSeconds = workoutInput.roundSeconds
+    val restMinutes = workoutInput.restMinutes
+    val restSeconds = workoutInput.restSeconds
+
     FirstScreenContent(
-        workoutInput = workoutInput,
-        onInputChange = { newInput -> workoutInputVM.updateWorkoutInput(newInput) },
+        roundNumber = roundNumber,
+        onRoundNumberChange = workoutInputVM::updateRoundNumber,
+        roundMinutes = roundMinutes,
+        onRoundMinutesChange = workoutInputVM::updateRoundMinutes,
+        roundSeconds = roundSeconds,
+        onRoundSecondsChange = workoutInputVM::updateRoundSeconds,
+        restMinutes = restMinutes,
+        onRestMinutesChange = workoutInputVM::updateRestMinutes,
+        restSeconds = restSeconds,
+        onRestSecondsChange = workoutInputVM::updateRestSeconds,
         isFocused = isFocused,
-        onStartClick = onStartClick
+        onStartClick = onStartClick,
+        onClearClick = workoutInputVM::clearWorkoutInput
     )
 }
 
 @Composable
 fun FirstScreenContent(
-    workoutInput: WorkoutInput,
-    onInputChange: (WorkoutInput) -> Unit,
+    roundNumber: Int,
+    onRoundNumberChange: (Int) -> Unit,
+    roundMinutes: Int,
+    onRoundMinutesChange: (Int) -> Unit,
+    roundSeconds: Int,
+    onRoundSecondsChange: (Int) -> Unit,
+    restMinutes: Int,
+    onRestMinutesChange: (Int) -> Unit,
+    restSeconds: Int,
+    onRestSecondsChange: (Int) -> Unit,
     isFocused: Boolean,
-    onStartClick: () -> Unit
+    onStartClick: () -> Unit,
+    onClearClick: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
     val ifFocusColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
@@ -67,79 +90,93 @@ fun FirstScreenContent(
     SaveRoundBanner(showBanner = showBanner)
 
     Column(
-        modifier = Modifier.fillMaxSize()
-            .imePadding().systemBarsPadding(),
+        modifier = Modifier
+            .fillMaxSize()
+            .imePadding()
+            .systemBarsPadding(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Row(modifier = Modifier
-            .fillMaxSize()
-            .weight(1f)
-            .padding(end = firstScreenHorizontalPadding, top = 30.dp),
-            horizontalArrangement = Arrangement.End) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f)
+                .padding(end = firstScreenHorizontalPadding, top = 30.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
             SettingsButton()
         }
 
-        Column(Modifier.fillMaxSize().weight(1f)
-            .padding(horizontal = firstScreenHorizontalPadding),
+        Column(
+            Modifier
+                .fillMaxSize()
+                .weight(1f)
+                .padding(horizontal = firstScreenHorizontalPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center) {
-
-            PreviewRoundBox {
-                showBanner = true
-            }
+            verticalArrangement = Arrangement.Center
+        ) {
+            PreviewRoundBox(
+                roundNumber = roundNumber,
+                roundMinutes = roundMinutes,
+                roundSeconds = roundSeconds,
+                restMinutes = restMinutes,
+                restSeconds = restSeconds,
+                onBannerShow = {
+                    showBanner = true
+                }
+            )
         }
 
-        Column(Modifier.fillMaxSize().weight(4f)
-            .padding(horizontal = firstScreenHorizontalPadding),
-            horizontalAlignment = Alignment.CenterHorizontally) {
-
+        Column(
+            Modifier
+                .fillMaxSize()
+                .weight(4f)
+                .padding(horizontal = firstScreenHorizontalPadding),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Spacer(Modifier.height(16.dp))
 
             InputSingleField(
-                value = workoutInput.roundNumber,
-                onValueChange = { newRoundNumber ->
-                    onInputChange(workoutInput.copy(roundNumber = newRoundNumber))
-                }
+                value = roundNumber,
+                onValueChange = onRoundNumberChange
             )
 
-            HorizontalDivider(modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp, bottom = 2.dp),
+            HorizontalDivider(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp, bottom = 2.dp),
                 thickness = 1.dp,
                 color = ifFocusColor
             )
 
             InputDoubleFieldRow(
-                firstValue = workoutInput.roundMinutes,
-                onFirstValueChange = { newRoundMinutes ->
-                    onInputChange(workoutInput.copy(roundMinutes = newRoundMinutes))
-                },
+                firstValue = roundMinutes,
+                onFirstValueChange = onRoundMinutesChange,
                 firstLabel = "Round Min",
-                secondValue = workoutInput.roundSeconds,
-                onSecondValueChange = { newRoundSeconds ->
-                    onInputChange(workoutInput.copy(roundSeconds = newRoundSeconds))
-                },
+                secondValue = roundSeconds,
+                onSecondValueChange = onRoundSecondsChange,
                 secondLabel = "Round Sec"
             )
 
             InputDoubleFieldRow(
-                firstValue = workoutInput.restMinutes,
-                onFirstValueChange = { newRestMinutes ->
-                    onInputChange(workoutInput.copy(restMinutes = newRestMinutes))
-                },
+                firstValue = restMinutes,
+                onFirstValueChange = onRestMinutesChange,
                 firstLabel = "Rest Min",
-                secondValue = workoutInput.restSeconds,
-                onSecondValueChange = { newRestSeconds ->
-                    onInputChange(workoutInput.copy(restSeconds = newRestSeconds))
-                },
+                secondValue = restSeconds,
+                onSecondValueChange = onRestSecondsChange,
                 secondLabel = "Rest Sec"
             )
 
-            Column(modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
-                verticalArrangement = Arrangement.Center) {
-                StartAndClearButton(onStartClick)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp),
+                verticalArrangement = Arrangement.Center
+            ) {
+                StartAndClearButton(
+                    onStartClick = onStartClick,
+                    onClearClick = onClearClick
+                )
             }
         }
     }
@@ -156,7 +193,8 @@ private fun InputSingleField(
         modifier = Modifier.fillMaxWidth()
     ) {
         InputOutlinedTextField(
-            label = "Rounds Number",
+            modifier = Modifier.fillMaxWidth(),
+            label = "Number Of Rounds",
             value = value,
             onValueChange = onValueChange
         )
