@@ -4,6 +4,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,9 +21,15 @@ fun InputOutlinedTextField(
     onValueChange: (Int) -> Unit,
     onFocusChanged: (Boolean) -> Unit
 ) {
-    var text by remember(value) {
-        mutableStateOf(if (value == 0) "" else value.toString())
+    var text by remember { mutableStateOf("") }
+
+    LaunchedEffect(value) {
+        val newText = if (value == 0) "" else value.toString()
+        if (newText != text) {
+            text = newText
+        }
     }
+
     OutlinedTextField(
         modifier = modifier
             .onFocusChanged { focusState ->
@@ -31,7 +38,10 @@ fun InputOutlinedTextField(
         value = text,
         onValueChange = { newText ->
             text = newText
-            onValueChange(newText.toIntOrNull() ?: 0)
+            val intValue = newText.toIntOrNull()
+            if (intValue != null) {
+                onValueChange(intValue)
+            }
         },
         label = { Text(label) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)

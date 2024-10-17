@@ -196,7 +196,7 @@ fun FirstScreenContent(
 private fun InputSingleField(
     value: Int,
     onValueChange: (Int) -> Unit,
-    onFocusChanged: (Boolean) -> Unit // Add this parameter
+    onFocusChanged: (Boolean) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -208,7 +208,7 @@ private fun InputSingleField(
             label = "Number Of Rounds",
             value = value,
             onValueChange = onValueChange,
-            onFocusChanged = onFocusChanged // Pass the callback
+            onFocusChanged = onFocusChanged
         )
     }
 }
@@ -221,7 +221,7 @@ private fun InputDoubleFieldRow(
     secondValue: Int,
     onSecondValueChange: (Int) -> Unit,
     secondLabel: String,
-    onFocusChanged: (Boolean) -> Unit // Add this parameter
+    onFocusChanged: (Boolean) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -233,7 +233,7 @@ private fun InputDoubleFieldRow(
             label = firstLabel,
             value = firstValue,
             onValueChange = onFirstValueChange,
-            onFocusChanged = onFocusChanged // Pass the callback
+            onFocusChanged = onFocusChanged
         )
 
         Spacer(Modifier.weight(0.01f))
@@ -243,7 +243,7 @@ private fun InputDoubleFieldRow(
             label = secondLabel,
             value = secondValue,
             onValueChange = onSecondValueChange,
-            onFocusChanged = onFocusChanged // Pass the callback
+            onFocusChanged = onFocusChanged
         )
     }
 }
