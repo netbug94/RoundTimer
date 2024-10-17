@@ -1,5 +1,6 @@
 package com.example.roundtimer.presentation.first_screen
 
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -9,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.text.input.KeyboardType
 
 @Composable
 fun InputOutlinedTextField(
@@ -31,6 +33,7 @@ fun InputOutlinedTextField(
             text = newText
             onValueChange(newText.toIntOrNull() ?: 0)
         },
-        label = { Text(label) }
+        label = { Text(label) },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
     )
 }
