@@ -23,6 +23,7 @@ fun InputOutlinedTextField(
 ) {
     var text by remember { mutableStateOf("") }
 
+    // Synchronize text with value from ViewModel
     LaunchedEffect(value) {
         val newText = if (value == 0) "" else value.toString()
         if (newText != text) {
@@ -38,12 +39,12 @@ fun InputOutlinedTextField(
         value = text,
         onValueChange = { newText ->
             text = newText
-            val intValue = newText.toIntOrNull()
-            if (intValue != null) {
-                onValueChange(intValue)
-            }
+            // If the input is empty, default to 0
+            val intValue = newText.toIntOrNull() ?: 0
+            onValueChange(intValue)
         },
         label = { Text(label) },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        singleLine = true
     )
 }
