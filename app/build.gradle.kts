@@ -59,11 +59,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //ViewModel
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     //TypeSafeNavigation
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.navigation.compose)
 
     //Serialization
     implementation(libs.kotlinx.serialization.json)
