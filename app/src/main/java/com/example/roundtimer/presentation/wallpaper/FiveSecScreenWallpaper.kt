@@ -13,8 +13,8 @@ import com.example.roundtimer.R
 fun FiveSecScreenWallpaper() {
     val darkTheme = isSystemInDarkTheme()
     val vectorBackground =
-        if(darkTheme) { painterResource(id = R.drawable.five_sec_wallpaper_dark) }
-        else { painterResource(id = R.drawable.five_sec_wallpaper_light) }
+        if(darkTheme) { painterResource(id = R.drawable.five_second_wallpaper_dark) }
+        else { painterResource(id = R.drawable.five_second_wallpaper_light) }
 
     Image(
         painter = vectorBackground,
