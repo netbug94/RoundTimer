@@ -6,10 +6,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
+import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
-import com.example.roundtimer.presentation.round_screen.TestLogic
+import com.example.roundtimer.presentation.round_screen.RoundScreen
 
 @Composable
 fun NavigationManager(modifier: Modifier = Modifier) {
@@ -41,7 +41,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
             )
         }
         composable<NavDestination.RoundScreenNavi> {
-            TestLogic(
+            RoundScreen(
                 onSwipeBack = {
                     navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 },
