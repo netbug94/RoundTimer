@@ -33,7 +33,7 @@ fun SaveRoundBanner(showBanner: Boolean) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(dynamicHeight) // Use dynamic height
+                    .height(dynamicHeight)
                     .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {

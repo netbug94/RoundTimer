@@ -123,7 +123,7 @@ fun FirstScreenContent(
                 roundSeconds = roundSeconds,
                 restMinutes = restMinutes,
                 restSeconds = restSeconds,
-                isFocused = anyFieldFocused, // Pass the focus state here
+                isFocused = anyFieldFocused,
                 onBannerShow = {
                     showBanner = true
                 }

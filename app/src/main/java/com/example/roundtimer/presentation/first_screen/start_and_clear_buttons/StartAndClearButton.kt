@@ -37,7 +37,7 @@ fun StartAndClearButton(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        // Start Button
+
         Button(
             modifier = Modifier
                 .fillMaxWidth()
@@ -52,7 +52,6 @@ fun StartAndClearButton(
 
         Spacer(Modifier.width(15.dp))
 
-        // Clear Button
         Button(
             modifier = Modifier
                 .fillMaxWidth()
