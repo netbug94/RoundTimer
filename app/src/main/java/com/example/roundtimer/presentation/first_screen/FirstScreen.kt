@@ -204,7 +204,8 @@ private fun InputSingleField(
             label = "Number Of Rounds",
             value = value,
             onValueChange = onValueChange,
-            onFocusChanged = onFocusChanged
+            onFocusChanged = onFocusChanged,
+            isRoundNumberField = true
         )
     }
 }
