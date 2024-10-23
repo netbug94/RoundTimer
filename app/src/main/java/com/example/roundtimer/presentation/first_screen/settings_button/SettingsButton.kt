@@ -64,7 +64,7 @@ fun SettingsButton() {
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
-                modifier = Modifier.width(84.dp).background(customColor.customRippleColor)
+                modifier = Modifier.width(90.dp).background(customColor.customRippleColor)
             ) {
                 menuItems.forEachIndexed { index, item ->
                     DropdownMenuItem(
