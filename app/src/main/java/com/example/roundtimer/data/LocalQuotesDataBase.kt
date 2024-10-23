@@ -1,8 +1,9 @@
 package com.example.roundtimer.data
 
 import com.example.roundtimer.domain.Quote
+import com.example.roundtimer.presentation.round_screen.QuotesDatabase
 
-object LocalQuotesDatabase {
+object LocalQuotesDataBase : QuotesDatabase {
     private val quotes: List<Quote> = listOf(
         Quote(1, "You can never understand a person unless you can understand what makes them angry.", "One Punch Man"),
         Quote(2, "What once was treasure can become trash.", "Hunter x Hunter"),
@@ -56,7 +57,7 @@ object LocalQuotesDatabase {
         Quote(50, "To live is the rarest thing in the world. Most people exist, that is all.", "Oscar Wilde")
     )
 
-    fun getRandomQuote(): Quote {
+    override fun getRandomQuote(): Quote {
         return quotes.random()
     }
 }
