@@ -35,10 +35,20 @@ fun FiveSecondScreen(
         }
     }
 
-    BackHandler {
-        fiveSecondViewModel.cancelCountdown()
-    }
+    FiveSecondScreenContent(
+        secondsRemaining = secondsRemaining,
+        onBackPressed = {
+            fiveSecondViewModel.cancelCountdown()
+            onSwipeBack()
+        }
+    )
+}
 
+@Composable
+fun FiveSecondScreenContent(
+    secondsRemaining: Int,
+    onBackPressed: () -> Unit
+) {
     FiveSecScreenWallpaper()
 
     Column(
@@ -60,5 +70,9 @@ fun FiveSecondScreen(
             text = "$secondsRemaining",
             style = textStyle
         )
+    }
+
+    BackHandler {
+        onBackPressed()
     }
 }

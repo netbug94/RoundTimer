@@ -78,7 +78,6 @@ fun SettingsButton() {
                             )
                         },
                         onClick = {
-
                             expanded = false
                         }
                     )
