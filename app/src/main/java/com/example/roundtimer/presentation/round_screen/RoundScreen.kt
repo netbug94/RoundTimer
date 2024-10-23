@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -39,6 +40,7 @@ fun RoundScreen(
     val roundDurationSeconds = workoutInput.roundMinutes * 60 + workoutInput.roundSeconds
     val restDurationSeconds = workoutInput.restMinutes * 60 + workoutInput.restSeconds
     val customColorText = customColorScheme().customBorderColor
+    val restTextColor = customColorScheme().redTextColor
 
     var currentRound by rememberSaveable { mutableIntStateOf(1) }
     var isRest by rememberSaveable { mutableStateOf(false) }
@@ -56,18 +58,16 @@ fun RoundScreen(
             if (timeRemaining > 0) {
                 timeRemaining -= 1
             } else {
-                if (!isRest) {
 
+                if (!isRest) {
                     isRest = true
                     timeRemaining = restDurationSeconds
                 } else {
-
                     isRest = false
                     currentRound += 1
                     if (currentRound <= totalRounds) {
                         timeRemaining = roundDurationSeconds
                     } else {
-
                         timerStatus = TimerStatus.Completed
                     }
                 }
@@ -88,31 +88,15 @@ fun RoundScreen(
     ) {
         if (timerStatus == TimerStatus.Running || timerStatus == TimerStatus.Paused) {
 
-            if (!isRest) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        text = "Round $currentRound / $totalRounds",
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = customColorText
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(30.dp))
-
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = if (isRest) "Rest" else "Round",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = if (isRest) customColorText.copy(alpha = 0.7f) else customColorText
+                    text = if (isRest) "Rest" else "Round $currentRound / $totalRounds",
+                    style = MaterialTheme.typography.displayMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = if (isRest) restTextColor else customColorText
                 )
             }
 
@@ -126,7 +110,7 @@ fun RoundScreen(
                     text = timeFormatted,
                     fontSize = 70.sp,
                     fontWeight = FontWeight.Bold,
-                    color = customColorText
+                    color = if (isRest) restTextColor else customColorText
                 )
             }
 
@@ -141,20 +125,19 @@ fun RoundScreen(
             }
 
         } else if (timerStatus == TimerStatus.Completed) {
-
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier.fillMaxSize()
             ) {
-                Text(
-                    text = "Completed",
-                    fontSize = 40.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = customColorText
-                )
+
+                QuoteFetcher()
 
                 Spacer(modifier = Modifier.height(20.dp))
+
+                Button(onClick = onSwipeBack) {
+                    Text("Finish")
+                }
             }
         }
     }
