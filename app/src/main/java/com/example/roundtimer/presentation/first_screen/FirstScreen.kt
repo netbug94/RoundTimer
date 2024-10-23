@@ -21,7 +21,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.R
 import com.example.roundtimer.presentation.common.rememberFocusHandler
 import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
@@ -156,20 +158,20 @@ fun FirstScreenContent(
             InputDoubleFieldRow(
                 firstValue = roundMinutes,
                 onFirstValueChange = onRoundMinutesChange,
-                firstLabel = "Round Min",
+                firstLabel = stringResource(id = R.string.Round_Min),
                 secondValue = roundSeconds,
                 onSecondValueChange = onRoundSecondsChange,
-                secondLabel = "Round Sec",
+                secondLabel = stringResource(id = R.string.Round_Sec),
                 onFocusChanged = focusChanged
             )
 
             InputDoubleFieldRow(
                 firstValue = restMinutes,
                 onFirstValueChange = onRestMinutesChange,
-                firstLabel = "Rest Min",
+                firstLabel = stringResource(id = R.string.Rest_Min),
                 secondValue = restSeconds,
                 onSecondValueChange = onRestSecondsChange,
-                secondLabel = "Rest Sec",
+                secondLabel = stringResource(id = R.string.Rest_Sec),
                 onFocusChanged = focusChanged
             )
 
@@ -201,7 +203,7 @@ private fun InputSingleField(
     ) {
         InputOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            label = "Number Of Rounds",
+            label = stringResource(id = R.string.Number_Of_Rounds),
             value = value,
             onValueChange = onValueChange,
             onFocusChanged = onFocusChanged,

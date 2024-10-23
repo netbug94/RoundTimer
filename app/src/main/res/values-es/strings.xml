@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- FirstScreenText -->
+    <string name="Round_Min">Ronda Min</string>
+    <string name="Round_Sec">Ronda Seg</string>
+    <string name="Rest_Min">Descanso Min</string>
+    <string name="Rest_Sec">"Descanso Seg"</string>
+    <string name="Number_Of_Rounds">"Numero De Rondas"</string>
+
+    <!-- FirstScreenButtonsText -->
+    <string name="Ready">"Comenzar"</string>
+    <string name="Clear">"Borrar"</string>
+
+</resources>

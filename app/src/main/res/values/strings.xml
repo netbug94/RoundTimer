@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">RoundTimer</string>
+    <string name="app_name" translatable="false">RoundTimer</string>
+
+    <!-- FirstScreenText -->
+    <string name="Round_Min">Round Min</string>
+    <string name="Round_Sec">Round Sec</string>
+    <string name="Rest_Min">Rest Min</string>
+    <string name="Rest_Sec">"Rest Sec"</string>
+    <string name="Number_Of_Rounds">"Number Of Rounds"</string>
+
+    <!-- FirstScreenButtonsText -->
+    <string name="Ready">"Ready"</string>
+    <string name="Clear">"Clear"</string>
+
+
+
 </resources>

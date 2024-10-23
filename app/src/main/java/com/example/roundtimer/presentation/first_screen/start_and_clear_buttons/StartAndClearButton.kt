@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.R
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
@@ -47,7 +49,7 @@ fun StartAndClearButton(
                 onStartClick()
             }
         ) {
-            Text(text = "Ready", style = buttonsStyling)
+            Text(text = stringResource(id = R.string.Ready), style = buttonsStyling)
         }
 
         Spacer(Modifier.width(15.dp))
@@ -62,7 +64,7 @@ fun StartAndClearButton(
                 focusManager.clearFocus()
             }
         ) {
-            Text(text = "Clear", style = buttonsStyling)
+            Text(text = stringResource(id = R.string.Clear), style = buttonsStyling)
         }
     }
 }
