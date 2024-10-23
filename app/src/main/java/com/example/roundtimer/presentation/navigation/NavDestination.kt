@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 sealed interface NavDestination{
 
+    //Main
     @Serializable
     data object FirstScreenNavi:NavDestination
 
@@ -12,4 +13,14 @@ sealed interface NavDestination{
 
     @Serializable
     data object RoundScreenNavi:NavDestination
+
+    //Settings
+    @Serializable
+    data object SettingsScreen:NavDestination
+
+    @Serializable
+    data object AboutScreen:NavDestination
+
+    @Serializable
+    data object TipsScreen:NavDestination
 }

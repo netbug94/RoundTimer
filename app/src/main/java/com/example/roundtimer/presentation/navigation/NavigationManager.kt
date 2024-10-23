@@ -10,6 +10,9 @@ import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewMod
 import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
 import com.example.roundtimer.presentation.round_screen.RoundScreen
+import com.example.roundtimer.presentation.setting_screens.AboutScreen
+import com.example.roundtimer.presentation.setting_screens.SettingsScreen
+import com.example.roundtimer.presentation.setting_screens.TipsScreen
 
 @Composable
 fun NavigationManager(modifier: Modifier = Modifier) {
@@ -46,6 +49,27 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                     navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 },
                 workoutInputVM = workoutInputVM
+            )
+        }
+        composable<NavDestination.SettingsScreen> {
+            SettingsScreen(
+                onSwipeBack = {
+                    navController.popBackStack(NavDestination.FirstScreenNavi, false)
+                },
+            )
+        }
+        composable<NavDestination.AboutScreen> {
+            AboutScreen(
+                onSwipeBack = {
+                    navController.popBackStack(NavDestination.FirstScreenNavi, false)
+                },
+            )
+        }
+        composable<NavDestination.TipsScreen> {
+            TipsScreen(
+                onSwipeBack = {
+                    navController.popBackStack(NavDestination.FirstScreenNavi, false)
+                },
             )
         }
     }
