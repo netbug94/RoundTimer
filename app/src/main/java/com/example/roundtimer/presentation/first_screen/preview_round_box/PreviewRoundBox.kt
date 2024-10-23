@@ -15,8 +15,10 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.R
 
 @Composable
 fun PreviewRoundBox(
@@ -48,7 +50,7 @@ fun PreviewRoundBox(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Rounds",
+                text = stringResource(id = R.string.Rounds),
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium
             )

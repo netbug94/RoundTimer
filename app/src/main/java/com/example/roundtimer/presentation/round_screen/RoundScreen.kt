@@ -22,9 +22,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.roundtimer.R
 import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 import kotlinx.coroutines.delay
@@ -46,6 +48,8 @@ fun RoundScreen(
     var isRest by rememberSaveable { mutableStateOf(false) }
     var timeRemaining by rememberSaveable { mutableIntStateOf(roundDurationSeconds) }
     var timerStatus by rememberSaveable { mutableStateOf(TimerStatus.Running) }
+
+    val roundText = stringResource(id = R.string.Round)
 
     BackHandler {
         timerStatus = TimerStatus.Paused
@@ -93,7 +97,7 @@ fun RoundScreen(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = if (isRest) "Rest" else "Round $currentRound / $totalRounds",
+                    text = if (isRest) stringResource(id = R.string.Rest) else "$roundText $currentRound / $totalRounds",
                     style = MaterialTheme.typography.displayMedium,
                     fontWeight = FontWeight.Bold,
                     color = if (isRest) restTextColor else customColorText
@@ -121,7 +125,7 @@ fun RoundScreen(
                     timerStatus = if (timerStatus == TimerStatus.Running) TimerStatus.Paused else TimerStatus.Running
                 }
             ) {
-                Text(text = if (timerStatus == TimerStatus.Running) "Pause" else "Resume")
+                Text(text = if (timerStatus == TimerStatus.Running) stringResource(id = R.string.Pause) else stringResource(id = R.string.Resume))
             }
 
         } else if (timerStatus == TimerStatus.Completed) {
@@ -136,7 +140,7 @@ fun RoundScreen(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Button(onClick = onSwipeBack) {
-                    Text("Finish")
+                    Text(stringResource(id = R.string.Finish))
                 }
             }
         }

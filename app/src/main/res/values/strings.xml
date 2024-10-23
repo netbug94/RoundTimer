@@ -6,12 +6,33 @@
     <string name="Round_Sec">Round Sec</string>
     <string name="Rest_Min">Rest Min</string>
     <string name="Rest_Sec">"Rest Sec"</string>
-    <string name="Number_Of_Rounds">"Number Of Rounds"</string>
+    <string name="Number_Of_Rounds">"Number of Rounds"</string>
 
     <!-- FirstScreenButtonsText -->
     <string name="Ready">"Ready"</string>
     <string name="Clear">"Clear"</string>
 
+    <!-- FiveSecondScreenText -->
+    <string name="Starting_in">Starting in:</string>
 
+    <!-- RoundScreenText -->
+    <string name="Rest">Rest</string>
+    <string name="Round">Round</string>
+    <string name="Pause">Pause</string>
+    <string name="Resume">Resume</string>
+    <string name="Finish">Finish</string>
+
+    <!-- PreviewRoundBoxText -->
+    <string name="Rounds">Rounds</string>
+
+    <!-- SaveRoundBannerText -->
+    <string name="Saved">Saved</string>
+
+    <!-- SettingsButtonText -->
+    <string name="Settings">Settings</string>
+    <string name="Tips">Tips</string>
+    <string name="About">About</string>
+
+    <!-- <string name=></string> -->
 
 </resources>

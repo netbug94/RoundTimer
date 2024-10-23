@@ -14,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.R
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
@@ -37,7 +39,7 @@ fun SaveRoundBanner(showBanner: Boolean) {
                     .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {
-                Text("Saved", color = bannerTextColor.customTextColor)
+                Text(stringResource(id = R.string.Saved), color = bannerTextColor.customTextColor)
             }
         }
     }

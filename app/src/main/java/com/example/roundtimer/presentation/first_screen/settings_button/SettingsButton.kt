@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
@@ -41,7 +42,11 @@ fun SettingsButton() {
     val customColor = customColorScheme()
     val textDropdownColor = customColor.customTextColor
 
-    val menuItems = listOf("Settings", "Tricks", "About")
+    val menuItems = listOf(
+        stringResource(R.string.Settings),
+        stringResource(R.string.Tips),
+        stringResource(R.string.About)
+    )
 
     Box(modifier = Modifier.size(25.dp)) {
         Image(
