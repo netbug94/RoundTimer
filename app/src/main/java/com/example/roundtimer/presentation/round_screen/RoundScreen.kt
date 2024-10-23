@@ -49,8 +49,6 @@ fun RoundScreen(
     var timeRemaining by rememberSaveable { mutableIntStateOf(roundDurationSeconds) }
     var timerStatus by rememberSaveable { mutableStateOf(TimerStatus.Running) }
 
-    val roundText = stringResource(id = R.string.Round)
-
     BackHandler {
         timerStatus = TimerStatus.Paused
         onSwipeBack()
@@ -62,7 +60,6 @@ fun RoundScreen(
             if (timeRemaining > 0) {
                 timeRemaining -= 1
             } else {
-
                 if (!isRest) {
                     isRest = true
                     timeRemaining = restDurationSeconds
@@ -83,6 +80,33 @@ fun RoundScreen(
     val seconds = timeRemaining % 60
     val timeFormatted = "%02d:%02d".format(minutes, seconds)
 
+    RoundScreenContent(
+        currentRound = currentRound,
+        totalRounds = totalRounds,
+        isRest = isRest,
+        timeFormatted = timeFormatted,
+        timerStatus = timerStatus,
+        customColorText = customColorText,
+        restTextColor = restTextColor,
+        onPauseResumeClick = {
+            timerStatus = if (timerStatus == TimerStatus.Running) TimerStatus.Paused else TimerStatus.Running
+        },
+        onFinishClick = onSwipeBack
+    )
+}
+
+@Composable
+fun RoundScreenContent(
+    currentRound: Int,
+    totalRounds: Int,
+    isRest: Boolean,
+    timeFormatted: String,
+    timerStatus: TimerStatus,
+    customColorText: androidx.compose.ui.graphics.Color,
+    restTextColor: androidx.compose.ui.graphics.Color,
+    onPauseResumeClick: () -> Unit,
+    onFinishClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -97,7 +121,7 @@ fun RoundScreen(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = if (isRest) stringResource(id = R.string.Rest) else "$roundText $currentRound / $totalRounds",
+                    text = if (isRest) stringResource(id = R.string.Rest) else "${stringResource(id = R.string.Round)} $currentRound / $totalRounds",
                     style = MaterialTheme.typography.displayMedium,
                     fontWeight = FontWeight.Bold,
                     color = if (isRest) restTextColor else customColorText
@@ -120,11 +144,7 @@ fun RoundScreen(
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            Button(
-                onClick = {
-                    timerStatus = if (timerStatus == TimerStatus.Running) TimerStatus.Paused else TimerStatus.Running
-                }
-            ) {
+            Button(onClick = onPauseResumeClick) {
                 Text(text = if (timerStatus == TimerStatus.Running) stringResource(id = R.string.Pause) else stringResource(id = R.string.Resume))
             }
 
@@ -139,7 +159,7 @@ fun RoundScreen(
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                Button(onClick = onSwipeBack) {
+                Button(onClick = onFinishClick) {
                     Text(stringResource(id = R.string.Finish))
                 }
             }

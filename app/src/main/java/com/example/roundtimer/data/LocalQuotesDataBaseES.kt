@@ -1,9 +1,9 @@
 package com.example.roundtimer.data
 
 import com.example.roundtimer.domain.Quote
-import com.example.roundtimer.presentation.round_screen.QuotesDatabase
+import com.example.roundtimer.presentation.round_screen.QuotesDataSource
 
-object LocalQuotesDataBaseES : QuotesDatabase {
+object LocalQuotesDataBaseES : QuotesDataSource {
     private val quotes: List<Quote> = listOf(
         Quote(1, "La vida es aquello que te sucede mientras estás ocupado haciendo otros planes.", "John Lennon"),
         Quote(2, "No llores porque ya se terminó, sonríe porque sucedió.", "Gabriel García Márquez"),

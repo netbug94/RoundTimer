@@ -12,7 +12,7 @@ class QuoteViewModel : ViewModel() {
     private val _currentQuote = MutableStateFlow<Quote?>(null)
     val currentQuote: StateFlow<Quote?> = _currentQuote
 
-    private val database: QuotesDatabase = if (Locale.current.language == "es") {
+    private val database: QuotesDataSource = if (Locale.current.language == "es") {
         LocalQuotesDataBaseES
     } else {
         LocalQuotesDataBase
