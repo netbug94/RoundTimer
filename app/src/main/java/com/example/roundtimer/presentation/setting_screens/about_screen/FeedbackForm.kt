@@ -39,7 +39,7 @@ import com.example.roundtimer.R
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
-fun SendFeedbackForm(
+fun FeedbackForm(
     onSwipeBack: () -> Unit
 ) {
     var subject by remember { mutableStateOf("") }
@@ -95,7 +95,7 @@ fun SendFeedbackForm(
                     label = { Text(feedbackSubject) },
                     modifier = Modifier.fillMaxWidth(),
 
-                )
+                    )
 
                 TextField(
                     value = messageBody,
