@@ -14,14 +14,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.R
 
 @Composable
 fun AboutScreen(
     onSwipeBack: () -> Unit
 ) {
+    val versionText = stringResource(R.string.Version)
+
     BackHandler {
         onSwipeBack()
     }
@@ -43,25 +47,25 @@ fun AboutScreen(
          */
 
         Text(
-            text = "App Name",
+            text = "RoundTimer",
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Bold
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         // App Description
         Text(
-            text = "This is a brief description of what the app does and its main features.",
+            text = stringResource(R.string.Description),
             style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Justify
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Version Info
         Text(
-            text = "Version 1.0.0",
+            text = "$versionText 1.0.0",
             style = MaterialTheme.typography.bodyLarge
         )
 
@@ -72,28 +76,28 @@ fun AboutScreen(
             onClick = { /* Navigate to Privacy Policy */ },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Privacy Policy")
+            Text(text = stringResource(R.string.PrivacyPolicy))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = { /* Navigate to Terms of Service */ },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Terms of Service")
+            Text(text = stringResource(R.string.TermsOfService))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = { /* Open email or feedback form */ },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Send Feedback")
+            Text(text = stringResource(R.string.SendFeedback))
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
         // Contact Information
         Text(
-            text = "Contact Us: support@example.com",
+            text = "${stringResource(R.string.ContactMe)} netbug94@gmail.com",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )

@@ -30,6 +30,15 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 onStartClick = {
                     navController.navigate(NavDestination.FiveSecondScreenNavi)
                 },
+                onSettingsClick = {
+                    navController.navigate(NavDestination.SettingsScreen)
+                },
+                onTipsClick = {
+                    navController.navigate(NavDestination.TipsScreen)
+                },
+                onAboutClick = {
+                    navController.navigate(NavDestination.AboutScreen)
+                },
                 workoutInputVM = workoutInputVM
             )
         }
