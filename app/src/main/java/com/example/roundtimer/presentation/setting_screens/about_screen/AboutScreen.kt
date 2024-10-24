@@ -29,7 +29,8 @@ import com.example.roundtimer.R
 fun AboutScreen(
     onSwipeBack: () -> Unit,
     onPrivacyPolicyParagraph: () -> Unit,
-    onTermsOfServiceParagraph: () -> Unit
+    onTermsOfServiceParagraph: () -> Unit,
+    onSendFeedbackForm: () -> Unit
 ) {
     val darkThemeTrue = isSystemInDarkTheme()
     val versionText = stringResource(R.string.Version)
@@ -101,7 +102,7 @@ fun AboutScreen(
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
-            onClick = { /* Open email or feedback form */ },
+            onClick = { onSendFeedbackForm() },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = stringResource(R.string.SendFeedback))
