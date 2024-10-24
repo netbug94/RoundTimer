@@ -40,7 +40,7 @@
     <string name="PrivacyPolicy">Privacy Policy</string>
     <string name="TermsOfService">Terms of Service</string>
     <string name="SendFeedback">Send Feedback</string>
-    <string name="ContactMe">Contact me:</string>
+    <string name="ContactMe">Contact me:\u00A0</string>
 
 
     <!-- <string name=></string> -->

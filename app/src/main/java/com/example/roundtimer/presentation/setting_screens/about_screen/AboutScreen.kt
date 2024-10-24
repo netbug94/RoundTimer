@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.setting_screens
+package com.example.roundtimer.presentation.setting_screens.about_screen
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
@@ -12,19 +12,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
 
@@ -117,19 +114,7 @@ fun AboutScreen(
                 .padding(16.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = stringResource(R.string.ContactMe),
-                fontWeight = FontWeight.SemiBold,
-                style = MaterialTheme.typography.bodyLarge
-            )
-            SelectionContainer {
-                Text(
-                    text = " netbug94@gmail.com",
-                    style = MaterialTheme.typography.bodyLarge,
-                    textDecoration = TextDecoration.Underline,
-                    color = Color.Blue
-                )
-            }
+            ContactMeText()
         }
     }
 }

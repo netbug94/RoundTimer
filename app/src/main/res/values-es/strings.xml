@@ -40,7 +40,7 @@
     <string name="PrivacyPolicy">Política de Privacidad</string>
     <string name="TermsOfService">Términos de Servicio</string>
     <string name="SendFeedback">Enviar comentarios</string>
-    <string name="ContactMe">Contacto:</string>
+    <string name="ContactMe">Contacto:\u00A0</string>
 
 
 </resources>

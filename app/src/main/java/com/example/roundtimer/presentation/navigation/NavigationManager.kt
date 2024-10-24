@@ -10,7 +10,7 @@ import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewMod
 import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
 import com.example.roundtimer.presentation.round_screen.RoundScreen
-import com.example.roundtimer.presentation.setting_screens.AboutScreen
+import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
 import com.example.roundtimer.presentation.setting_screens.SettingsScreen
 import com.example.roundtimer.presentation.setting_screens.TipsScreen
 
