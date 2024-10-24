@@ -10,9 +10,11 @@ import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewMod
 import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
 import com.example.roundtimer.presentation.round_screen.RoundScreen
-import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
 import com.example.roundtimer.presentation.setting_screens.SettingsScreen
 import com.example.roundtimer.presentation.setting_screens.TipsScreen
+import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
+import com.example.roundtimer.presentation.setting_screens.about_screen.PrivacyPolicyParagraph
+import com.example.roundtimer.presentation.setting_screens.about_screen.TermsOfServiceParagraph
 
 @Composable
 fun NavigationManager(modifier: Modifier = Modifier) {
@@ -60,6 +62,8 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 workoutInputVM = workoutInputVM
             )
         }
+
+        //Settings Screen
         composable<NavDestination.SettingsScreen> {
             SettingsScreen(
                 onSwipeBack = {
@@ -67,13 +71,37 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 },
             )
         }
+
+        //About Screen and sub-screens
         composable<NavDestination.AboutScreen> {
             AboutScreen(
                 onSwipeBack = {
                     navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 },
+                onTermsOfServiceParagraph = {
+                    navController.navigate(NavDestination.TermsOfServiceParagraph)
+                },
+                onPrivacyPolicyParagraph = {
+                    navController.navigate(NavDestination.PrivacyPolicyParagraph)
+                }
             )
         }
+        composable<NavDestination.PrivacyPolicyParagraph> {
+            PrivacyPolicyParagraph(
+                onSwipeBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
+        composable<NavDestination.TermsOfServiceParagraph> {
+            TermsOfServiceParagraph(
+                onSwipeBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
+
+        //Tips Screen
         composable<NavDestination.TipsScreen> {
             TipsScreen(
                 onSwipeBack = {

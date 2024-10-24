@@ -23,4 +23,12 @@ sealed interface NavDestination{
 
     @Serializable
     data object TipsScreen:NavDestination
+
+    //Settings -> Privacy Policy
+    @Serializable
+    data object PrivacyPolicyParagraph:NavDestination
+    //Settings -> Terms of Service
+    @Serializable
+    data object  TermsOfServiceParagraph:NavDestination
+
 }

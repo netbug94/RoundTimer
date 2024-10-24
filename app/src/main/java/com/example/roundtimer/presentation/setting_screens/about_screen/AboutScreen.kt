@@ -27,14 +27,16 @@ import com.example.roundtimer.R
 
 @Composable
 fun AboutScreen(
-    onSwipeBack: () -> Unit
+    onSwipeBack: () -> Unit,
+    onPrivacyPolicyParagraph: () -> Unit,
+    onTermsOfServiceParagraph: () -> Unit
 ) {
     val darkThemeTrue = isSystemInDarkTheme()
     val versionText = stringResource(R.string.Version)
 
     val isDarkThemeTrue =
-        if (darkThemeTrue) painterResource(R.drawable.round_timer_about_icon_light_purple)
-        else painterResource(R.drawable.round_timer_about_icon_purple)
+        if (darkThemeTrue) painterResource(R.drawable.round_timer_about_icon_purple)
+        else painterResource(R.drawable.round_timer_about_icon_light_purple)
 
     BackHandler {
         onSwipeBack()
@@ -85,15 +87,15 @@ fun AboutScreen(
 
         // Buttons for Privacy Policy, Terms, and Feedback
         Button(
-            onClick = { /* Navigate to Privacy Policy */ },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { onPrivacyPolicyParagraph() }
         ) {
             Text(text = stringResource(R.string.PrivacyPolicy))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
-            onClick = { /* Navigate to Terms of Service */ },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { onTermsOfServiceParagraph() }
         ) {
             Text(text = stringResource(R.string.TermsOfService))
         }

@@ -13,6 +13,7 @@ fun customColorScheme(): CustomColor {
             customBorderColor = Color.White,
             customTextColor = Color.Black,
             redTextColor = Color.Red,
+            emailTextColor = LightBlue,
             customButtonColor = Color.LightGray,
             customRippleColor = Color.LightGray
         )
@@ -20,6 +21,7 @@ fun customColorScheme(): CustomColor {
         CustomColor(
             customBorderColor = Color.Black,
             customTextColor = Color.White,
+            emailTextColor = Color.Blue,
             redTextColor = DarkRed,
             customButtonColor = Color.DarkGray,
             customRippleColor = Color.DarkGray

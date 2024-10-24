@@ -8,16 +8,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import com.example.roundtimer.R
+import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
 fun ContactMeText() {
     val emailHandler = LocalContext.current
+    val emailTextColor = customColorScheme().emailTextColor
 
     Text(
         text = stringResource(R.string.ContactMe),
@@ -29,7 +30,7 @@ fun ContactMeText() {
             text = "netbug94@gmail.com",
             style = MaterialTheme.typography.bodyLarge,
             textDecoration = TextDecoration.Underline,
-            color = Color.Blue,
+            color = emailTextColor,
             modifier = Modifier
                 .clickable {
                     val intent = Intent(Intent.ACTION_SENDTO).apply {
