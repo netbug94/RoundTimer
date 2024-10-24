@@ -33,7 +33,13 @@ import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.
 import kotlinx.coroutines.delay
 
 @Composable
-fun FirstScreen(onStartClick: () -> Unit, workoutInputVM: WorkoutInputViewModel) {
+fun FirstScreen(
+    onStartClick: () -> Unit,
+    workoutInputVM: WorkoutInputViewModel,
+    onSettingsClick: () -> Unit,
+    onTipsClick: () -> Unit,
+    onAboutClick: () -> Unit
+) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
     val roundNumber = workoutInput.roundNumber
     val roundMinutes = workoutInput.roundMinutes
@@ -53,7 +59,10 @@ fun FirstScreen(onStartClick: () -> Unit, workoutInputVM: WorkoutInputViewModel)
         restSeconds = restSeconds,
         onRestSecondsChange = workoutInputVM::updateRestSeconds,
         onStartClick = onStartClick,
-        onClearClick = workoutInputVM::clearWorkoutInput
+        onClearClick = workoutInputVM::clearWorkoutInput,
+        onSettingsClick = onSettingsClick,
+        onTipsClick = onTipsClick,
+        onAboutClick = onAboutClick
     )
 }
 
@@ -70,7 +79,10 @@ fun FirstScreenContent(
     restSeconds: Int,
     onRestSecondsChange: (Int) -> Unit,
     onStartClick: () -> Unit,
-    onClearClick: () -> Unit
+    onClearClick: () -> Unit,
+    onSettingsClick: () -> Unit,
+    onTipsClick: () -> Unit,
+    onAboutClick: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
 
@@ -108,7 +120,11 @@ fun FirstScreenContent(
                 .padding(end = firstScreenHorizontalPadding, top = 30.dp),
             horizontalArrangement = Arrangement.End
         ) {
-            SettingsButton()
+            SettingsButton(
+                onSettingsClick = onSettingsClick,
+                onTipsClick = onTipsClick,
+                onAboutClick = onAboutClick
+            )
         }
 
         Column(

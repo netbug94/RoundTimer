@@ -33,6 +33,16 @@
     <string name="Tips">Tips</string>
     <string name="About">About</string>
 
+    <!-- AboutScreen -->
+    <string name="Version">Version</string>
+    <string name="Description">Maximize your workouts with this customizable timer for precision training. Set specific times for active laps and rest intervals, tailored to any exercise routine. Train smarter and more effectively!</string>
+
+    <string name="PrivacyPolicy">Privacy Policy</string>
+    <string name="TermsOfService">Terms of Service</string>
+    <string name="SendFeedback">Send Feedback</string>
+    <string name="ContactMe">Contact me:</string>
+
+
     <!-- <string name=></string> -->
 
 </resources>

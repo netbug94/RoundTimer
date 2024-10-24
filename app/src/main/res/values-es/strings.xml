@@ -33,4 +33,14 @@
     <string name="Tips">Consejos</string>
     <string name="About">Acerca</string>
 
+    <!-- AboutScreen -->
+    <string name="Version">Versión</string>
+    <string name="Description">Maximiza tus entrenamientos con este temporizador personalizable para un entrenamiento de precisión. Establece tiempos específicos para lapsos activos e intervalos de descanso, adaptados a cualquier rutina de ejercicio. ¡Entrena de manera más inteligente y efectiva!</string>
+
+    <string name="PrivacyPolicy">Política de Privacidad</string>
+    <string name="TermsOfService">Términos de Servicio</string>
+    <string name="SendFeedback">Enviar comentarios</string>
+    <string name="ContactMe">Contacto:</string>
+
+
 </resources>

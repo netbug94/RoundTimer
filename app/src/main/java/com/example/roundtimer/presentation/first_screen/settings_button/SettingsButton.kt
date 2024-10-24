@@ -33,7 +33,11 @@ import com.example.roundtimer.R
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
-fun SettingsButton() {
+fun SettingsButton(
+    onSettingsClick: () -> Unit,
+    onTipsClick: () -> Unit,
+    onAboutClick: () -> Unit
+) {
     var expanded by remember { mutableStateOf(false) }
 
     val isDarkTheme = isSystemInDarkTheme()
@@ -79,15 +83,24 @@ fun SettingsButton() {
                         },
                         onClick = {
                             expanded = false
+                            when (index) {
+                                0 -> onSettingsClick()
+                                1 -> onTipsClick()
+                                2 -> onAboutClick()
+                            }
                         }
                     )
 
                     if (index < menuItems.lastIndex) {
-                        HorizontalDivider(Modifier.height(2.dp).padding(horizontal = 8.dp), color = customColor.customTextColor)
+                        HorizontalDivider(
+                            Modifier
+                                .height(2.dp)
+                                .padding(horizontal = 8.dp),
+                            color = customColor.customTextColor
+                        )
                     }
                 }
             }
         }
     }
 }
-
