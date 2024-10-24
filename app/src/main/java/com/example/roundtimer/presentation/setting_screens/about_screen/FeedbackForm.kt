@@ -46,9 +46,15 @@ fun SendFeedbackForm(
     var messageBody by remember { mutableStateOf("") }
     var attachmentUris by remember { mutableStateOf<List<Uri>>(emptyList()) }
     val context = LocalContext.current
+
     val stringResource = stringResource(R.string.AttachRestrictionMessage)
     val feedbackSubject = stringResource(R.string.FeedbackSubject)
     val feedbackMessage = stringResource(R.string.FeedbackMessage)
+    val attachmentButtonText = stringResource(R.string.AttachmentButtonText)
+    val fileAttachedText = stringResource(R.string.FileAttachedText)
+    val sendEmailText = stringResource(R.string.SendEmailText)
+    val noEmailMessage = stringResource(R.string.NoEmailMessage)
+    val sendButtonText = stringResource(R.string.SendButtonText)
 
     val pickFilesLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetMultipleContents(),
@@ -108,12 +114,12 @@ fun SendFeedbackForm(
                         onClick = { pickFilesLauncher.launch("image/*|video/*") },  // Allow both images and videos
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text("Attach Files (up to 2)")
+                        Text(attachmentButtonText)
                     }
 
                     if (attachmentUris.isNotEmpty()) {
                         Text(
-                            text = "${attachmentUris.size} files attached",
+                            text = "${attachmentUris.size} $fileAttachedText",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.primary,
                         )
@@ -138,16 +144,16 @@ fun SendFeedbackForm(
                     }
                 }
                 try {
-                    context.startActivity(Intent.createChooser(intent, "Send email..."))
+                    context.startActivity(Intent.createChooser(intent, sendEmailText))
                 } catch (e: ActivityNotFoundException) {
-                    Toast.makeText(context, "No email client installed.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, noEmailMessage, Toast.LENGTH_LONG).show()
                 }
             },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary)
         ) {
-            Text("Send", color = customColorScheme().customTextColor)
+            Text(sendButtonText, color = customColorScheme().customTextColor)
         }
     }
 }

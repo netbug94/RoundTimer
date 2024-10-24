@@ -83,6 +83,10 @@
     <string name="AttachRestrictionMessage">Solo puedes adjuntar hasta 2 archivos.</string>
     <string name="FeedbackSubject">Asunto</string>
     <string name="FeedbackMessage">Mensaje</string>
-
+    <string name="AttachmentButtonText">Adjuntar archivos (hasta 2)</string>
+    <string name="FileAttachedText">archivos adjuntos</string>
+    <string name="SendEmailText">Enviar email…</string>
+    <string name="NoEmailMessage">No hay cliente de correo instalado.</string>
+    <string name="SendButtonText">Enviar</string>
 
 </resources>
