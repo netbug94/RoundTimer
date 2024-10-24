@@ -79,7 +79,10 @@
         5. Cambios en los Términos\nEstos términos pueden actualizarse ocasionalmente. Los usuarios serán notificados de cualquier cambio significativo, y el uso continuo de la aplicación después de dichos cambios constituirá la aceptación de los términos actualizados.\n\n
         6. Información de Contacto\nSi tienes alguna pregunta o inquietud sobre estos Términos de Servicio, por favor contáctame en netbug94@gmail.com.
     </string>
-
+    <!-- Send Feedback -->
+    <string name="AttachRestrictionMessage">Solo puedes adjuntar hasta 2 archivos.</string>
+    <string name="FeedbackSubject">Asunto</string>
+    <string name="FeedbackMessage">Mensaje</string>
 
 
 </resources>

@@ -33,7 +33,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.R
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
@@ -42,15 +44,17 @@ fun SendFeedbackForm(
 ) {
     var subject by remember { mutableStateOf("") }
     var messageBody by remember { mutableStateOf("") }
-    var attachmentUris by remember { mutableStateOf<List<Uri>>(emptyList()) }  // To hold multiple attachments
+    var attachmentUris by remember { mutableStateOf<List<Uri>>(emptyList()) }
     val context = LocalContext.current
+    val stringResource = stringResource(R.string.AttachRestrictionMessage)
+    val feedbackSubject = stringResource(R.string.FeedbackSubject)
+    val feedbackMessage = stringResource(R.string.FeedbackMessage)
 
-    // File picker launcher for multiple attachments (up to 2 files, both images and videos)
     val pickFilesLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetMultipleContents(),
         onResult = { uris: List<Uri> ->
             if (uris.size > 2) {
-                Toast.makeText(context, "You can only attach up to 2 files.", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, stringResource, Toast.LENGTH_LONG).show()
             } else {
                 attachmentUris = uris
             }
@@ -69,7 +73,7 @@ fun SendFeedbackForm(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Card containing the form fields
+
         Card(
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.cardElevation(8.dp),
@@ -82,7 +86,7 @@ fun SendFeedbackForm(
                 TextField(
                     value = subject,
                     onValueChange = { subject = it },
-                    label = { Text("Subject") },
+                    label = { Text(feedbackSubject) },
                     modifier = Modifier.fillMaxWidth(),
 
                 )
@@ -90,13 +94,12 @@ fun SendFeedbackForm(
                 TextField(
                     value = messageBody,
                     onValueChange = { messageBody = it },
-                    label = { Text("Message") },
+                    label = { Text(feedbackMessage) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(150.dp)
                 )
 
-                // Button to pick multiple attachments (images or videos)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -108,7 +111,6 @@ fun SendFeedbackForm(
                         Text("Attach Files (up to 2)")
                     }
 
-                    // Display text if attachments are selected
                     if (attachmentUris.isNotEmpty()) {
                         Text(
                             text = "${attachmentUris.size} files attached",
@@ -122,13 +124,12 @@ fun SendFeedbackForm(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Send button at the bottom, styled as a primary action button
         ElevatedButton(
             onClick = {
                 // Create the email intent
                 val intent = Intent(Intent.ACTION_SEND_MULTIPLE).apply {
                     type = "*/*"  // Allow any file type for attachment
-                    putExtra(Intent.EXTRA_EMAIL, arrayOf("netbug94@gmail.com")) // Recipient email
+                    putExtra(Intent.EXTRA_EMAIL, arrayOf("netbug94@gmail.com"))
                     putExtra(Intent.EXTRA_SUBJECT, subject)
                     putExtra(Intent.EXTRA_TEXT, messageBody)
                     if (attachmentUris.isNotEmpty()) {
