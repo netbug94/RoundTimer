@@ -79,6 +79,15 @@
         5. Changes to the Terms\nThese terms may be updated from time to time. Users will be notified of any significant changes, and continued use of the app after such changes will constitute acceptance of the updated terms.\n\n
         6. Contact Information\nIf you have any questions or concerns about these Terms of Service, please contact me at netbug94@gmail.com.
     </string>
+    <!-- Send Feedback -->
+    <string name="AttachRestrictionMessage">You can only attach up to 2 files.</string>
+    <string name="FeedbackSubject">Subject</string>
+    <string name="FeedbackMessage">Message</string>
+    <string name="AttachmentButtonText">Attach Files (up to 2)</string>
+    <string name="FileAttachedText">files attached</string>
+    <string name="SendEmailText">Send email…</string>
+    <string name="NoEmailMessage">No email client installed.</string>
+    <string name="SendButtonText">Send</string>
 
     <!-- <string name=></string> -->
 

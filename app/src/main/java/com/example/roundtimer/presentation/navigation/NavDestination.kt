@@ -30,5 +30,8 @@ sealed interface NavDestination{
     //Settings -> Terms of Service
     @Serializable
     data object  TermsOfServiceParagraph:NavDestination
+    //Settings -> SendFeedback
+    @Serializable
+    data object  SendFeedbackForm:NavDestination
 
 }

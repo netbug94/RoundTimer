@@ -13,6 +13,7 @@ import com.example.roundtimer.presentation.round_screen.RoundScreen
 import com.example.roundtimer.presentation.setting_screens.SettingsScreen
 import com.example.roundtimer.presentation.setting_screens.TipsScreen
 import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
+import com.example.roundtimer.presentation.setting_screens.about_screen.FeedbackForm
 import com.example.roundtimer.presentation.setting_screens.about_screen.PrivacyPolicyParagraph
 import com.example.roundtimer.presentation.setting_screens.about_screen.TermsOfServiceParagraph
 
@@ -83,6 +84,9 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 },
                 onPrivacyPolicyParagraph = {
                     navController.navigate(NavDestination.PrivacyPolicyParagraph)
+                },
+                onSendFeedbackForm = {
+                    navController.navigate(NavDestination.SendFeedbackForm)
                 }
             )
         }
@@ -95,6 +99,13 @@ fun NavigationManager(modifier: Modifier = Modifier) {
         }
         composable<NavDestination.TermsOfServiceParagraph> {
             TermsOfServiceParagraph(
+                onSwipeBack = {
+                    navController.navigateUp()
+                }
+            )
+        }
+        composable<NavDestination.SendFeedbackForm> {
+            FeedbackForm(
                 onSwipeBack = {
                     navController.navigateUp()
                 }

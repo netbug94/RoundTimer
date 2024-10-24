@@ -82,7 +82,7 @@ fun FirstScreenContent(
     onClearClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
-    onAboutClick: () -> Unit
+    onAboutClick: () -> Unit,
 ) {
     val firstScreenHorizontalPadding = 12.dp
 
@@ -103,7 +103,9 @@ fun FirstScreenContent(
         }
     }
 
-    SaveRoundBanner(showBanner = showBanner)
+    SaveRoundBanner(
+        showBanner = showBanner
+    )
 
     Column(
         modifier = Modifier
