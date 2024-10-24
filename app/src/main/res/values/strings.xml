@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">RoundTimer</string>
+    <string name="app_name" translatable="false">Round Timer</string>
 
     <!-- FirstScreenText -->
     <string name="Round_Min">Round Min</string>
