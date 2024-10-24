@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class WorkoutInputViewModel : ViewModel() {
 
-    private val _workoutInput = MutableStateFlow(WorkoutInput(1, 0, 0, 0, 0))
+    private val _workoutInput = MutableStateFlow(WorkoutInput(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds =  0))
     val workoutInput: StateFlow<WorkoutInput> = _workoutInput.asStateFlow()
 
     fun updateRoundNumber(newValue: Int) {
@@ -32,6 +32,6 @@ class WorkoutInputViewModel : ViewModel() {
     }
 
     fun clearWorkoutInput() {
-        _workoutInput.value = WorkoutInput(1, 0, 0, 0, 0)
+        _workoutInput.value = WorkoutInput(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds = 0)
     }
 }

@@ -29,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,9 +43,9 @@ import com.example.roundtimer.ui.theme.customColorScheme
 fun FeedbackForm(
     onSwipeBack: () -> Unit
 ) {
-    var subject by remember { mutableStateOf("") }
-    var messageBody by remember { mutableStateOf("") }
-    var attachmentUris by remember { mutableStateOf<List<Uri>>(emptyList()) }
+    var subject by rememberSaveable { mutableStateOf("") }
+    var messageBody by rememberSaveable { mutableStateOf("") }
+    var attachmentUris by rememberSaveable { mutableStateOf<List<Uri>>(emptyList()) }
     val context = LocalContext.current
 
     val stringResource = stringResource(R.string.AttachRestrictionMessage)

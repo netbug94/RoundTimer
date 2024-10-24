@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
+import com.example.roundtimer.domain.WorkoutInput
 import com.example.roundtimer.presentation.common.rememberFocusHandler
 import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
@@ -82,7 +83,7 @@ fun FirstScreenContent(
     onClearClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
-    onAboutClick: () -> Unit
+    onAboutClick: () -> Unit,
 ) {
     val firstScreenHorizontalPadding = 12.dp
 
@@ -103,7 +104,9 @@ fun FirstScreenContent(
         }
     }
 
-    SaveRoundBanner(showBanner = showBanner)
+    SaveRoundBanner(
+        showBanner = showBanner
+    )
 
     Column(
         modifier = Modifier
