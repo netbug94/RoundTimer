@@ -40,7 +40,46 @@
     <string name="PrivacyPolicy">Política de Privacidad</string>
     <string name="TermsOfService">Términos de Servicio</string>
     <string name="SendFeedback">Enviar comentarios</string>
-    <string name="ContactMe">Contacto:</string>
+    <string name="ContactMe">Contacto:\u00A0</string>
+
+    <!-- Privacy Policy Paragraph -->
+    <string name="PrivacyPolicyParagraphTitle">Política de Privacidad para RoundTimer</string>
+    <string name="PrivacyPolicyParagraph">
+        Última Actualización: 23/Octubre/2024\n\n
+        En RoundTimer, respetamos tu privacidad. Esta Política de Privacidad describe qué información recopilamos, cómo la usamos y cómo protegemos tus datos cuando utilizas la aplicación RoundTimer.\n\n
+        1. Información que Recopilamos\n
+        RoundTimer no recopila ninguna información personal de los usuarios. La única información a la que podemos acceder es cualquier dato que Google, Samsung Galaxy Store o F-Droid recopilen cuando descargas o instalas la aplicación desde sus respectivas plataformas. Para más detalles sobre lo que estas tiendas recopilan, consulta sus respectivas políticas de privacidad:\n\n
+        - Política de Privacidad de Google\n
+        - Política de Privacidad de Samsung\n
+        - Política de Privacidad de F-Droid\n\n
+        La única información que recibimos directamente es cualquier dato que envíes voluntariamente a través del correo electrónico a netbug94@gmail.com, como comentarios, informes de errores o solicitudes de soporte.\n\n
+        2. Uso de la Información\n
+        Dado que no recopilamos ningún dato dentro de la aplicación, no procesamos ni almacenamos ninguna información personal. Cualquier información enviada por correo electrónico solo se utilizará para responder a tus consultas o mejorar la aplicación.\n\n
+        3. Servicios de Terceros\n
+        La aplicación RoundTimer no utiliza ningún servicio de terceros que recopile datos directamente de la aplicación. Sin embargo, al descargar la aplicación desde Google Play Store, Samsung Galaxy Store o F-Droid, la tienda respectiva puede recopilar información relacionada con tu uso e instalación. Para más detalles, consulta las políticas de privacidad de estas plataformas:\n\n
+        - Política de Privacidad de Google\n
+        - Política de Privacidad de Samsung\n
+        - Política de Privacidad de F-Droid\n\n
+        4. Comunicaciones por Correo Electrónico\n
+        Si te pones en contacto con nosotros a través del correo electrónico en netbug94@gmail.com, cualquier información que proporciones en tu correo electrónico (como tu nombre o dirección de correo electrónico) solo se utilizará para responder a tus preguntas o mejorar la aplicación. No compartimos esta información con terceros.\n\n
+        5. Seguridad\n
+        Dado que RoundTimer no recopila datos personales directamente de los usuarios, existe un riesgo mínimo de brechas de seguridad. Sin embargo, si te comunicas con nosotros a través de correo electrónico, tomamos precauciones razonables para proteger la información compartida en dichas comunicaciones.\n\n
+        6. Cambios a Esta Política de Privacidad\n
+        Podemos actualizar esta Política de Privacidad ocasionalmente. Cualquier cambio se reflejará en esta página, y la política actualizada incluirá la fecha efectiva de la revisión.\n\n
+        7. Información de Contacto\n
+        Si tienes alguna pregunta o inquietud sobre esta Política de Privacidad, no dudes en ponerte en contacto conmigo en netbug94@gmail.com.
+    </string>
+    <!-- Terms of Service Paragraph -->
+    <string name="TermsOfServiceParagraphTitle">Términos de Servicio para RoundTimer</string>
+    <string name="TermsOfServiceParagraph">Última Actualización: 23/Octubre/2024\n\nBienvenido a RoundTimer, una aplicación de temporizador de código abierto. Al utilizar esta aplicación, aceptas estar sujeto a los siguientes términos y condiciones. Si no estás de acuerdo con estos términos, por favor no uses la aplicación.\n\n
+        1. Uso de Código Abierto\nRoundTimer se proporciona como software de código abierto. Eres libre de usar, modificar y distribuir esta aplicación de acuerdo con la Licencia MIT. Sin embargo, el uso comercial de esta aplicación o cualquiera de sus modificaciones con fines de lucro está estrictamente prohibido. Esto significa que no puedes vender la aplicación, ni obras derivadas, ni cobrar por servicios relacionados con su uso.\n\n
+        2. Uso Permitido\nPuedes usar esta aplicación para cualquier propósito legal y no comercial. Puedes modificar la aplicación y redistribuirla siempre y cuando sigas los términos establecidos en la Licencia MIT. Cualquier redistribución de la versión modificada debe incluir el aviso de copyright original y esta nota de permiso.\n\n
+        3. Exención de Garantías\nEsta aplicación se proporciona "tal cual", sin ninguna garantía o aseguramiento. El uso de esta aplicación es bajo tu propio riesgo. La aplicación puede no funcionar como se espera en todos los entornos, y no somos responsables por daños, pérdida de datos o problemas resultantes del uso de la aplicación.\n\n
+        4. Limitación de Responsabilidad\nBajo ninguna circunstancia el desarrollador de RoundTimer, netbug94, será responsable por daños directos, indirectos, incidentales o consecuentes que surjan del uso o la imposibilidad de usar la aplicación.\n\n
+        5. Cambios en los Términos\nEstos términos pueden actualizarse ocasionalmente. Los usuarios serán notificados de cualquier cambio significativo, y el uso continuo de la aplicación después de dichos cambios constituirá la aceptación de los términos actualizados.\n\n
+        6. Información de Contacto\nSi tienes alguna pregunta o inquietud sobre estos Términos de Servicio, por favor contáctame en netbug94@gmail.com.
+    </string>
+
 
 
 </resources>
