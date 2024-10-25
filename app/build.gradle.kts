@@ -66,7 +66,4 @@ dependencies {
 
     //Serialization
     implementation(libs.kotlinx.serialization.json)
-
-    //Room
-    implementation (libs.androidx.room.runtime)
 }
