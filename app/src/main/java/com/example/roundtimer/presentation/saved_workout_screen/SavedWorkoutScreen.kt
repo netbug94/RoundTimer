@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.room
+package com.example.roundtimer.presentation.saved_workout_screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -15,9 +15,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
 
 @Composable
-fun WorkoutListScreen(roomViewModel: RoomViewModel, onWorkoutSelected: (WorkoutEntity) -> Unit) {
+fun SavedWorkoutScreen(roomViewModel: WorkoutRoomViewModel, onWorkoutSelected: (WorkoutRoomEntity) -> Unit) {
     val workouts by roomViewModel.allWorkouts.observeAsState(initial = emptyList())
 
     // Call the composable that displays the list
@@ -25,7 +26,7 @@ fun WorkoutListScreen(roomViewModel: RoomViewModel, onWorkoutSelected: (WorkoutE
 }
 
 @Composable
-fun WorkoutList(workouts: List<WorkoutEntity>, onWorkoutSelected: (WorkoutEntity) -> Unit) {
+fun WorkoutList(workouts: List<WorkoutRoomEntity>, onWorkoutSelected: (WorkoutRoomEntity) -> Unit) {
     LazyColumn(modifier = Modifier.systemBarsPadding().padding(top = 16.dp)) {
         items(workouts) { workout ->
             WorkoutListItem(workout = workout, onClick = { onWorkoutSelected(workout) })
@@ -34,7 +35,7 @@ fun WorkoutList(workouts: List<WorkoutEntity>, onWorkoutSelected: (WorkoutEntity
 }
 
 @Composable
-fun WorkoutListItem(workout: WorkoutEntity, onClick: () -> Unit) {
+fun WorkoutListItem(workout: WorkoutRoomEntity, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

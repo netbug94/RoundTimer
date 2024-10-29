@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.common.view_model
+package com.example.roundtimer.presentation.first_screen
 
 import androidx.lifecycle.ViewModel
 import com.example.roundtimer.domain.WorkoutInput

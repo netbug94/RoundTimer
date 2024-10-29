@@ -2,8 +2,8 @@ package com.example.roundtimer.presentation.round_screen
 
 import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.ViewModel
-import com.example.roundtimer.data.LocalQuotesDataBase
-import com.example.roundtimer.data.LocalQuotesDataBaseES
+import com.example.roundtimer.data.quote_data.LocalQuotesDataBase
+import com.example.roundtimer.data.quote_data.LocalQuotesDataBaseES
 import com.example.roundtimer.domain.Quote
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

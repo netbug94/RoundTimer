@@ -1,18 +1,18 @@
-package com.example.roundtimer.presentation.room
+package com.example.roundtimer.data.room_data
 
 import android.content.Context
 import androidx.room.Room
 
-object DatabaseProvider {
+object RoomDatabaseProvider {
     @Volatile
-    private var INSTANCE: AppDatabase? = null
+    private var INSTANCE: RoomAppDatabase? = null
 
-    fun getDatabase(context: Context): AppDatabase {
+    fun getRoomDatabase(context: Context): RoomAppDatabase {
         return INSTANCE ?: synchronized(this) {
             val instance = Room.databaseBuilder(
                 context.applicationContext,
-                AppDatabase::class.java,
-                "workout_database"
+                RoomAppDatabase::class.java,
+                "workout_room_database"
             ).build()
             INSTANCE = instance
             instance

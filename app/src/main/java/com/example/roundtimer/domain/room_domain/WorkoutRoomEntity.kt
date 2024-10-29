@@ -1,10 +1,10 @@
-package com.example.roundtimer.presentation.room
+package com.example.roundtimer.domain.room_domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "workout_table")
-data class WorkoutEntity(
+@Entity(tableName = "workout_room_table")
+data class WorkoutRoomEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val roundNumber: Int,
     val roundMinutes: Int,
