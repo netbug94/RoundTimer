@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -30,15 +31,18 @@ import com.example.roundtimer.presentation.first_screen.preview_round_box.Previe
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
 import com.example.roundtimer.presentation.first_screen.settings_button.SettingsButton
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
+import com.example.roundtimer.presentation.room.RoomViewModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun FirstScreen(
     onStartClick: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
+    roomViewModel: RoomViewModel,
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
-    onAboutClick: () -> Unit
+    onAboutClick: () -> Unit,
+    onListScreen: () -> Unit
 ) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
     val roundNumber = workoutInput.roundNumber
@@ -62,7 +66,10 @@ fun FirstScreen(
         onClearClick = workoutInputVM::clearWorkoutInput,
         onSettingsClick = onSettingsClick,
         onTipsClick = onTipsClick,
-        onAboutClick = onAboutClick
+        onAboutClick = onAboutClick,
+        workoutInputVM = workoutInputVM,
+        roomViewModel = roomViewModel,
+        onListScreen = onListScreen
     )
 }
 
@@ -83,6 +90,9 @@ fun FirstScreenContent(
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
     onAboutClick: () -> Unit,
+    workoutInputVM: WorkoutInputViewModel,
+    roomViewModel: RoomViewModel,
+    onListScreen: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
 
@@ -146,6 +156,8 @@ fun FirstScreenContent(
                 isFocused = anyFieldFocused,
                 onBannerShow = {
                     showBanner = true
+                    val currentWorkoutInput = workoutInputVM.workoutInput.value
+                    roomViewModel.addWorkout(currentWorkoutInput)
                 }
             )
         }
@@ -193,16 +205,25 @@ fun FirstScreenContent(
                 onFocusChanged = focusChanged
             )
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 20.dp),
+            Column(modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 StartAndClearButton(
                     onStartClick = onStartClick,
                     onClearClick = onClearClick
                 )
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    onClick = {
+                        onListScreen()
+                    }
+                ) {
+
+                }
             }
         }
     }

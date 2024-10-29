@@ -29,9 +29,13 @@ sealed interface NavDestination{
     data object PrivacyPolicyParagraph:NavDestination
     //Settings -> Terms of Service
     @Serializable
-    data object  TermsOfServiceParagraph:NavDestination
+    data object TermsOfServiceParagraph:NavDestination
     //Settings -> SendFeedback
     @Serializable
-    data object  SendFeedbackForm:NavDestination
+    data object SendFeedbackForm:NavDestination
+
+    //Test
+    @Serializable
+    data object WorkoutListScreen:NavDestination
 
 }
