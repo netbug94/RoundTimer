@@ -5,15 +5,17 @@ import androidx.room.Room
 
 object RoomDatabaseProvider {
     @Volatile
-    private var INSTANCE: RoomAppDatabase? = null
+    private var INSTANCE: WorkoutRoomDatabase? = null
 
-    fun getRoomDatabase(context: Context): RoomAppDatabase {
+    fun getRoomDatabase(context: Context): WorkoutRoomDatabase {
         return INSTANCE ?: synchronized(this) {
             val instance = Room.databaseBuilder(
                 context.applicationContext,
-                RoomAppDatabase::class.java,
+                WorkoutRoomDatabase::class.java,
                 "workout_room_database"
-            ).build()
+            )
+                .fallbackToDestructiveMigration()
+                .build()
             INSTANCE = instance
             instance
         }

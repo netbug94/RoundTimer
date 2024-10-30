@@ -11,10 +11,13 @@ import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
 import com.example.roundtimer.data.room_data.RoomDatabaseProvider
+import com.example.roundtimer.domain.room_domain.WorkoutRoomDao
 import com.example.roundtimer.presentation.saved_workout_screen.SavedWorkoutScreen
 import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModel
 import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModelFactory
 import com.example.roundtimer.presentation.round_screen.RoundScreen
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomRepository
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomRepositoryImpl
 import com.example.roundtimer.presentation.setting_screens.SettingsScreen
 import com.example.roundtimer.presentation.setting_screens.TipsScreen
 import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
@@ -26,9 +29,13 @@ import com.example.roundtimer.presentation.setting_screens.about_screen.TermsOfS
 fun NavigationManager(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val workoutInputVM: WorkoutInputViewModel = viewModel()
+
     val context = LocalContext.current
+    val workoutDao: WorkoutRoomDao = RoomDatabaseProvider.getRoomDatabase(context).workoutRoomDao()
+    val repository: WorkoutRoomRepository = WorkoutRoomRepositoryImpl(workoutDao)
+    val viewModelFactory = WorkoutRoomViewModelFactory(repository)
     val roomViewModel: WorkoutRoomViewModel = viewModel(
-        factory = WorkoutRoomViewModelFactory(RoomDatabaseProvider.getRoomDatabase(context).workoutRoomDao())
+        factory = viewModelFactory
     )
 
     NavHost(
