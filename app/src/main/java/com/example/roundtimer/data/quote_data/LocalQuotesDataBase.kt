@@ -1,4 +1,4 @@
-package com.example.roundtimer.data
+package com.example.roundtimer.data.quote_data
 
 import com.example.roundtimer.domain.Quote
 import com.example.roundtimer.presentation.round_screen.QuotesDataSource

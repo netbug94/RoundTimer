@@ -26,19 +26,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
 import com.example.roundtimer.presentation.common.rememberFocusHandler
-import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
 import com.example.roundtimer.presentation.first_screen.settings_button.SettingsButton
 import com.example.roundtimer.presentation.first_screen.start_and_clear_buttons.StartAndClearButton
-import com.example.roundtimer.presentation.room.RoomViewModel
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun FirstScreen(
     onStartClick: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
-    roomViewModel: RoomViewModel,
+    roomViewModel: WorkoutRoomViewModel,
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
     onAboutClick: () -> Unit,
@@ -91,7 +90,7 @@ fun FirstScreenContent(
     onTipsClick: () -> Unit,
     onAboutClick: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
-    roomViewModel: RoomViewModel,
+    roomViewModel: WorkoutRoomViewModel,
     onListScreen: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
@@ -157,7 +156,7 @@ fun FirstScreenContent(
                 onBannerShow = {
                     showBanner = true
                     val currentWorkoutInput = workoutInputVM.workoutInput.value
-                    roomViewModel.addWorkout(currentWorkoutInput)
+                    roomViewModel.addRoomWorkout(currentWorkoutInput)
                 }
             )
         }

@@ -27,7 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roundtimer.R
-import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
+import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 import kotlinx.coroutines.delay
 

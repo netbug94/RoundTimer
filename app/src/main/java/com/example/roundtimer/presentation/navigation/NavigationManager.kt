@@ -7,14 +7,17 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.roundtimer.presentation.common.view_model.WorkoutInputViewModel
+import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.presentation.five_second_screen.FiveSecondScreen
-import com.example.roundtimer.presentation.room.DatabaseProvider
-import com.example.roundtimer.presentation.room.RoomViewModel
-import com.example.roundtimer.presentation.room.RoomViewModelFactory
-import com.example.roundtimer.presentation.room.WorkoutListScreen
+import com.example.roundtimer.data.room_data.RoomDatabaseProvider
+import com.example.roundtimer.domain.room_domain.WorkoutRoomDao
+import com.example.roundtimer.presentation.saved_workout_screen.SavedWorkoutScreen
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModel
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModelFactory
 import com.example.roundtimer.presentation.round_screen.RoundScreen
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomRepository
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomRepositoryImpl
 import com.example.roundtimer.presentation.setting_screens.SettingsScreen
 import com.example.roundtimer.presentation.setting_screens.TipsScreen
 import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
@@ -26,9 +29,13 @@ import com.example.roundtimer.presentation.setting_screens.about_screen.TermsOfS
 fun NavigationManager(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val workoutInputVM: WorkoutInputViewModel = viewModel()
+
     val context = LocalContext.current
-    val roomViewModel: RoomViewModel = viewModel(
-        factory = RoomViewModelFactory(DatabaseProvider.getDatabase(context).workoutDao())
+    val workoutDao: WorkoutRoomDao = RoomDatabaseProvider.getRoomDatabase(context).workoutRoomDao()
+    val repository: WorkoutRoomRepository = WorkoutRoomRepositoryImpl(workoutDao)
+    val viewModelFactory = WorkoutRoomViewModelFactory(repository)
+    val roomViewModel: WorkoutRoomViewModel = viewModel(
+        factory = viewModelFactory
     )
 
     NavHost(
@@ -52,7 +59,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                     navController.navigate(NavDestination.AboutScreen)
                 },
                 onListScreen = {
-                    navController.navigate(NavDestination.WorkoutListScreen)
+                    navController.navigate(NavDestination.SavedWorkoutScreen)
                 },
                 workoutInputVM = workoutInputVM,
                 roomViewModel = roomViewModel
@@ -135,8 +142,8 @@ fun NavigationManager(modifier: Modifier = Modifier) {
         }
 
         //Test
-        composable<NavDestination.WorkoutListScreen> {
-            WorkoutListScreen(
+        composable<NavDestination.SavedWorkoutScreen> {
+            SavedWorkoutScreen(
                 roomViewModel = roomViewModel
             ) {
 
