@@ -89,6 +89,24 @@
     <string name="NoEmailMessage">No email client installed.</string>
     <string name="SendButtonText">Send</string>
 
+    <!-- Delete & Cancel -->
+    <string name="Delete">Delete</string>
+    <string name="Cancel">Cancel</string>
+
+    <!-- Delete Confirmation Dialog and  -->
+    <string name="DeleteEntity">Delete Entity</string>
+    <string name="AreYouSureString">Are you sure you want to delete</string>
+
+    <!-- WorkoutListScreen -->
+    <string name="DeleteSuccessful">Workout deleted successfully</string>
+
+    <!-- WorkoutListItem -->
+    <string name="TextFieldTitleWorkoutListItem">Name</string>
+    <string name="UpdatedSuccessful">Updated successfully</string>
+    <string name="CannotBeEmpty">Name cannot be empty</string>
+    <string name="RoundTimeString">Round Time</string>
+    <string name="RestTimeString">Rest Time</string>
+
     <!-- <string name=></string> -->
 
 </resources>
