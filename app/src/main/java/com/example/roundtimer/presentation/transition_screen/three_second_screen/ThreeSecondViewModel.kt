@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.five_second_screen
+package com.example.roundtimer.presentation.transition_screen.three_second_screen
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -13,14 +13,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlin.coroutines.cancellation.CancellationException
 
-class FiveSecondViewModel : ViewModel() {
-    private val _secondsRemaining = MutableStateFlow(5)
+class ThreeSecondViewModel : ViewModel() {
+    private val _secondsRemaining = MutableStateFlow(3)
     val secondsRemaining: StateFlow<Int> = _secondsRemaining.asStateFlow()
 
     private val _isCancelled = MutableStateFlow(false)
 
-    private val _uiEvent = MutableSharedFlow<FiveSecondScreenEvent>()
-    val uiEvent: SharedFlow<FiveSecondScreenEvent> = _uiEvent.asSharedFlow()
+    private val _uiEvent = MutableSharedFlow<ThreeSecondScreenEvent>()
+    val uiEvent: SharedFlow<ThreeSecondScreenEvent> = _uiEvent.asSharedFlow()
 
     init {
         startCountdown()
@@ -29,7 +29,7 @@ class FiveSecondViewModel : ViewModel() {
     private fun startCountdown() {
         viewModelScope.launch {
             try {
-                for (i in 5 downTo 1) {
+                for (i in 3 downTo 1) {
                     if (_isCancelled.value) {
                         break
                     }
@@ -37,7 +37,7 @@ class FiveSecondViewModel : ViewModel() {
                     delay(1000)
                 }
                 if (!_isCancelled.value) {
-                    _uiEvent.emit(FiveSecondScreenEvent.Navigate)
+                    _uiEvent.emit(ThreeSecondScreenEvent.Navigate)
                 }
             } catch (e: CancellationException) {
                 Log.d("Countdown", "Countdown was cancelled")
@@ -49,7 +49,7 @@ class FiveSecondViewModel : ViewModel() {
         if (!_isCancelled.value) {
             _isCancelled.value = true
             viewModelScope.launch {
-                _uiEvent.emit(FiveSecondScreenEvent.SwipeBack)
+                _uiEvent.emit(ThreeSecondScreenEvent.SwipeBack)
             }
         }
     }

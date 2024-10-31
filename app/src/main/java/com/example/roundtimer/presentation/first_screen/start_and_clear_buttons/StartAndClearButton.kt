@@ -16,14 +16,19 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
+import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
+import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
 fun StartAndClearButton(
-    onStartClick: () -> Unit,
+    onStartClickFive: () -> Unit,
+    onStartClickThree: () -> Unit,
     onClearClick: () -> Unit
 ) {
+    val settingsViewModel: TransitionSettingsViewModel = viewModel()
     val startButtonColor = MaterialTheme.colorScheme.primary
     val customBtnColor = customColorScheme()
     val clearButtonColor = customBtnColor.customButtonColor
@@ -46,7 +51,14 @@ fun StartAndClearButton(
                 .weight(1f),
             colors = ButtonDefaults.buttonColors(startButtonColor),
             onClick = {
-                onStartClick()
+                when (settingsViewModel.selectedOption.value) {
+                    TransitionScreenOption.FIVE_SECONDS -> {
+                        onStartClickFive()
+                    }
+                    TransitionScreenOption.THREE_SECONDS -> {
+                        onStartClickThree()
+                    }
+                }
             }
         ) {
             Text(text = stringResource(id = R.string.Ready), style = buttonsStyling)

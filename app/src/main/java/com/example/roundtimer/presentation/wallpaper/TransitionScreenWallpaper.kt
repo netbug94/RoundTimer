@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import com.example.roundtimer.R
 
 @Composable
-fun FiveSecScreenWallpaper() {
+fun TransitionScreenWallpaper() {
     val darkTheme = isSystemInDarkTheme()
 
     val configuration = LocalConfiguration.current
