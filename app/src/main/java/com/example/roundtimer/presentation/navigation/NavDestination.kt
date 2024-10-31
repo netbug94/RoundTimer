@@ -34,7 +34,7 @@ sealed interface NavDestination{
     @Serializable
     data object SendFeedbackForm:NavDestination
 
-    //Test
+    //SavedWorkoutScreen
     @Serializable
     data object SavedWorkoutScreen:NavDestination
 

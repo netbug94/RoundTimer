@@ -147,6 +147,8 @@ fun WorkoutListItem(
     val roundsString = stringResource(R.string.Rounds)
     val roundTimeString = stringResource(R.string.RoundTimeString)
     val restTimeString = stringResource(R.string.RestTimeString)
+    val deleteButtonString = stringResource(R.string.Delete)
+    val cancelButtonString = stringResource(R.string.Cancel)
 
     Card(
         modifier = Modifier
@@ -247,7 +249,7 @@ fun WorkoutListItem(
                         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
                     ) {
                         Text(
-                            "Delete",
+                            deleteButtonString,
                             color = MaterialTheme.colorScheme.onError,
                             style = MaterialTheme.typography.bodyLarge
                         )
@@ -257,7 +259,7 @@ fun WorkoutListItem(
 
                     TextButton(onClick = { isEditing = false }) {
                         Text(
-                            "Cancel",
+                            cancelButtonString,
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.SemiBold
                         )

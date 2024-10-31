@@ -3,6 +3,7 @@ package com.example.roundtimer.data.quote_data
 import com.example.roundtimer.domain.Quote
 import com.example.roundtimer.presentation.round_screen.QuotesDataSource
 
+@Suppress("SpellCheckingInspection")
 object LocalQuotesDataBaseES : QuotesDataSource {
     private val quotes: List<Quote> = listOf(
         Quote(1, "La vida es aquello que te sucede mientras estás ocupado haciendo otros planes.", "John Lennon"),

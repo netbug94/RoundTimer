@@ -79,7 +79,7 @@ fun AboutScreen(
 
         // Version Info
         Text(
-            text = "$versionText 1.0.0",
+            text = "$versionText 2.0.0",
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.SemiBold
         )

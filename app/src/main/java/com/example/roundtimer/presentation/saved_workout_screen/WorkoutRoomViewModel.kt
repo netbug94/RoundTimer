@@ -14,7 +14,6 @@ class WorkoutRoomViewModel(private val repository: WorkoutRoomRepository) : View
 
     val allWorkouts: LiveData<List<WorkoutRoomEntity>> = repository.getAllWorkouts().asLiveData()
 
-    // State for deletion confirmation
     private val _workoutToDelete = MutableLiveData<WorkoutRoomEntity?>(null)
     val workoutToDelete: LiveData<WorkoutRoomEntity?> = _workoutToDelete
 
@@ -45,11 +44,9 @@ class WorkoutRoomViewModel(private val repository: WorkoutRoomRepository) : View
     fun deleteRoomWorkout(workout: WorkoutRoomEntity) {
         viewModelScope.launch {
             repository.deleteWorkout(workout)
-            // No need to reset sequence since displayId is managed separately
         }
     }
 
-    // New function to update workout name
     fun updateRoomWorkoutName(updatedWorkout: WorkoutRoomEntity) {
         viewModelScope.launch {
             try {

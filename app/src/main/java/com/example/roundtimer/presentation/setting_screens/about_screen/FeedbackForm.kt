@@ -28,7 +28,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -112,7 +111,7 @@ fun FeedbackForm(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OutlinedButton(
-                        onClick = { pickFilesLauncher.launch("image/*|video/*") },  // Allow both images and videos
+                        onClick = { pickFilesLauncher.launch("image/*|video/*") },
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(attachmentButtonText)
@@ -133,14 +132,13 @@ fun FeedbackForm(
 
         ElevatedButton(
             onClick = {
-                // Create the email intent
                 val intent = Intent(Intent.ACTION_SEND_MULTIPLE).apply {
-                    type = "*/*"  // Allow any file type for attachment
+                    type = "*/*"
                     putExtra(Intent.EXTRA_EMAIL, arrayOf("netbug94@gmail.com"))
                     putExtra(Intent.EXTRA_SUBJECT, subject)
                     putExtra(Intent.EXTRA_TEXT, messageBody)
                     if (attachmentUris.isNotEmpty()) {
-                        putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(attachmentUris))  // Attach multiple files
+                        putParcelableArrayListExtra(Intent.EXTRA_STREAM, ArrayList(attachmentUris))
                         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     }
                 }
