@@ -8,8 +8,11 @@ sealed interface NavDestination{
     @Serializable
     data object FirstScreenNavi:NavDestination
 
+    //Transition Screens
     @Serializable
     data object FiveSecondScreenNavi:NavDestination
+    @Serializable
+    data object ThreeSecondScreenNavi:NavDestination
 
     @Serializable
     data object RoundScreenNavi:NavDestination

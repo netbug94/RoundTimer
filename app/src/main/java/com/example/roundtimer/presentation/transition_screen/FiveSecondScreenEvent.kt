@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.five_second_screen
+package com.example.roundtimer.presentation.transition_screen
 
 sealed class FiveSecondScreenEvent {
     data object Navigate : FiveSecondScreenEvent()

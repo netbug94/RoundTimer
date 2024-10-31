@@ -35,7 +35,8 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun FirstScreen(
-    onStartClick: () -> Unit,
+    onStartClickFive: () -> Unit,
+    onStartClickThree: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
     roomViewModel: WorkoutRoomViewModel,
     onSettingsClick: () -> Unit,
@@ -61,7 +62,8 @@ fun FirstScreen(
         onRestMinutesChange = workoutInputVM::updateRestMinutes,
         restSeconds = restSeconds,
         onRestSecondsChange = workoutInputVM::updateRestSeconds,
-        onStartClick = onStartClick,
+        onStartClickFive = onStartClickFive,
+        onStartClickThree = onStartClickThree,
         onClearClick = workoutInputVM::clearWorkoutInput,
         onSettingsClick = onSettingsClick,
         onTipsClick = onTipsClick,
@@ -84,7 +86,8 @@ fun FirstScreenContent(
     onRestMinutesChange: (Int) -> Unit,
     restSeconds: Int,
     onRestSecondsChange: (Int) -> Unit,
-    onStartClick: () -> Unit,
+    onStartClickFive: () -> Unit,
+    onStartClickThree: () -> Unit,
     onClearClick: () -> Unit,
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
@@ -210,7 +213,8 @@ fun FirstScreenContent(
                 verticalArrangement = Arrangement.Center
             ) {
                 StartAndClearButton(
-                    onStartClick = onStartClick,
+                    onStartClickFive = onStartClickFive,
+                    onStartClickThree = onStartClickThree,
                     onClearClick = onClearClick
                 )
                 Button(

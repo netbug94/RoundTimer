@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.five_second_screen
+package com.example.roundtimer.presentation.transition_screen.three_second_screen
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
@@ -16,40 +16,40 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
-import com.example.roundtimer.presentation.wallpaper.FiveSecScreenWallpaper
+import com.example.roundtimer.presentation.wallpaper.TransitionScreenWallpaper
 
 @Composable
-fun FiveSecondScreen(
+fun ThreeSecondScreen(
     onNavigation: () -> Unit,
     onSwipeBack: () -> Unit,
-    fiveSecondViewModel: FiveSecondViewModel = viewModel()
+    threeSecondViewModel: ThreeSecondViewModel = viewModel()
 ) {
-    val secondsRemaining by fiveSecondViewModel.secondsRemaining.collectAsState()
+    val secondsRemaining by threeSecondViewModel.secondsRemaining.collectAsState()
 
     LaunchedEffect(Unit) {
-        fiveSecondViewModel.uiEvent.collect { event ->
+        threeSecondViewModel.uiEvent.collect { event ->
             when (event) {
-                is FiveSecondScreenEvent.Navigate -> onNavigation()
-                is FiveSecondScreenEvent.SwipeBack -> onSwipeBack()
+                is ThreeSecondScreenEvent.Navigate -> onNavigation()
+                is ThreeSecondScreenEvent.SwipeBack -> onSwipeBack()
             }
         }
     }
 
-    FiveSecondScreenContent(
+    ThreeSecondScreenContent(
         secondsRemaining = secondsRemaining,
         onBackPressed = {
-            fiveSecondViewModel.cancelCountdown()
+            threeSecondViewModel.cancelCountdown()
             onSwipeBack()
         }
     )
 }
 
 @Composable
-fun FiveSecondScreenContent(
+fun ThreeSecondScreenContent(
     secondsRemaining: Int,
     onBackPressed: () -> Unit
 ) {
-    FiveSecScreenWallpaper()
+    TransitionScreenWallpaper()
 
     Column(
         modifier = Modifier.fillMaxSize(),
