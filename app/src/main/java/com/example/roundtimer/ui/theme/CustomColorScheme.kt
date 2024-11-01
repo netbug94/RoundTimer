@@ -15,7 +15,8 @@ fun customColorScheme(): CustomColor {
             redTextColor = Color.Red,
             emailTextColor = LightBlue,
             customButtonColor = Color.LightGray,
-            customRippleColor = Color.LightGray
+            customRippleColor = Color.LightGray,
+            inverseSecondary = PurpleGrey40
         )
     } else {
         CustomColor(
@@ -24,7 +25,8 @@ fun customColorScheme(): CustomColor {
             emailTextColor = Color.Blue,
             redTextColor = DarkRed,
             customButtonColor = Color.DarkGray,
-            customRippleColor = Color.DarkGray
+            customRippleColor = Color.DarkGray,
+            inverseSecondary = PurpleGrey80
         )
     }
 }

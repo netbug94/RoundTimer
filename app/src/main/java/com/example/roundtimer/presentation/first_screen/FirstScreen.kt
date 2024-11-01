@@ -1,5 +1,7 @@
 package com.example.roundtimer.presentation.first_screen
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,13 +11,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -25,10 +24,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
+import com.example.roundtimer.presentation.common.getImageIds
 import com.example.roundtimer.presentation.common.rememberFocusHandler
 import com.example.roundtimer.presentation.first_screen.preview_round_box.PreviewRoundBox
 import com.example.roundtimer.presentation.first_screen.save_round_banner.SaveRoundBanner
@@ -46,7 +46,7 @@ fun FirstScreen(
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
     onAboutClick: () -> Unit,
-    onListScreen: () -> Unit
+    onCollectionClick: () -> Unit
 ) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
     val roundNumber = workoutInput.roundNumber
@@ -74,7 +74,7 @@ fun FirstScreen(
         onAboutClick = onAboutClick,
         workoutInputVM = workoutInputVM,
         roomViewModel = roomViewModel,
-        onListScreen = onListScreen
+        onCollectionClick = onCollectionClick
     )
 }
 
@@ -98,11 +98,10 @@ fun FirstScreenContent(
     onAboutClick: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
     roomViewModel: WorkoutRoomViewModel,
-    onListScreen: () -> Unit
+    onCollectionClick: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
-    val collectionString = stringResource(R.string.Collection)
-
+    val imageId = getImageIds().second
     val focusHandler = rememberFocusHandler()
     val anyFieldFocused = focusHandler.anyFieldFocused.value
     val focusChanged = focusHandler.focusChanged
@@ -223,25 +222,17 @@ fun FirstScreenContent(
                     onClearClick = onClearClick
                 )
             }
-            Column(modifier = Modifier.fillMaxWidth()
-                .padding(top = 80.dp),
+            Column(modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
-                OutlinedButton(
+
+                Image(
+                    painter = painterResource(id = imageId),
+                    contentDescription = "Collection button",
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 60.dp),
-                    onClick = {
-                        onListScreen()
-                    },
-                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.outline),
-                    shape = RoundedCornerShape(6.dp)
-                ) {
-                    Text(text = collectionString,
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
+                        .clickable { onCollectionClick() }
+                        .size(70.dp)
+                )
             }
         }
     }

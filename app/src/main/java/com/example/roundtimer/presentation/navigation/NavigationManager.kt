@@ -63,7 +63,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 onAboutClick = {
                     navController.navigate(NavDestination.AboutScreen)
                 },
-                onListScreen = {
+                onCollectionClick = {
                     navController.navigate(NavDestination.SavedWorkoutScreen)
                 },
                 workoutInputVM = workoutInputVM,
