@@ -1,4 +1,4 @@
-package com.example.roundtimer.presentation.wallpaper
+package com.example.roundtimer.presentation.transition_screen.wallpaper
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image

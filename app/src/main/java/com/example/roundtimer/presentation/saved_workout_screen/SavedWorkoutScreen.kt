@@ -5,11 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -81,69 +81,86 @@ fun WorkoutListScreen(
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) { paddingValues ->
+        val paddingValue = paddingValues
 
-        IconButton(
-            modifier = Modifier
-                .fillMaxWidth(),
-            onClick = {
-                onHomeClick()
+        Column(modifier = Modifier.fillMaxSize()
+            .padding(paddingValue)
+            .padding(top = 16.dp)
+        ) {
+            IconButton(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f),
+                onClick = {
+                    onHomeClick()
+                }
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxSize()
+                        .padding(horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        modifier = Modifier.size(60.dp),
+                        imageVector = Icons.Default.Home,
+                        contentDescription = "Home screen button"
+                    )
+                }
             }
-        ) {
-            Icon(
-                imageVector = Icons.Default.Home, // Replace 'YourIcon' with the desired icon, e.g., `Icons.Default.Add`
-                contentDescription = "Your icon description" // Accessibility description for the icon
-            )
-        }
 
-        LazyColumn(
-            modifier = Modifier
-                .padding(paddingValues)
-                .systemBarsPadding()
-                .padding(horizontal = 8.dp)
-        ) {
-            items(
-                items = workouts,
-                key = { workout -> workout.id }
-            ) { workout ->
-                WorkoutListItem(
-                    workout = workout,
-                    onDelete = {
-                        roomViewModel.showDeleteConfirmation(workout)
-                    },
-                    onEdit = { updatedWorkout ->
-                        roomViewModel.updateRoomWorkoutName(updatedWorkout)
-                    },
-                    onClick = { onWorkoutSelected(workout) },
-                    showSnackbar = { message ->
+            LazyColumn(
+                modifier = Modifier
+                    .padding(horizontal = 8.dp)
+                    .weight(10f)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                items(
+                    items = workouts,
+                    key = { workout -> workout.id }
+                ) { workout ->
+                    WorkoutListItem(
+                        workout = workout,
+                        onDelete = {
+                            roomViewModel.showDeleteConfirmation(workout)
+                        },
+                        onEdit = { updatedWorkout ->
+                            roomViewModel.updateRoomWorkoutName(updatedWorkout)
+                        },
+                        onClick = { onWorkoutSelected(workout) },
+                        showSnackbar = { message ->
+                            coroutineScope.launch {
+                                snackbarHostState.showSnackbar(
+                                    message,
+                                    duration = SnackbarDuration.Short
+                                )
+                            }
+                        }
+                    )
+                }
+            }
+
+            if (workoutToDelete != null) {
+                DeleteConfirmationDialog(
+                    workout = workoutToDelete,
+                    onConfirm = {
+                        roomViewModel.deleteRoomWorkout(workoutToDelete)
+                        roomViewModel.clearDeleteConfirmation()
                         coroutineScope.launch {
                             snackbarHostState.showSnackbar(
-                                message,
-                                duration = SnackbarDuration.Short
-                            )
+                                deleteSuccessful,
+                                duration = SnackbarDuration.Short,
+
+                                )
                         }
+                    },
+                    onDismiss = {
+                        roomViewModel.clearDeleteConfirmation()
                     }
                 )
             }
-        }
-
-        if (workoutToDelete != null) {
-            DeleteConfirmationDialog(
-                workout = workoutToDelete,
-                onConfirm = {
-                    roomViewModel.deleteRoomWorkout(workoutToDelete)
-                    roomViewModel.clearDeleteConfirmation()
-                    coroutineScope.launch {
-                        snackbarHostState.showSnackbar(
-                            deleteSuccessful,
-                            duration = SnackbarDuration.Short,
-
-                        )
-                    }
-                },
-                onDismiss = {
-                    roomViewModel.clearDeleteConfirmation()
-                }
-            )
         }
     }
 }
@@ -171,11 +188,14 @@ fun WorkoutListItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(bottom = 16.dp)
+            .padding(horizontal = 6.dp)
             .clickable { onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier
+            .padding(16.dp)
+        ) {
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,

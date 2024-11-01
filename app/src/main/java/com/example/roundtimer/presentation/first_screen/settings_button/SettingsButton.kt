@@ -3,7 +3,6 @@ package com.example.roundtimer.presentation.first_screen.settings_button
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
+import com.example.roundtimer.presentation.common.getImageIds
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
@@ -39,10 +39,7 @@ fun SettingsButton(
     onAboutClick: () -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-
-    val isDarkTheme = isSystemInDarkTheme()
-    val imageId = if (isDarkTheme) R.drawable.lightdots else R.drawable.darkdots
-
+    val imageId = getImageIds().first
     val customColor = customColorScheme()
     val textDropdownColor = customColor.customTextColor
 
@@ -55,7 +52,7 @@ fun SettingsButton(
     Box(modifier = Modifier.size(25.dp)) {
         Image(
             painter = painterResource(id = imageId),
-            contentDescription = if (isDarkTheme) "Dark theme dots" else "Light theme dots",
+            contentDescription = "Dots image",
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .fillMaxSize()

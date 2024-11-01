@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
-import com.example.roundtimer.presentation.wallpaper.TransitionScreenWallpaper
+import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
 
 @Composable
 fun ThreeSecondScreen(

@@ -8,5 +8,6 @@ data class CustomColor(
     val emailTextColor: Color,
     val redTextColor: Color,
     val customButtonColor: Color,
-    val customRippleColor: Color
+    val customRippleColor: Color,
+    val inverseSecondary: Color
 )
