@@ -17,6 +17,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -53,18 +54,21 @@ import kotlinx.coroutines.launch
 @Composable
 fun SavedWorkoutScreen(
     roomViewModel: WorkoutRoomViewModel,
+    onHomeClick: () -> Unit,
     onWorkoutSelected: (WorkoutRoomEntity) -> Unit
 ) {
     WorkoutListScreen(
         roomViewModel = roomViewModel,
-        onWorkoutSelected = onWorkoutSelected
+        onWorkoutSelected = onWorkoutSelected,
+        onHomeClick = onHomeClick
     )
 }
 
 @Composable
 fun WorkoutListScreen(
     roomViewModel: WorkoutRoomViewModel,
-    onWorkoutSelected: (WorkoutRoomEntity) -> Unit
+    onWorkoutSelected: (WorkoutRoomEntity) -> Unit,
+    onHomeClick: () -> Unit
 ) {
     val workouts by roomViewModel.allWorkouts.observeAsState(emptyList())
     val workoutToDelete = roomViewModel.workoutToDelete.observeAsState().value
@@ -77,6 +81,20 @@ fun WorkoutListScreen(
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) { paddingValues ->
+
+        IconButton(
+            modifier = Modifier
+                .fillMaxWidth(),
+            onClick = {
+                onHomeClick()
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.Home, // Replace 'YourIcon' with the desired icon, e.g., `Icons.Default.Add`
+                contentDescription = "Your icon description" // Accessibility description for the icon
+            )
+        }
+
         LazyColumn(
             modifier = Modifier
                 .padding(paddingValues)

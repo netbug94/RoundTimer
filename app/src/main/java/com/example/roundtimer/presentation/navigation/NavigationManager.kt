@@ -1,5 +1,6 @@
 package com.example.roundtimer.presentation.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -161,10 +162,14 @@ fun NavigationManager(modifier: Modifier = Modifier) {
         //Test
         composable<NavDestination.SavedWorkoutScreen> {
             SavedWorkoutScreen(
-                roomViewModel = roomViewModel
-            ) {
-
-            }
+                roomViewModel = roomViewModel,
+                onHomeClick = {
+                    navController.navigate(NavDestination.FirstScreenNavi)
+                },
+                onWorkoutSelected = { workout ->
+                    Log.d("SavedWorkoutScreen", "Selected Workout: ${workout.name}")
+                }
+            )
         }
     }
 }
