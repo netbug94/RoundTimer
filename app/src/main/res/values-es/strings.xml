@@ -11,6 +11,7 @@
     <!-- FirstScreenButtonsText -->
     <string name="Ready">Comenzar</string>
     <string name="Clear">Borrar</string>
+    <string name="Collection">Colección</string>
 
     <!-- FiveSecondScreenText -->
     <string name="Starting_in">Comienza en:</string>

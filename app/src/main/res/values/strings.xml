@@ -11,6 +11,7 @@
     <!-- FirstScreenButtonsText -->
     <string name="Ready">"Ready"</string>
     <string name="Clear">"Clear"</string>
+    <string name="Collection">Collection</string>
 
     <!-- FiveSecondScreenText -->
     <string name="Starting_in">Starting in:</string>
