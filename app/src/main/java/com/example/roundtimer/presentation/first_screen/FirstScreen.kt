@@ -101,6 +101,7 @@ fun FirstScreenContent(
     onListScreen: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
+    val collectionString = stringResource(R.string.Collection)
 
     val focusHandler = rememberFocusHandler()
     val anyFieldFocused = focusHandler.anyFieldFocused.value
@@ -236,7 +237,7 @@ fun FirstScreenContent(
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.outline),
                     shape = RoundedCornerShape(6.dp)
                 ) {
-                    Text(text = "Collection",
+                    Text(text = collectionString,
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.SemiBold
                     )
