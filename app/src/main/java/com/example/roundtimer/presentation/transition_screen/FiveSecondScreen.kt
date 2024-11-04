@@ -49,6 +49,8 @@ fun FiveSecondScreenContent(
     secondsRemaining: Int,
     onBackPressed: () -> Unit
 ) {
+    val startingInString = stringResource(id = R.string.Starting_in)
+
     TransitionScreenWallpaper()
 
     Column(
@@ -62,7 +64,7 @@ fun FiveSecondScreenContent(
         )
 
         Text(
-            text = stringResource(id = R.string.Starting_in),
+            text = startingInString,
             style = textStyle
         )
 

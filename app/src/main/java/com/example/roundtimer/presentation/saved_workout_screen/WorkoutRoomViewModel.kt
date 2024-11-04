@@ -11,7 +11,6 @@ import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
 import kotlinx.coroutines.launch
 
 class WorkoutRoomViewModel(private val repository: WorkoutRoomRepository) : ViewModel() {
-
     val allWorkouts: LiveData<List<WorkoutRoomEntity>> = repository.getAllWorkouts().asLiveData()
 
     private val _workoutToDelete = MutableLiveData<WorkoutRoomEntity?>(null)

@@ -36,7 +36,6 @@ fun StartAndClearButton(
         fontWeight = FontWeight.SemiBold
     )
     val focusManager = LocalFocusManager.current
-
     val clearString = stringResource(id = R.string.Clear)
     val readyString = stringResource(id = R.string.Ready)
 

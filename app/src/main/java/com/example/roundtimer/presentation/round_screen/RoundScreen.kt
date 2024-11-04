@@ -109,6 +109,11 @@ fun RoundScreenContent(
     onPauseResumeClick: () -> Unit,
     onFinishClick: () -> Unit
 ) {
+    val restString = stringResource(id = R.string.Rest)
+    val roundString = stringResource(id = R.string.Round)
+    val pauseString = stringResource(id = R.string.Pause)
+    val resumeString = stringResource(id = R.string.Resume)
+    val finishString = stringResource(id = R.string.Finish)
 
     BackArrowButton(
         rowModifier = Modifier
@@ -135,7 +140,7 @@ fun RoundScreenContent(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = if (isRest) stringResource(id = R.string.Rest) else "${stringResource(id = R.string.Round)} $currentRound / $totalRounds",
+                    text = if (isRest) restString else "$roundString $currentRound / $totalRounds",
                     style = MaterialTheme.typography.displayMedium,
                     fontWeight = FontWeight.Bold,
                     color = if (isRest) restTextColor else customColorText
@@ -159,7 +164,7 @@ fun RoundScreenContent(
             Spacer(modifier = Modifier.height(40.dp))
 
             Button(onClick = onPauseResumeClick) {
-                Text(text = if (timerStatus == TimerStatus.Running) stringResource(id = R.string.Pause) else stringResource(id = R.string.Resume))
+                Text(text = if (timerStatus == TimerStatus.Running) pauseString else resumeString)
             }
 
         } else if (timerStatus == TimerStatus.Completed) {
@@ -174,7 +179,7 @@ fun RoundScreenContent(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Button(onClick = onFinishClick) {
-                    Text(stringResource(id = R.string.Finish))
+                    Text(finishString)
                 }
             }
         }

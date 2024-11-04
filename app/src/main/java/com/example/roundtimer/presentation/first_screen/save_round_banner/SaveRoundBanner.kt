@@ -23,8 +23,8 @@ import com.example.roundtimer.ui.theme.customColorScheme
 fun SaveRoundBanner(showBanner: Boolean) {
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val dynamicHeight = screenWidth * 0.25f // %
-
     val bannerTextColor = customColorScheme()
+    val saveString = stringResource(id = R.string.Saved)
 
     Box(modifier = Modifier.fillMaxSize()) {
         AnimatedVisibility(
@@ -39,7 +39,7 @@ fun SaveRoundBanner(showBanner: Boolean) {
                     .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {
-                Text(stringResource(id = R.string.Saved), color = bannerTextColor.customTextColor)
+                Text(saveString, color = bannerTextColor.customTextColor)
             }
         }
     }

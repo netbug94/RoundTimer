@@ -76,7 +76,6 @@ fun WorkoutListScreen(
     @Suppress("SpellCheckingInspection")
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
-
     val deleteSuccessful = stringResource(R.string.DeleteSuccessful)
 
     Scaffold(

@@ -25,7 +25,6 @@ fun ClickablePlusSign(onClick: () -> Unit) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val customColors = customColorScheme()
-
     val textColor = if (isPressed) MaterialTheme.colorScheme.primary else customColors.customBorderColor
 
     Box(

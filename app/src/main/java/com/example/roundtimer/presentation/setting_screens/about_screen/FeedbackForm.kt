@@ -47,7 +47,6 @@ fun FeedbackForm(
     var messageBody by rememberSaveable { mutableStateOf("") }
     var attachmentUris by rememberSaveable { mutableStateOf<List<Uri>>(emptyList()) }
     val context = LocalContext.current
-
     val stringResource = stringResource(R.string.AttachRestrictionMessage)
     val feedbackSubject = stringResource(R.string.FeedbackSubject)
     val feedbackMessage = stringResource(R.string.FeedbackMessage)
@@ -56,7 +55,6 @@ fun FeedbackForm(
     val sendEmailText = stringResource(R.string.SendEmailText)
     val noEmailMessage = stringResource(R.string.NoEmailMessage)
     val sendButtonText = stringResource(R.string.SendButtonText)
-
     val pickFilesLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetMultipleContents(),
         onResult = { uris: List<Uri> ->

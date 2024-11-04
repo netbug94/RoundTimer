@@ -19,9 +19,10 @@ import com.example.roundtimer.ui.theme.customColorScheme
 fun ContactMeText() {
     val emailHandler = LocalContext.current
     val emailTextColor = customColorScheme().emailTextColor
+    val contactMeString = stringResource(R.string.ContactMe)
 
     Text(
-        text = stringResource(R.string.ContactMe),
+        text = contactMeString,
         fontWeight = FontWeight.SemiBold,
         style = MaterialTheme.typography.bodyLarge
     )
