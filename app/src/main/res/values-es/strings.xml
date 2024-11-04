@@ -107,4 +107,7 @@
     <string name="RoundTimeString">Tiempo de Ronda</string>
     <string name="RestTimeString">Tiempo de Descanso</string>
 
+    <!-- SettingsScreen -->
+    <string name="TransitionScreenDuration">Duración de la pantalla de transición</string>
+
 </resources>

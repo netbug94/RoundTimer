@@ -107,6 +107,9 @@
     <string name="RoundTimeString">Round Time</string>
     <string name="RestTimeString">Rest Time</string>
 
+    <!-- SettingsScreen -->
+    <string name="TransitionScreenDuration">Transition Screen Duration</string>
+
     <!-- <string name=></string> -->
 
 </resources>

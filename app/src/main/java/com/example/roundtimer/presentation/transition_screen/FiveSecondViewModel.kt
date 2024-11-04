@@ -39,7 +39,7 @@ class FiveSecondViewModel : ViewModel() {
                 if (!_isCancelled.value) {
                     _uiEvent.emit(FiveSecondScreenEvent.Navigate)
                 }
-            } catch (e: CancellationException) {
+            } catch (_: CancellationException) {
                 Log.d("Countdown", "Countdown was cancelled")
             }
         }

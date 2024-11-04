@@ -32,12 +32,13 @@ fun StartAndClearButton(
     val startButtonColor = MaterialTheme.colorScheme.primary
     val customBtnColor = customColorScheme()
     val clearButtonColor = customBtnColor.customButtonColor
-
     val buttonsStyling = MaterialTheme.typography.bodyLarge.copy(
         fontWeight = FontWeight.SemiBold
     )
-
     val focusManager = LocalFocusManager.current
+
+    val clearString = stringResource(id = R.string.Clear)
+    val readyString = stringResource(id = R.string.Ready)
 
     Row(
         Modifier.fillMaxWidth(),
@@ -61,7 +62,7 @@ fun StartAndClearButton(
                 }
             }
         ) {
-            Text(text = stringResource(id = R.string.Ready), style = buttonsStyling)
+            Text(text = readyString, style = buttonsStyling)
         }
 
         Spacer(Modifier.width(15.dp))
@@ -76,7 +77,7 @@ fun StartAndClearButton(
                 focusManager.clearFocus()
             }
         ) {
-            Text(text = stringResource(id = R.string.Clear), style = buttonsStyling)
+            Text(text = clearString, style = buttonsStyling)
         }
     }
 }
