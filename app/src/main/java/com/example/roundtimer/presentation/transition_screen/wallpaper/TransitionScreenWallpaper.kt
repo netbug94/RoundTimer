@@ -14,17 +14,14 @@ import com.example.roundtimer.R
 @Composable
 fun TransitionScreenWallpaper() {
     val darkTheme = isSystemInDarkTheme()
-
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-
     val vectorBackground = when {
         darkTheme && isLandscape -> painterResource(id = R.drawable.five_second_horizontal_wallpaper_dark)
         darkTheme && !isLandscape -> painterResource(id = R.drawable.five_second_wallpaper_dark)
         !darkTheme && isLandscape -> painterResource(id = R.drawable.five_second_horizontal_wallpaper_light)
         else -> painterResource(id = R.drawable.five_second_wallpaper_light)
     }
-
     val contentScale = if (isLandscape) {
         ContentScale.Fit
     } else {

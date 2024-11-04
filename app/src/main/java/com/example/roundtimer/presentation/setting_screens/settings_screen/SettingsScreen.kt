@@ -26,8 +26,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.roundtimer.R
 import com.example.roundtimer.presentation.common.BackArrowButton
 import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
 import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
@@ -38,8 +40,8 @@ fun SettingsScreen(
 ) {
     val transitionSettingsViewModel: TransitionSettingsViewModel = viewModel()
     val selectedOption by transitionSettingsViewModel.selectedOption.collectAsState()
-    
     var isExpanded by remember { mutableStateOf(false) }
+    val transitionScreenDurationString = stringResource(id = R.string.TransitionScreenDuration)
 
     BackHandler {
         onSwipeBack()
@@ -79,7 +81,7 @@ fun SettingsScreen(
                         .padding(vertical = 16.dp, horizontal = 8.dp)
                 ) {
                     Text(
-                        text = "Transition Screen Duration",
+                        text = transitionScreenDurationString,
                         style = MaterialTheme.typography.bodyLarge,
                         modifier = Modifier.weight(1f)
                     )
@@ -108,7 +110,7 @@ fun SettingsScreen(
                                     onClick = { transitionSettingsViewModel.selectOption(option) }
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Text(text = option.displayName)
+                                Text(text = option.getDisplayName())
                             }
                         }
                     }

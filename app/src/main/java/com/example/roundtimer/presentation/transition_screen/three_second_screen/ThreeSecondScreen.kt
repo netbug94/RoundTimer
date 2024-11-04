@@ -25,6 +25,7 @@ fun ThreeSecondScreen(
     threeSecondViewModel: ThreeSecondViewModel = viewModel()
 ) {
     val secondsRemaining by threeSecondViewModel.secondsRemaining.collectAsState()
+    val startingString = stringResource(id = R.string.Starting_in)
 
     LaunchedEffect(Unit) {
         threeSecondViewModel.uiEvent.collect { event ->
@@ -37,6 +38,7 @@ fun ThreeSecondScreen(
 
     ThreeSecondScreenContent(
         secondsRemaining = secondsRemaining,
+        startingString = startingString,
         onBackPressed = {
             threeSecondViewModel.cancelCountdown()
             onSwipeBack()
@@ -47,6 +49,7 @@ fun ThreeSecondScreen(
 @Composable
 fun ThreeSecondScreenContent(
     secondsRemaining: Int,
+    startingString: String,
     onBackPressed: () -> Unit
 ) {
     TransitionScreenWallpaper()
@@ -62,7 +65,7 @@ fun ThreeSecondScreenContent(
         )
 
         Text(
-            text = stringResource(id = R.string.Starting_in),
+            text = startingString,
             style = textStyle
         )
 

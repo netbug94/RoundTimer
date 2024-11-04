@@ -39,7 +39,7 @@ class ThreeSecondViewModel : ViewModel() {
                 if (!_isCancelled.value) {
                     _uiEvent.emit(ThreeSecondScreenEvent.Navigate)
                 }
-            } catch (e: CancellationException) {
+            } catch (_: CancellationException) {
                 Log.d("Countdown", "Countdown was cancelled")
             }
         }
