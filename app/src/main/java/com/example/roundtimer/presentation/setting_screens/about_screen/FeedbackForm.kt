@@ -36,6 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
+import com.example.roundtimer.presentation.common.BackArrowButton
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable
@@ -70,6 +71,17 @@ fun FeedbackForm(
     BackHandler {
         onSwipeBack()
     }
+
+    BackArrowButton(
+        rowModifier = Modifier
+            .fillMaxWidth()
+            .systemBarsPadding()
+            .padding(16.dp),
+        rowAlignment = Alignment.Top,
+        onBackArrowClick = onSwipeBack,
+        size = 40.dp,
+        leTint = MaterialTheme.colorScheme.primary
+    )
 
     Column(
         modifier = Modifier
@@ -144,7 +156,7 @@ fun FeedbackForm(
                 }
                 try {
                     context.startActivity(Intent.createChooser(intent, sendEmailText))
-                } catch (e: ActivityNotFoundException) {
+                } catch (_: ActivityNotFoundException) {
                     Toast.makeText(context, noEmailMessage, Toast.LENGTH_LONG).show()
                 }
             },

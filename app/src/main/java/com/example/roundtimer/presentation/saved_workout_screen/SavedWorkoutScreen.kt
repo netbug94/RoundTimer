@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,7 +18,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -49,6 +49,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
 import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
+import com.example.roundtimer.presentation.common.BackArrowButton
 import kotlinx.coroutines.launch
 
 @Composable
@@ -83,38 +84,25 @@ fun WorkoutListScreen(
     ) { paddingValues ->
         val paddingValue = paddingValues
 
-        Column(modifier = Modifier.fillMaxSize()
-            .padding(paddingValue)
-            .padding(top = 16.dp)
-        ) {
-            IconButton(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f),
-                onClick = {
-                    onHomeClick()
-                }
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxSize()
-                        .padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        modifier = Modifier.size(60.dp),
-                        imageVector = Icons.Default.Home,
-                        contentDescription = "Home screen button"
-                    )
-                }
-            }
+        BackArrowButton(
+            rowModifier = Modifier
+                .fillMaxWidth()
+                .systemBarsPadding()
+                .padding(start = 16.dp, top = 8.dp),
+            rowAlignment = Alignment.Top,
+            onBackArrowClick = onHomeClick,
+            leTint = MaterialTheme.colorScheme.primary
+        )
 
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValue)
+            .padding(top = 80.dp)
+        ) {
             LazyColumn(
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
-                    .weight(10f)
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(
