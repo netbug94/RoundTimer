@@ -1,8 +1,11 @@
 package com.example.roundtimer.presentation.first_screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,8 +16,10 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -24,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -46,7 +52,8 @@ fun FirstScreen(
     onSettingsClick: () -> Unit,
     onTipsClick: () -> Unit,
     onAboutClick: () -> Unit,
-    onCollectionClick: () -> Unit
+    onCollectionClick: () -> Unit,
+    onSwipeBack: () -> Unit
 ) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
     val roundNumber = workoutInput.roundNumber
@@ -74,7 +81,8 @@ fun FirstScreen(
         onAboutClick = onAboutClick,
         workoutInputVM = workoutInputVM,
         roomViewModel = roomViewModel,
-        onCollectionClick = onCollectionClick
+        onCollectionClick = onCollectionClick,
+        onSwipeBack = onSwipeBack
     )
 }
 
@@ -98,7 +106,8 @@ fun FirstScreenContent(
     onAboutClick: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
     roomViewModel: WorkoutRoomViewModel,
-    onCollectionClick: () -> Unit
+    onCollectionClick: () -> Unit,
+    onSwipeBack: () -> Unit
 ) {
     val firstScreenHorizontalPadding = 12.dp
     val imageId = getImageIds().second
@@ -117,6 +126,10 @@ fun FirstScreenContent(
             delay(1500)
             showBanner = false
         }
+    }
+
+    BackHandler {
+        onSwipeBack()
     }
 
     SaveRoundBanner(
@@ -226,13 +239,25 @@ fun FirstScreenContent(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
 
-                Image(
-                    painter = painterResource(id = imageId),
-                    contentDescription = "Collection button",
+                Box(
                     modifier = Modifier
-                        .clickable { onCollectionClick() }
-                        .size(70.dp)
-                )
+                        .size(80.dp)
+                        .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp, bottomStart = 10.dp, bottomEnd = 10.dp))
+                        .clickable(
+                            onClick = { onCollectionClick() },
+                            indication = ripple(
+                                bounded = false
+                            ),
+                            interactionSource = remember { MutableInteractionSource() }
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = imageId),
+                        contentDescription = "Collection button",
+                        modifier = Modifier.size(60.dp)
+                    )
+                }
             }
         }
     }

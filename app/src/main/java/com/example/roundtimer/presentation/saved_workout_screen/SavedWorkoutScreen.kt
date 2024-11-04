@@ -13,11 +13,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -42,6 +43,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -83,30 +85,30 @@ fun WorkoutListScreen(
     ) { paddingValues ->
         val paddingValue = paddingValues
 
-        Column(modifier = Modifier.fillMaxSize()
+        Column(modifier = Modifier
+            .fillMaxSize()
             .padding(paddingValue)
             .padding(top = 16.dp)
         ) {
-            IconButton(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f),
-                onClick = {
-                    onHomeClick()
-                }
+
+            Row(modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp)
+                .weight(1f),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start
             ) {
-                Row(
-                    modifier = Modifier.fillMaxSize()
-                        .padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        modifier = Modifier.size(60.dp),
-                        imageVector = Icons.Default.Home,
-                        contentDescription = "Home screen button"
-                    )
-                }
+                Icon(modifier = Modifier
+                    .size(60.dp)
+                    .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp, bottomStart = 10.dp, bottomEnd = 10.dp))
+                    .clickable(
+                        onClick = {
+                            onHomeClick()
+                        }
+                    ),
+                    imageVector = Icons.AutoMirrored.Default.KeyboardArrowLeft,
+                    contentDescription = "Back home screen button"
+                )
             }
 
             LazyColumn(
@@ -114,7 +116,6 @@ fun WorkoutListScreen(
                     .padding(horizontal = 8.dp)
                     .weight(10f)
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(

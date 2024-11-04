@@ -1,6 +1,7 @@
 package com.example.roundtimer.presentation.navigation
 
 import android.util.Log
+import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -8,22 +9,22 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
-import com.example.roundtimer.presentation.first_screen.FirstScreen
 import com.example.roundtimer.data.room_data.RoomDatabaseProvider
 import com.example.roundtimer.domain.room_domain.WorkoutRoomDao
-import com.example.roundtimer.presentation.saved_workout_screen.SavedWorkoutScreen
-import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModel
-import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModelFactory
+import com.example.roundtimer.presentation.first_screen.FirstScreen
+import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.presentation.round_screen.RoundScreen
+import com.example.roundtimer.presentation.saved_workout_screen.SavedWorkoutScreen
 import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomRepository
 import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomRepositoryImpl
-import com.example.roundtimer.presentation.setting_screens.settings_screen.SettingsScreen
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModel
+import com.example.roundtimer.presentation.saved_workout_screen.WorkoutRoomViewModelFactory
 import com.example.roundtimer.presentation.setting_screens.TipsScreen
 import com.example.roundtimer.presentation.setting_screens.about_screen.AboutScreen
 import com.example.roundtimer.presentation.setting_screens.about_screen.FeedbackForm
 import com.example.roundtimer.presentation.setting_screens.about_screen.PrivacyPolicyParagraph
 import com.example.roundtimer.presentation.setting_screens.about_screen.TermsOfServiceParagraph
+import com.example.roundtimer.presentation.setting_screens.settings_screen.SettingsScreen
 import com.example.roundtimer.presentation.transition_screen.FiveSecondScreen
 import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondScreen
 
@@ -66,8 +67,11 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 onCollectionClick = {
                     navController.navigate(NavDestination.SavedWorkoutScreen)
                 },
+                onSwipeBack = {
+                    navController.popBackStack(ExitTransition, false)
+                },
                 workoutInputVM = workoutInputVM,
-                roomViewModel = roomViewModel
+                roomViewModel = roomViewModel,
             )
         }
         //Transition Screens
@@ -77,7 +81,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                     navController.navigate(NavDestination.RoundScreenNavi)
                 },
                 onSwipeBack = {
-                    navController.navigateUp()
+                    navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 }
             )
         }
@@ -87,7 +91,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                     navController.navigate(NavDestination.RoundScreenNavi)
                 },
                 onSwipeBack = {
-                    navController.navigateUp()
+                    navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 }
             )
         }
