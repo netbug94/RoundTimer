@@ -110,16 +110,16 @@ fun RoundScreenContent(
     onFinishClick: () -> Unit
 ) {
 
-    Row(modifier = Modifier.fillMaxWidth()
+    BackArrowButton(
+        rowModifier = Modifier
+        .fillMaxWidth()
         .systemBarsPadding()
         .padding(16.dp),
-        verticalAlignment = Alignment.Top) {
-        BackArrowButton(
-            onBackArrowClick = onFinishClick,
-            size = 40.dp,
-            leTint = MaterialTheme.colorScheme.primary
-        )
-    }
+        rowAlignment = Alignment.Top,
+        onBackArrowClick = onFinishClick,
+        size = 40.dp,
+        leTint = MaterialTheme.colorScheme.primary
+    )
 
     Column(
         modifier = Modifier

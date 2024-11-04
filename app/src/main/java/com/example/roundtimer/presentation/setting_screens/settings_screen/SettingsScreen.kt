@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.roundtimer.presentation.common.BackArrowButton
 import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
 import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
 
@@ -44,11 +45,22 @@ fun SettingsScreen(
         onSwipeBack()
     }
 
+    BackArrowButton(
+        rowModifier = Modifier
+            .fillMaxWidth()
+            .systemBarsPadding()
+            .padding(16.dp),
+        rowAlignment = Alignment.Top,
+        onBackArrowClick = onSwipeBack,
+        size = 40.dp,
+        leTint = MaterialTheme.colorScheme.primary
+    )
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .systemBarsPadding()
-            .padding(top = 32.dp)
+            .padding(top = 64.dp)
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

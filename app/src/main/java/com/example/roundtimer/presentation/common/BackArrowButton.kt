@@ -23,15 +23,16 @@ fun BackArrowButton(
     size: Dp = 60.dp,
     leTint: Color = MaterialTheme.colorScheme.primary,
     rowModifier: Modifier = Modifier,
+    rowAlignment: Alignment.Vertical = Alignment.CenterVertically,
+    rowArrangement: Arrangement.Horizontal = Arrangement.Start,
     iconModifier: Modifier = Modifier
 ) {
     Row(
         modifier = rowModifier,
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Start
+        verticalAlignment = rowAlignment,
+        horizontalArrangement = rowArrangement
     ) {
-        Icon(
-            modifier = iconModifier
+        Icon(modifier = iconModifier
                 .size(size)
                 .clip(
                     RoundedCornerShape(

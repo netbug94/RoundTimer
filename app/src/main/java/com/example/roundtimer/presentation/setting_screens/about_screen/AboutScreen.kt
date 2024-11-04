@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
+import com.example.roundtimer.presentation.common.BackArrowButton
 
 @Composable
 fun AboutScreen(
@@ -42,6 +44,17 @@ fun AboutScreen(
     BackHandler {
         onSwipeBack()
     }
+
+    BackArrowButton(
+        rowModifier = Modifier
+            .fillMaxWidth()
+            .systemBarsPadding()
+            .padding(16.dp),
+        rowAlignment = Alignment.Top,
+        onBackArrowClick = onSwipeBack,
+        size = 40.dp,
+        leTint = MaterialTheme.colorScheme.primary
+    )
 
     Column(
         modifier = Modifier

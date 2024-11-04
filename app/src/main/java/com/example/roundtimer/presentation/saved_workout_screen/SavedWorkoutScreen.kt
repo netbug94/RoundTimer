@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -49,7 +50,6 @@ import androidx.compose.ui.unit.dp
 import com.example.roundtimer.R
 import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
 import com.example.roundtimer.presentation.common.BackArrowButton
-import com.example.roundtimer.ui.theme.customColorScheme
 import kotlinx.coroutines.launch
 
 @Composable
@@ -84,25 +84,24 @@ fun WorkoutListScreen(
     ) { paddingValues ->
         val paddingValue = paddingValues
 
+        BackArrowButton(
+            rowModifier = Modifier
+                .fillMaxWidth()
+                .systemBarsPadding()
+                .padding(start = 16.dp, top = 8.dp),
+            rowAlignment = Alignment.Top,
+            onBackArrowClick = onHomeClick,
+            leTint = MaterialTheme.colorScheme.primary
+        )
+
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(paddingValue)
-            .padding(top = 16.dp)
+            .padding(top = 80.dp)
         ) {
-
-            BackArrowButton(
-                rowModifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 12.dp)
-                    .weight(1f),
-                onBackArrowClick = onHomeClick,
-                leTint = customColorScheme().customBorderColor
-            )
-
             LazyColumn(
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
-                    .weight(10f)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
