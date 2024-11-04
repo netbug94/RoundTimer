@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roundtimer.R
+import com.example.roundtimer.presentation.common.BackArrowButton
 import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 import kotlinx.coroutines.delay
@@ -107,6 +109,18 @@ fun RoundScreenContent(
     onPauseResumeClick: () -> Unit,
     onFinishClick: () -> Unit
 ) {
+
+    Row(modifier = Modifier.fillMaxWidth()
+        .systemBarsPadding()
+        .padding(16.dp),
+        verticalAlignment = Alignment.Top) {
+        BackArrowButton(
+            onBackArrowClick = onFinishClick,
+            size = 40.dp,
+            leTint = MaterialTheme.colorScheme.primary
+        )
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
