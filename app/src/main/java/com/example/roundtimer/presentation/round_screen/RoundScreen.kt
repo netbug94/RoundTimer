@@ -1,6 +1,7 @@
 package com.example.roundtimer.presentation.round_screen
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,8 +10,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,13 +30,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roundtimer.R
 import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
-import com.example.roundtimer.presentation.common.BackArrowButton
 import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 import kotlinx.coroutines.delay
@@ -124,17 +131,6 @@ fun RoundScreenContent(
     val resumeString = stringResource(id = R.string.Resume)
     val finishString = stringResource(id = R.string.Finish)
 
-    BackArrowButton(
-        rowModifier = Modifier
-        .fillMaxWidth()
-        .systemBarsPadding()
-        .padding(16.dp),
-        rowAlignment = Alignment.Top,
-        onBackArrowClick = onFinishClick,
-        size = 40.dp,
-        leTint = MaterialTheme.colorScheme.primary
-    )
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -191,6 +187,52 @@ fun RoundScreenContent(
                     Text(finishString)
                 }
             }
+        }
+    }
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .systemBarsPadding()
+        .padding(16.dp),
+        verticalAlignment = Alignment.Bottom) {
+        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+            horizontalAlignment = Alignment.Start) {
+            Icon(modifier = Modifier
+                .size(40.dp)
+                .clip(
+                    RoundedCornerShape(
+                        topStart = 10.dp,
+                        topEnd = 10.dp,
+                        bottomStart = 10.dp,
+                        bottomEnd = 10.dp
+                    )
+                )
+                .clickable(
+                    onClick = { }
+                ),
+                imageVector = Icons.Default.Home,
+                contentDescription = "Back arrow button",
+                tint = MaterialTheme.colorScheme.primary
+            )
+        }
+        Column(modifier = Modifier.fillMaxWidth().weight(1f),
+            horizontalAlignment = Alignment.End) {
+            Icon(modifier = Modifier
+                .size(40.dp)
+                .clip(
+                    RoundedCornerShape(
+                        topStart = 10.dp,
+                        topEnd = 10.dp,
+                        bottomStart = 10.dp,
+                        bottomEnd = 10.dp
+                    )
+                )
+                .clickable(
+                    onClick = { }
+                ),
+                imageVector = Icons.AutoMirrored.Filled.List,
+                contentDescription = "Back arrow button",
+                tint = MaterialTheme.colorScheme.primary
+            )
         }
     }
 }
