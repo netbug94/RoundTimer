@@ -34,4 +34,7 @@ class WorkoutInputViewModel : ViewModel() {
     fun clearWorkoutInput() {
         _workoutInput.value = WorkoutInput(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds = 0)
     }
+    fun setWorkoutInput(workoutInput: WorkoutInput) {
+        _workoutInput.value = workoutInput
+    }
 }

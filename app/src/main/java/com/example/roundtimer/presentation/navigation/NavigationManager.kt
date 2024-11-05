@@ -1,6 +1,5 @@
 package com.example.roundtimer.presentation.navigation
 
-import android.util.Log
 import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -70,7 +69,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                     navController.popBackStack(ExitTransition, false)
                 },
                 workoutInputVM = workoutInputVM,
-                roomViewModel = roomViewModel,
+                roomViewModel = roomViewModel
             )
         }
         //Transition Screens
@@ -110,7 +109,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
             SettingsScreen(
                 onSwipeBack = {
                     navController.popBackStack(NavDestination.FirstScreenNavi, false)
-                },
+                }
             )
         }
 
@@ -158,7 +157,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
             TipsScreen(
                 onSwipeBack = {
                     navController.popBackStack(NavDestination.FirstScreenNavi, false)
-                },
+                }
             )
         }
 
@@ -169,9 +168,13 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 onHomeClick = {
                     navController.navigate(NavDestination.FirstScreenNavi)
                 },
-                onWorkoutSelected = { workout ->
-                    Log.d("SavedWorkoutScreen", "Selected Workout: ${workout.name}")
-                }
+                onStartClickFive= {
+                    navController.navigate(NavDestination.FiveSecondScreenNavi)
+                },
+                onStartClickThree= {
+                    navController.navigate(NavDestination.ThreeSecondScreenNavi)
+                },
+                workoutInputVM = workoutInputVM
             )
         }
     }
