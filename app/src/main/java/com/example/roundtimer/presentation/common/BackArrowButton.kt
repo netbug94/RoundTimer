@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -25,6 +26,7 @@ fun BackArrowButton(
     rowModifier: Modifier = Modifier,
     rowAlignment: Alignment.Vertical = Alignment.CenterVertically,
     rowArrangement: Arrangement.Horizontal = Arrangement.Start,
+    buttonIcon: ImageVector = Icons.AutoMirrored.Default.KeyboardArrowLeft,
     iconModifier: Modifier = Modifier
 ) {
     Row(
@@ -45,7 +47,7 @@ fun BackArrowButton(
                 .clickable(
                     onClick = onBackArrowClick
                 ),
-            imageVector = Icons.AutoMirrored.Default.KeyboardArrowLeft,
+            imageVector = buttonIcon,
             contentDescription = "Back arrow button",
             tint = leTint
         )

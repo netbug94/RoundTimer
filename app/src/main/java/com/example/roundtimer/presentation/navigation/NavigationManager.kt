@@ -100,6 +100,12 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 onSwipeBack = {
                     navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 },
+                onHomeIconClick = {
+                    navController.navigate(NavDestination.FirstScreenNavi)
+                },
+                onListIconClick = {
+                    navController.navigate(NavDestination.SavedWorkoutScreen)
+                },
                 workoutInputVM = workoutInputVM
             )
         }
@@ -173,6 +179,9 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 },
                 onStartClickThree= {
                     navController.navigate(NavDestination.ThreeSecondScreenNavi)
+                },
+                onSwipeBack = {
+                    navController.popBackStack(NavDestination.FirstScreenNavi, false)
                 },
                 workoutInputVM = workoutInputVM
             )

@@ -22,7 +22,7 @@ fun DeleteConfirmationDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(text = deleteWorkoutString) },
-        text = { Text(text = "$areYouSureString \"${workout.name}\"?") },
+        text = { Text(text = "$areYouSureString \"${workout.baseName}\"?") },
         confirmButton = {
             TextButton(onClick = onConfirm) {
                 Text(deleteString)

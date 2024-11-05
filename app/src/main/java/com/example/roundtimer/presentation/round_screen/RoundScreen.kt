@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -38,7 +41,9 @@ import kotlinx.coroutines.delay
 fun RoundScreen(
     onSwipeBack: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
-    selectedWorkout: WorkoutRoomEntity? = null
+    selectedWorkout: WorkoutRoomEntity? = null,
+    onHomeIconClick: () -> Unit,
+    onListIconClick: () -> Unit
 ) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
     val totalRounds: Int
@@ -102,7 +107,9 @@ fun RoundScreen(
         onPauseResumeClick = {
             timerStatus = if (timerStatus == TimerStatus.Running) TimerStatus.Paused else TimerStatus.Running
         },
-        onFinishClick = onSwipeBack
+        onFinishClick = onSwipeBack,
+        onHomeIconClick = onHomeIconClick,
+        onListIconClick = onListIconClick
     )
 }
 
@@ -116,24 +123,15 @@ fun RoundScreenContent(
     customColorText: androidx.compose.ui.graphics.Color,
     restTextColor: androidx.compose.ui.graphics.Color,
     onPauseResumeClick: () -> Unit,
-    onFinishClick: () -> Unit
+    onFinishClick: () -> Unit,
+    onHomeIconClick: () -> Unit,
+    onListIconClick: () -> Unit
 ) {
     val restString = stringResource(id = R.string.Rest)
     val roundString = stringResource(id = R.string.Round)
     val pauseString = stringResource(id = R.string.Pause)
     val resumeString = stringResource(id = R.string.Resume)
     val finishString = stringResource(id = R.string.Finish)
-
-    BackArrowButton(
-        rowModifier = Modifier
-        .fillMaxWidth()
-        .systemBarsPadding()
-        .padding(16.dp),
-        rowAlignment = Alignment.Top,
-        onBackArrowClick = onFinishClick,
-        size = 40.dp,
-        leTint = MaterialTheme.colorScheme.primary
-    )
 
     Column(
         modifier = Modifier
@@ -192,5 +190,32 @@ fun RoundScreenContent(
                 }
             }
         }
+    }
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .systemBarsPadding()
+        .padding(16.dp),
+        verticalAlignment = Alignment.Bottom) {
+        BackArrowButton(rowModifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
+            rowAlignment = Alignment.Bottom,
+            rowArrangement = Arrangement.Start,
+            size = 40.dp,
+            onBackArrowClick = { onHomeIconClick() },
+            leTint = MaterialTheme.colorScheme.primary,
+            buttonIcon = Icons.Default.Home
+        )
+
+        BackArrowButton(rowModifier = Modifier
+            .fillMaxWidth()
+            .weight(1f),
+            rowAlignment = Alignment.Bottom,
+            rowArrangement = Arrangement.End,
+            size = 40.dp,
+            onBackArrowClick = { onListIconClick() },
+            leTint = MaterialTheme.colorScheme.primary,
+            buttonIcon = Icons.AutoMirrored.Default.List
+        )
     }
 }

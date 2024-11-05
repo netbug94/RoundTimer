@@ -1,5 +1,6 @@
 package com.example.roundtimer.presentation.saved_workout_screen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -62,13 +63,15 @@ fun SavedWorkoutScreen(
     onHomeClick: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
     onStartClickFive: () -> Unit,
-    onStartClickThree: () -> Unit
+    onStartClickThree: () -> Unit,
+    onSwipeBack: () -> Unit
 ) {
     val settingsViewModel: TransitionSettingsViewModel = viewModel()
 
     WorkoutListScreen(
         roomViewModel = roomViewModel,
         onHomeClick = onHomeClick,
+        onSwipeBack = onSwipeBack,
         workoutInputVM = workoutInputVM,
         settingsViewModel= settingsViewModel,
         onStartClickFive = onStartClickFive,
@@ -80,6 +83,7 @@ fun SavedWorkoutScreen(
 fun WorkoutListScreen(
     roomViewModel: WorkoutRoomViewModel,
     onHomeClick: () -> Unit,
+    onSwipeBack: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
     settingsViewModel: TransitionSettingsViewModel,
     onStartClickFive: () -> Unit,
@@ -92,6 +96,10 @@ fun WorkoutListScreen(
     val coroutineScope = rememberCoroutineScope()
     val deleteSuccessful = stringResource(R.string.DeleteSuccessful)
     val emptyListString = stringResource(R.string.EmptyListString)
+
+    BackHandler {
+        onSwipeBack()
+    }
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
@@ -202,7 +210,7 @@ fun WorkoutListItem(
     showSnackbar: (String) -> Unit,
 ) {
     var isEditing by rememberSaveable { mutableStateOf(false) }
-    var editedName by rememberSaveable { mutableStateOf(workout.name) }
+    var editedName by rememberSaveable { mutableStateOf(workout.baseName) }
     val textFieldTitle = stringResource(R.string.TextFieldTitleWorkoutListItem)
     val updateSuccessful = stringResource(R.string.UpdatedSuccessful)
     val cannotBeEmpty = stringResource(R.string.CannotBeEmpty)
@@ -246,7 +254,7 @@ fun WorkoutListItem(
                     IconButton(
                         onClick = {
                             if (editedName.isNotBlank()) {
-                                val updatedWorkout = workout.copy(name = editedName)
+                                val updatedWorkout = workout.copy(baseName = editedName)
                                 onEdit(updatedWorkout)
                                 isEditing = false
                                 showSnackbar(updateSuccessful)
@@ -264,7 +272,8 @@ fun WorkoutListItem(
                     }
                 } else {
                     Text(
-                        text = workout.name,
+                        text = workout.
+                        baseName,
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.weight(1f)
