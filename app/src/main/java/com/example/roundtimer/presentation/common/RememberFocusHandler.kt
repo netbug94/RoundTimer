@@ -12,7 +12,6 @@ import com.example.roundtimer.domain.FocusHandler
 fun rememberFocusHandler(): FocusHandler {
     val anyFieldFocused = remember { mutableStateOf(false) }
     var focusedFieldCount by remember { mutableIntStateOf(0) }
-
     val focusChanged: (Boolean) -> Unit = { focused ->
         focusedFieldCount = (focusedFieldCount + if (focused) 1 else -1).coerceAtLeast(0)
         anyFieldFocused.value = focusedFieldCount > 0

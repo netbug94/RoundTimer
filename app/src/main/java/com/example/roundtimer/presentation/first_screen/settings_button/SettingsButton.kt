@@ -42,7 +42,6 @@ fun SettingsButton(
     val imageId = getImageIds().first
     val customColor = customColorScheme()
     val textDropdownColor = customColor.customTextColor
-
     val menuItems = listOf(
         stringResource(R.string.Settings),
         stringResource(R.string.Tips),
@@ -71,8 +70,7 @@ fun SettingsButton(
                     DropdownMenuItem(
                         modifier = Modifier.fillMaxWidth(),
                         text = {
-                            Text(
-                                text = item,
+                            Text(text = item,
                                 color = textDropdownColor,
                                 modifier = Modifier.fillMaxWidth(),
                                 textAlign = TextAlign.Center

@@ -31,9 +31,9 @@ fun PreviewRoundBox(
     onBannerShow: () -> Unit
 ) {
     val previewBoxColor = MaterialTheme.colorScheme.onSurface
-
     val ifFocusActiveBorder = if (isFocused) 2.dp else 1.dp
     val ifFocusActiveColor = if (isFocused) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
+    val roundsString = stringResource(id = R.string.Rounds)
 
     Row(
         modifier = Modifier
@@ -50,7 +50,7 @@ fun PreviewRoundBox(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = stringResource(id = R.string.Rounds),
+                text = roundsString,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium
             )

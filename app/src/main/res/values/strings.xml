@@ -99,6 +99,7 @@
 
     <!-- WorkoutListScreen -->
     <string name="DeleteSuccessful">Workout deleted successfully</string>
+    <string name="EmptyListString">Empty list</string>
 
     <!-- WorkoutListItem -->
     <string name="TextFieldTitleWorkoutListItem">Name</string>

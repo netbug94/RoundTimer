@@ -119,8 +119,12 @@ fun FirstScreenContent(
     } else {
         MaterialTheme.colorScheme.onSurface
     }
-
     var showBanner by remember { mutableStateOf(false) }
+    val roundMinString = stringResource(id = R.string.Round_Min)
+    val roundSecString = stringResource(id = R.string.Round_Sec)
+    val restMinString = stringResource(id = R.string.Rest_Min)
+    val restSecString = stringResource(id = R.string.Rest_Sec)
+
     if (showBanner) {
         LaunchedEffect(Unit) {
             delay(1500)
@@ -207,20 +211,20 @@ fun FirstScreenContent(
             InputDoubleFieldRow(
                 firstValue = roundMinutes,
                 onFirstValueChange = onRoundMinutesChange,
-                firstLabel = stringResource(id = R.string.Round_Min),
+                firstLabel = roundMinString,
                 secondValue = roundSeconds,
                 onSecondValueChange = onRoundSecondsChange,
-                secondLabel = stringResource(id = R.string.Round_Sec),
+                secondLabel = roundSecString,
                 onFocusChanged = focusChanged
             )
 
             InputDoubleFieldRow(
                 firstValue = restMinutes,
                 onFirstValueChange = onRestMinutesChange,
-                firstLabel = stringResource(id = R.string.Rest_Min),
+                firstLabel = restMinString,
                 secondValue = restSeconds,
                 onSecondValueChange = onRestSecondsChange,
-                secondLabel = stringResource(id = R.string.Rest_Sec),
+                secondLabel = restSecString,
                 onFocusChanged = focusChanged
             )
 
@@ -269,6 +273,8 @@ private fun InputSingleField(
     onValueChange: (Int) -> Unit,
     onFocusChanged: (Boolean) -> Unit
 ) {
+    val numberOfRoundsString = stringResource(id = R.string.Number_Of_Rounds)
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
@@ -276,7 +282,7 @@ private fun InputSingleField(
     ) {
         InputOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            label = stringResource(id = R.string.Number_Of_Rounds),
+            label = numberOfRoundsString,
             value = value,
             onValueChange = onValueChange,
             onFocusChanged = onFocusChanged,

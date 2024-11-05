@@ -36,10 +36,13 @@ fun AboutScreen(
 ) {
     val darkThemeTrue = isSystemInDarkTheme()
     val versionText = stringResource(R.string.Version)
-
-    val isDarkThemeTrue =
-        if (darkThemeTrue) painterResource(R.drawable.round_timer_about_icon_purple)
+    val isDarkThemeTrue = if (darkThemeTrue) painterResource(R.drawable.round_timer_about_icon_purple)
         else painterResource(R.drawable.round_timer_about_icon_light_purple)
+    val appNameString = stringResource(R.string.app_name)
+    val descriptionString = stringResource(R.string.Description)
+    val privacyPolicyString = stringResource(R.string.PrivacyPolicy)
+    val termsOfServiceString = stringResource(R.string.TermsOfService)
+    val sendFeedback = stringResource(R.string.SendFeedback)
 
     BackHandler {
         onSwipeBack()
@@ -73,7 +76,7 @@ fun AboutScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = stringResource(R.string.app_name),
+            text = appNameString,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )
@@ -82,7 +85,7 @@ fun AboutScreen(
 
         // App Description
         Text(
-            text = stringResource(R.string.Description),
+            text = descriptionString,
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Justify,
             modifier = Modifier.padding(horizontal = 10.dp)
@@ -104,21 +107,21 @@ fun AboutScreen(
             modifier = Modifier.fillMaxWidth(),
             onClick = { onPrivacyPolicyParagraph() }
         ) {
-            Text(text = stringResource(R.string.PrivacyPolicy))
+            Text(text = privacyPolicyString)
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = { onTermsOfServiceParagraph() }
         ) {
-            Text(text = stringResource(R.string.TermsOfService))
+            Text(text = termsOfServiceString)
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
             onClick = { onSendFeedbackForm() },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = stringResource(R.string.SendFeedback))
+            Text(text = sendFeedback)
         }
 
         Spacer(modifier = Modifier.height(24.dp))

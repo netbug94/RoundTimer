@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class TransitionSettingsViewModel(application: Application) : AndroidViewModel(application) {
     private val screenOptionKey = stringPreferencesKey("transition_screen_option")
-
     val selectedOption: StateFlow<TransitionScreenOption> = getApplication<Application>().dataStore.data
         .map { preferences ->
             when (preferences[screenOptionKey]) {
