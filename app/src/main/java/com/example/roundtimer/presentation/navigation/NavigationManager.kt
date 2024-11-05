@@ -32,7 +32,6 @@ import com.example.roundtimer.presentation.transition_screen.three_second_screen
 fun NavigationManager(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val workoutInputVM: WorkoutInputViewModel = viewModel()
-
     val context = LocalContext.current
     val workoutDao: WorkoutRoomDao = RoomDatabaseProvider.getRoomDatabase(context).workoutRoomDao()
     val repository: WorkoutRoomRepository = WorkoutRoomRepositoryImpl(workoutDao)

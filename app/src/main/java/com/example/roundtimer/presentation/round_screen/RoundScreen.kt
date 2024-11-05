@@ -39,13 +39,11 @@ fun RoundScreen(
     workoutInputVM: WorkoutInputViewModel
 ) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
-
     val totalRounds = workoutInput.roundNumber.coerceAtLeast(1)
     val roundDurationSeconds = workoutInput.roundMinutes * 60 + workoutInput.roundSeconds
     val restDurationSeconds = workoutInput.restMinutes * 60 + workoutInput.restSeconds
     val customColorText = customColorScheme().customBorderColor
     val restTextColor = customColorScheme().redTextColor
-
     var currentRound by rememberSaveable { mutableIntStateOf(1) }
     var isRest by rememberSaveable { mutableStateOf(false) }
     var timeRemaining by rememberSaveable { mutableIntStateOf(roundDurationSeconds) }

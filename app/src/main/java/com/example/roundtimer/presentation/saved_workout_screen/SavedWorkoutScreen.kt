@@ -77,6 +77,7 @@ fun WorkoutListScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
     val deleteSuccessful = stringResource(R.string.DeleteSuccessful)
+    val emptyListString = stringResource(R.string.EmptyListString)
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
@@ -93,42 +94,58 @@ fun WorkoutListScreen(
             leTint = MaterialTheme.colorScheme.primary
         )
 
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValue)
-            .padding(top = 80.dp)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValue)
+                .padding(top = 80.dp)
         ) {
-            LazyColumn(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                items(
-                    items = workouts,
-                    key = { workout -> workout.id }
-                ) { workout ->
-                    WorkoutListItem(
-                        workout = workout,
-                        onDelete = {
-                            roomViewModel.showDeleteConfirmation(workout)
-                        },
-                        onEdit = { updatedWorkout ->
-                            roomViewModel.updateRoomWorkoutName(updatedWorkout)
-                        },
-                        onClick = { onWorkoutSelected(workout) },
-                        showSnackbar = { message ->
-                            coroutineScope.launch {
-                                snackbarHostState.showSnackbar(
-                                    message,
-                                    duration = SnackbarDuration.Short
-                                )
-                            }
-                        }
+            if (workouts.isEmpty()) {
+                Column(modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(modifier = Modifier.padding(bottom = 130.dp),
+                        text = emptyListString,
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onBackground
                     )
+                }
+            } else {
+                // List of workouts
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(
+                        items = workouts,
+                        key = { workout -> workout.id }
+                    ) { workout ->
+                        WorkoutListItem(
+                            workout = workout,
+                            onDelete = {
+                                roomViewModel.showDeleteConfirmation(workout)
+                            },
+                            onEdit = { updatedWorkout ->
+                                roomViewModel.updateRoomWorkoutName(updatedWorkout)
+                            },
+                            onClick = { onWorkoutSelected(workout) },
+                            showSnackbar = { message ->
+                                coroutineScope.launch {
+                                    snackbarHostState.showSnackbar(
+                                        message,
+                                        duration = SnackbarDuration.Short
+                                    )
+                                }
+                            }
+                        )
+                    }
                 }
             }
 
+            // Handle the delete confirmation dialog
             if (workoutToDelete != null) {
                 DeleteConfirmationDialog(
                     workout = workoutToDelete,
@@ -139,8 +156,7 @@ fun WorkoutListScreen(
                             snackbarHostState.showSnackbar(
                                 deleteSuccessful,
                                 duration = SnackbarDuration.Short,
-
-                                )
+                            )
                         }
                     },
                     onDismiss = {
