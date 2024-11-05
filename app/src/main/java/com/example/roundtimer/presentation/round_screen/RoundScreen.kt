@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roundtimer.R
+import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
 import com.example.roundtimer.presentation.common.BackArrowButton
 import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
@@ -36,14 +37,24 @@ import kotlinx.coroutines.delay
 @Composable
 fun RoundScreen(
     onSwipeBack: () -> Unit,
-    workoutInputVM: WorkoutInputViewModel
+    workoutInputVM: WorkoutInputViewModel,
+    selectedWorkout: WorkoutRoomEntity? = null
 ) {
     val workoutInput by workoutInputVM.workoutInput.collectAsState()
-    val totalRounds = workoutInput.roundNumber.coerceAtLeast(1)
-    val roundDurationSeconds = workoutInput.roundMinutes * 60 + workoutInput.roundSeconds
-    val restDurationSeconds = workoutInput.restMinutes * 60 + workoutInput.restSeconds
+    val totalRounds: Int
+    val roundDurationSeconds: Int
+    val restDurationSeconds: Int
     val customColorText = customColorScheme().customBorderColor
     val restTextColor = customColorScheme().redTextColor
+    if (selectedWorkout != null) {
+        totalRounds = selectedWorkout.roundNumber.coerceAtLeast(1)
+        roundDurationSeconds = selectedWorkout.roundMinutes * 60 + selectedWorkout.roundSeconds
+        restDurationSeconds = selectedWorkout.restMinutes * 60 + selectedWorkout.restSeconds
+    } else {
+        totalRounds = workoutInput.roundNumber.coerceAtLeast(1)
+        roundDurationSeconds = workoutInput.roundMinutes * 60 + workoutInput.roundSeconds
+        restDurationSeconds = workoutInput.restMinutes * 60 + workoutInput.restSeconds
+    }
     var currentRound by rememberSaveable { mutableIntStateOf(1) }
     var isRest by rememberSaveable { mutableStateOf(false) }
     var timeRemaining by rememberSaveable { mutableIntStateOf(roundDurationSeconds) }

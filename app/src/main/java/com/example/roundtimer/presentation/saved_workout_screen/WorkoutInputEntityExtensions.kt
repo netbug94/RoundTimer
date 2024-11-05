@@ -20,12 +20,11 @@ fun WorkoutInput.toEntity(displayId: Int): WorkoutRoomEntity {
     )
 }
 
-/*
-fun WorkoutEntity.toWorkoutInput() = WorkoutInput(
+
+fun WorkoutRoomEntity.toWorkoutInput() = WorkoutInput(
     roundNumber = this.roundNumber,
     roundMinutes = this.roundMinutes,
     roundSeconds = this.roundSeconds,
     restMinutes = this.restMinutes,
     restSeconds = this.restSeconds
 )
-*/

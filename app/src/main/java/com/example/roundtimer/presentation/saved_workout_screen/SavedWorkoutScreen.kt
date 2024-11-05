@@ -47,29 +47,43 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
 import com.example.roundtimer.domain.room_domain.WorkoutRoomEntity
 import com.example.roundtimer.presentation.common.BackArrowButton
+import com.example.roundtimer.presentation.first_screen.WorkoutInputViewModel
+import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
+import com.example.roundtimer.presentation.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun SavedWorkoutScreen(
     roomViewModel: WorkoutRoomViewModel,
     onHomeClick: () -> Unit,
-    onWorkoutSelected: (WorkoutRoomEntity) -> Unit
+    workoutInputVM: WorkoutInputViewModel,
+    onStartClickFive: () -> Unit,
+    onStartClickThree: () -> Unit
 ) {
+    val settingsViewModel: TransitionSettingsViewModel = viewModel()
+
     WorkoutListScreen(
         roomViewModel = roomViewModel,
-        onWorkoutSelected = onWorkoutSelected,
-        onHomeClick = onHomeClick
+        onHomeClick = onHomeClick,
+        workoutInputVM = workoutInputVM,
+        settingsViewModel= settingsViewModel,
+        onStartClickFive = onStartClickFive,
+        onStartClickThree = onStartClickThree
     )
 }
 
 @Composable
 fun WorkoutListScreen(
     roomViewModel: WorkoutRoomViewModel,
-    onWorkoutSelected: (WorkoutRoomEntity) -> Unit,
-    onHomeClick: () -> Unit
+    onHomeClick: () -> Unit,
+    workoutInputVM: WorkoutInputViewModel,
+    settingsViewModel: TransitionSettingsViewModel,
+    onStartClickFive: () -> Unit,
+    onStartClickThree: () -> Unit
 ) {
     val workouts by roomViewModel.allWorkouts.observeAsState(emptyList())
     val workoutToDelete = roomViewModel.workoutToDelete.observeAsState().value
@@ -131,7 +145,17 @@ fun WorkoutListScreen(
                             onEdit = { updatedWorkout ->
                                 roomViewModel.updateRoomWorkoutName(updatedWorkout)
                             },
-                            onClick = { onWorkoutSelected(workout) },
+                            onClick = {
+                                workoutInputVM.setWorkoutInput(workout.toWorkoutInput())
+                                when (settingsViewModel.selectedOption.value) {
+                                    TransitionScreenOption.FIVE_SECONDS -> {
+                                        onStartClickFive()
+                                    }
+                                    TransitionScreenOption.THREE_SECONDS -> {
+                                        onStartClickThree()
+                                    }
+                                }
+                            },
                             showSnackbar = { message ->
                                 coroutineScope.launch {
                                     snackbarHostState.showSnackbar(
@@ -175,7 +199,7 @@ fun WorkoutListItem(
     onEdit: (WorkoutRoomEntity) -> Unit,
     onClick: () -> Unit,
     @Suppress("SpellCheckingInspection")
-    showSnackbar: (String) -> Unit
+    showSnackbar: (String) -> Unit,
 ) {
     var isEditing by rememberSaveable { mutableStateOf(false) }
     var editedName by rememberSaveable { mutableStateOf(workout.name) }
@@ -188,8 +212,7 @@ fun WorkoutListItem(
     val deleteButtonString = stringResource(R.string.Delete)
     val cancelButtonString = stringResource(R.string.Cancel)
 
-    Card(
-        modifier = Modifier
+    Card(modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 16.dp)
             .padding(horizontal = 6.dp)
