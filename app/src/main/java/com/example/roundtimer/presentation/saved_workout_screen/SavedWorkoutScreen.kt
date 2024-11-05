@@ -210,7 +210,7 @@ fun WorkoutListItem(
     showSnackbar: (String) -> Unit,
 ) {
     var isEditing by rememberSaveable { mutableStateOf(false) }
-    var editedName by rememberSaveable { mutableStateOf(workout.name) }
+    var editedName by rememberSaveable { mutableStateOf(workout.baseName) }
     val textFieldTitle = stringResource(R.string.TextFieldTitleWorkoutListItem)
     val updateSuccessful = stringResource(R.string.UpdatedSuccessful)
     val cannotBeEmpty = stringResource(R.string.CannotBeEmpty)
@@ -254,7 +254,7 @@ fun WorkoutListItem(
                     IconButton(
                         onClick = {
                             if (editedName.isNotBlank()) {
-                                val updatedWorkout = workout.copy(name = editedName)
+                                val updatedWorkout = workout.copy(baseName = editedName)
                                 onEdit(updatedWorkout)
                                 isEditing = false
                                 showSnackbar(updateSuccessful)
@@ -272,7 +272,8 @@ fun WorkoutListItem(
                     }
                 } else {
                     Text(
-                        text = workout.name,
+                        text = workout.
+                        baseName,
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.weight(1f)

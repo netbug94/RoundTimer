@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 data class WorkoutRoomEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val displayId: Int,
-    val name: String,
+    val baseName: String,
     val roundNumber: Int,
     val roundMinutes: Int,
     val roundSeconds: Int,
