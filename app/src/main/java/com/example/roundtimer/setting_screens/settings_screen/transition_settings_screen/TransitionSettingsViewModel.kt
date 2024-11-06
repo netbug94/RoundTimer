@@ -13,14 +13,15 @@ import kotlinx.coroutines.launch
 
 class TransitionSettingsViewModel(application: Application) : AndroidViewModel(application) {
     private val screenOptionKey = stringPreferencesKey("transition_screen_option")
-    val selectedOption: StateFlow<TransitionScreenOption> = getApplication<Application>().dataStore.data
-        .map { preferences ->
-            when (preferences[screenOptionKey]) {
-                TransitionScreenOption.THREE_SECONDS.name -> TransitionScreenOption.THREE_SECONDS
-                else -> TransitionScreenOption.FIVE_SECONDS
+    val selectedOption: StateFlow<TransitionScreenOption> =
+        getApplication<Application>().dataStore.data
+            .map { preferences ->
+                when (preferences[screenOptionKey]) {
+                    TransitionScreenOption.THREE_SECONDS.name -> TransitionScreenOption.THREE_SECONDS
+                    else -> TransitionScreenOption.FIVE_SECONDS
+                }
             }
-        }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, TransitionScreenOption.FIVE_SECONDS)
+            .stateIn(viewModelScope, SharingStarted.Eagerly, TransitionScreenOption.FIVE_SECONDS)
 
     fun selectOption(option: TransitionScreenOption) {
         viewModelScope.launch {

@@ -70,7 +70,7 @@ fun RoundScreen(
     var timeRemaining by rememberSaveable { mutableIntStateOf(roundDurationSeconds) }
     var timerStatus by rememberSaveable { mutableStateOf(TimerStatus.Running) }
     val toneGenerator = remember {
-        ToneGenerator(AudioManager.STREAM_ALARM, 100)
+        ToneGenerator(AudioManager.STREAM_MUSIC, 100)
     }
 
     DisposableEffect(Unit) {
@@ -105,6 +105,7 @@ fun RoundScreen(
             }
         }
     }
+
     LaunchedEffect(timeRemaining) {
         when (timeRemaining) {
             in 1..3 -> {

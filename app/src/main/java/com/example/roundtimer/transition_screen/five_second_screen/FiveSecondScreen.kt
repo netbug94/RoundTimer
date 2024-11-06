@@ -1,4 +1,4 @@
-package com.example.roundtimer.transition_screen
+package com.example.roundtimer.transition_screen.five_second_screen
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement

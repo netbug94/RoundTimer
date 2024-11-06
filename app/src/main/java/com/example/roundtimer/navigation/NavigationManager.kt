@@ -23,8 +23,8 @@ import com.example.roundtimer.setting_screens.about_screen.FeedbackForm
 import com.example.roundtimer.setting_screens.about_screen.PrivacyPolicyParagraph
 import com.example.roundtimer.setting_screens.about_screen.TermsOfServiceParagraph
 import com.example.roundtimer.setting_screens.settings_screen.SettingsScreen
-import com.example.roundtimer.transition_screen.FiveSecondScreen
-import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondScreen
+import com.example.roundtimer.transition_screen.five_second_screen.FiveSecondScreen
+import com.example.roundtimer.transition_screen.three_second_screen.ThreeSecondScreen
 import com.example.roundtimer.save_screen.data.RoomDatabaseProvider
 
 @Composable
