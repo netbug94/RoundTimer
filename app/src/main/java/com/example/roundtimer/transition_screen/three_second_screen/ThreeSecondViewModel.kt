@@ -1,20 +1,18 @@
-package com.example.roundtimer.presentation.transition_screen.three_second_screen
+package com.example.roundtimer.transition_screen.three_second_screen
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondScreenEvent
+import kotlinx.coroutines.*
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlin.coroutines.cancellation.CancellationException
 
 class ThreeSecondViewModel : ViewModel() {
-    private val _secondsRemaining = MutableStateFlow(3)
+    private val _secondsRemaining = MutableStateFlow(0)
     val secondsRemaining: StateFlow<Int> = _secondsRemaining.asStateFlow()
 
     private val _isCancelled = MutableStateFlow(false)
@@ -22,11 +20,7 @@ class ThreeSecondViewModel : ViewModel() {
     private val _uiEvent = MutableSharedFlow<ThreeSecondScreenEvent>()
     val uiEvent: SharedFlow<ThreeSecondScreenEvent> = _uiEvent.asSharedFlow()
 
-    init {
-        startCountdown()
-    }
-
-    private fun startCountdown() {
+    fun startCountdown() {
         viewModelScope.launch {
             try {
                 for (i in 3 downTo 1) {
@@ -40,7 +34,8 @@ class ThreeSecondViewModel : ViewModel() {
                     _uiEvent.emit(ThreeSecondScreenEvent.Navigate)
                 }
             } catch (_: CancellationException) {
-                Log.d("Countdown", "Countdown was cancelled")
+                Log.d("ThreeSecondViewModel", "Countdown was cancelled")
+                _secondsRemaining.value = 0
             }
         }
     }
