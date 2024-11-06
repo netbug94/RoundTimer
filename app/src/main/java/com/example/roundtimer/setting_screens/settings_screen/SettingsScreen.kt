@@ -1,5 +1,6 @@
 package com.example.roundtimer.setting_screens.settings_screen
 
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -26,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -38,10 +41,13 @@ import com.example.roundtimer.setting_screens.settings_screen.transition_setting
 fun SettingsScreen(
     onSwipeBack: () -> Unit
 ) {
-    val transitionSettingsViewModel: TransitionSettingsViewModel = viewModel()
+    val transitionSettingsViewModel: TransitionSettingsViewModel = viewModel(
+        viewModelStoreOwner = LocalContext.current as ComponentActivity
+    )
     val selectedOption by transitionSettingsViewModel.selectedOption.collectAsState()
     var isExpanded by remember { mutableStateOf(false) }
     val transitionScreenDurationString = stringResource(id = R.string.TransitionScreenDuration)
+    val isSoundEnabled by transitionSettingsViewModel.isSoundEnabled.collectAsState()
 
     BackHandler {
         onSwipeBack()
@@ -115,6 +121,25 @@ fun SettingsScreen(
                         }
                     }
                 }
+            }
+        }
+        item {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { transitionSettingsViewModel.setSoundEnabled(isSoundEnabled == true) }
+                    .padding(vertical = 16.dp, horizontal = 8.dp)
+            ) {
+                Text(
+                    text = "test",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.weight(1f)
+                )
+                Switch(
+                    checked = isSoundEnabled == true,
+                    onCheckedChange = { transitionSettingsViewModel.setSoundEnabled(it) }
+                )
             }
         }
     }

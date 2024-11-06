@@ -2,6 +2,7 @@ package com.example.roundtimer.transition_screen.three_second_screen
 
 import android.media.AudioAttributes
 import android.media.SoundPool
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,6 +25,7 @@ import com.example.roundtimer.R
 import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondScreenEvent
 import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondViewModel
 import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
 
 @Composable
 fun ThreeSecondScreen(
@@ -49,23 +51,25 @@ fun ThreeSecondScreen(
     val soundTwoId = remember { soundPool.load(context, R.raw.two_voice, 1) }
     val soundOneId = remember { soundPool.load(context, R.raw.one_voice, 1) }
 
-    DisposableEffect(Unit) {
-        onDispose {
-            soundPool.release()
+    val transitionSettingsViewModel: TransitionSettingsViewModel = viewModel(
+        viewModelStoreOwner = LocalContext.current as ComponentActivity
+    )
+    val isSoundEnabled by transitionSettingsViewModel.isSoundEnabled.collectAsState()
+
+
+    LaunchedEffect(secondsRemaining, isSoundEnabled) {
+        if (isSoundEnabled) {
+            when (secondsRemaining) {
+                3 -> soundPool.play(soundThreeId, 1f, 1f, 1, 0, 1f)
+                2 -> soundPool.play(soundTwoId, 1f, 1f, 1, 0, 1f)
+                1 -> soundPool.play(soundOneId, 1f, 1f, 1, 0, 1f)
+            }
         }
     }
 
-    LaunchedEffect(secondsRemaining) {
-        when (secondsRemaining) {
-            3 -> {
-                soundPool.play(soundThreeId, 1f, 1f, 1, 0, 1f)
-            }
-            2 -> {
-                soundPool.play(soundTwoId, 1f, 1f, 1, 0, 1f)
-            }
-            1 -> {
-                soundPool.play(soundOneId, 1f, 1f, 1, 0, 1f)
-            }
+    DisposableEffect(Unit) {
+        onDispose {
+            soundPool.release()
         }
     }
 
