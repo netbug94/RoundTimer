@@ -111,4 +111,11 @@
     <!-- SettingsScreen -->
     <string name="TransitionScreenDuration">Duración de la pantalla de transición</string>
 
+    <!-- TransitionScreenOptionExtensions -->
+    <string name="TransitionOptionFiveSeconds">Pantalla de cinco segundos</string>
+    <string name="TransitionOptionThreeSeconds">Pantalla de tres segundos</string>
+
+    <!-- FirstScreenContent -->
+    <string name="EntityFirstWord">Entidad</string>
+
 </resources>

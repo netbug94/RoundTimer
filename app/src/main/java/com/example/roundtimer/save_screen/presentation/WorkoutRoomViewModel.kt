@@ -24,10 +24,10 @@ class WorkoutRoomViewModel(private val repository: WorkoutRoomRepository) : View
         _workoutToDelete.value = null
     }
 
-    fun addRoomWorkout(workoutInput: WorkoutInput) {
+    fun addRoomWorkout(workoutInput: WorkoutInput, firstWordString: String) {
         viewModelScope.launch {
             try {
-                repository.addWorkout(workoutInput)
+                repository.addWorkout(workoutInput, firstWordString)
             } catch (e: Exception) {
                 Log.e("WorkoutRoomViewModel", "Error adding workout", e)
             }

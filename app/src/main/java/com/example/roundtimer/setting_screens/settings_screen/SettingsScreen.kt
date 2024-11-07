@@ -1,23 +1,12 @@
 package com.example.roundtimer.setting_screens.settings_screen
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -33,6 +22,9 @@ import com.example.roundtimer.R
 import com.example.roundtimer.common.BackIconButton
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.getDisplayName
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceOption
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceSettingsViewModel
 
 @Composable
 fun SettingsScreen(
@@ -40,8 +32,12 @@ fun SettingsScreen(
 ) {
     val transitionSettingsViewModel: TransitionSettingsViewModel = viewModel()
     val selectedOption by transitionSettingsViewModel.selectedOption.collectAsState()
-    var isExpanded by remember { mutableStateOf(false) }
     val transitionScreenDurationString = stringResource(id = R.string.TransitionScreenDuration)
+    var isTransitionDurationExpanded by remember { mutableStateOf(false) }
+
+    val voiceSettingsViewModel: VoiceSettingsViewModel = viewModel()
+    val selectedVoiceOption by voiceSettingsViewModel.selectedVoiceOption.collectAsState()
+    var isVoiceOptionsExpanded by remember { mutableStateOf(false) }
 
     BackHandler {
         onSwipeBack()
@@ -66,56 +62,36 @@ fun SettingsScreen(
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        item {
+            ExpandableOptionGroup(
+                title = transitionScreenDurationString,
+                options = TransitionScreenOption.entries,
+                selectedOption = selectedOption,
+                isExpanded = isTransitionDurationExpanded,
+                onExpandedChange = { isTransitionDurationExpanded = it },
+                onOptionSelected = { option ->
+                    transitionSettingsViewModel.selectOption(option)
+                },
+                optionLabel = { option -> option.getDisplayName() },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
 
         item {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { isExpanded = !isExpanded }
-                        .padding(vertical = 16.dp, horizontal = 8.dp)
-                ) {
-                    Text(
-                        text = transitionScreenDurationString,
-                        style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Icon(
-                        imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                        contentDescription = if (isExpanded) "Collapse" else "Expand"
-                    )
-                }
-
-                if (isExpanded) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp)
-                    ) {
-                        TransitionScreenOption.entries.forEach { option ->
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable { transitionSettingsViewModel.selectOption(option) }
-                                    .padding(vertical = 8.dp)
-                            ) {
-                                RadioButton(
-                                    selected = (option == selectedOption),
-                                    onClick = { transitionSettingsViewModel.selectOption(option) }
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(text = option.getDisplayName())
-                            }
-                        }
-                    }
-                }
-            }
+            ExpandableOptionGroup(
+                title = "Voice Options",
+                options = VoiceOption.entries,
+                selectedOption = selectedVoiceOption,
+                isExpanded = isVoiceOptionsExpanded,
+                onExpandedChange = { expanded ->
+                    isVoiceOptionsExpanded = expanded
+                },
+                onOptionSelected = { option ->
+                    voiceSettingsViewModel.selectVoiceOption(option)
+                },
+                optionLabel = { option -> option.displayName },
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }

@@ -111,6 +111,13 @@
     <!-- SettingsScreen -->
     <string name="TransitionScreenDuration">Transition Screen Duration</string>
 
+    <!-- TransitionScreenOptionExtensions -->
+    <string name="TransitionOptionFiveSeconds">Five second screen</string>
+    <string name="TransitionOptionThreeSeconds">Three second screen</string>
+
+    <!-- FirstScreenContent -->
+    <string name="EntityFirstWord">Entity</string>
+
     <!-- <string name=></string> -->
 
 </resources>

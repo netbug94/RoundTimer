@@ -7,13 +7,17 @@ import kotlinx.coroutines.flow.Flow
 
 class WorkoutRoomRepositoryImpl(private val workoutDao: WorkoutRoomDao) : WorkoutRoomRepository {
 
-    override fun getAllWorkouts(): Flow<List<WorkoutRoomEntity>> = workoutDao.getAllRoomWorkouts()
+    override fun getAllWorkouts(): Flow<List<WorkoutRoomEntity>> =
+        workoutDao.getAllRoomWorkouts()
 
-    override suspend fun addWorkout(workoutInput: WorkoutInput) {
+    override suspend fun addWorkout(workoutInput: WorkoutInput, firstWordString: String) {
         val maxDisplayId = workoutDao.getMaxDisplayId() ?: 0
         val newDisplayId = maxDisplayId + 1
 
-        val workoutEntity = workoutInput.toEntity(displayId = newDisplayId)
+        val workoutEntity = workoutInput.toEntity(
+            displayId = newDisplayId,
+            firstWordString = firstWordString
+        )
 
         workoutDao.insertRoomWorkout(workoutEntity)
     }
