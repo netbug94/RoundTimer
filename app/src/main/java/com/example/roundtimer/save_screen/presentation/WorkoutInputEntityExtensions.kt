@@ -3,9 +3,10 @@ package com.example.roundtimer.save_screen.presentation
 import com.example.roundtimer.first_screen.domain.WorkoutInput
 import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
 
-fun WorkoutInput.toEntity(displayId: Int, localeHelper: LocaleHelper = LocaleHelper()): WorkoutRoomEntity {
-    val firstWordString = localeHelper.getEntityFirstWord()
-
+fun WorkoutInput.toEntity(
+    displayId: Int,
+    firstWordString: String
+): WorkoutRoomEntity {
     return WorkoutRoomEntity(
         displayId = displayId,
         baseName = "$firstWordString $displayId",

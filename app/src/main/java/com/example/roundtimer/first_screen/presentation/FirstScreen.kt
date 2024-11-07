@@ -124,6 +124,7 @@ fun FirstScreenContent(
     val roundSecString = stringResource(id = R.string.Round_Sec)
     val restMinString = stringResource(id = R.string.Rest_Min)
     val restSecString = stringResource(id = R.string.Rest_Sec)
+    val firstWordString = stringResource(R.string.EntityFirstWord)
 
     if (showBanner) {
         LaunchedEffect(Unit) {
@@ -180,7 +181,7 @@ fun FirstScreenContent(
                 onBannerShow = {
                     showBanner = true
                     val currentWorkoutInput = workoutInputVM.workoutInput.value
-                    roomViewModel.addRoomWorkout(currentWorkoutInput)
+                    roomViewModel.addRoomWorkout(currentWorkoutInput, firstWordString)
                 }
             )
         }

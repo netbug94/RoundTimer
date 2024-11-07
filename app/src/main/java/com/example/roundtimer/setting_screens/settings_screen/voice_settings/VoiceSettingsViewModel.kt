@@ -5,7 +5,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.dataStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -21,23 +20,23 @@ class VoiceSettingsViewModel(application: Application) : AndroidViewModel(applic
     private val _isVoiceOptionLoaded = MutableStateFlow(false)
     val isVoiceOptionLoaded: StateFlow<Boolean> = _isVoiceOptionLoaded.asStateFlow()
 
-    val selectedVoiceOption: StateFlow<VoiceOption> = getApplication<Application>().dataStore.data
+    val selectedVoiceOption: StateFlow<VoiceOption> = getApplication<Application>().voiceDataStore.data
         .map { preferences ->
             when (preferences[voiceOptionKey]) {
                 VoiceOption.MUTE.name -> VoiceOption.MUTE
-                VoiceOption.GIRL_VOICE.name -> VoiceOption.GIRL_VOICE
-                // Add more cases when you add more voices
-                else -> VoiceOption.GIRL_VOICE // Default option
+                VoiceOption.WOMEN_VOICE.name -> VoiceOption.WOMEN_VOICE
+
+                else -> VoiceOption.WOMEN_VOICE
             }
         }
         .onEach {
-            _isVoiceOptionLoaded.value = true // Indicate that settings are loaded
+            _isVoiceOptionLoaded.value = true
         }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, VoiceOption.GIRL_VOICE)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, VoiceOption.WOMEN_VOICE)
 
     fun selectVoiceOption(option: VoiceOption) {
         viewModelScope.launch {
-            getApplication<Application>().dataStore.edit { preferences ->
+            getApplication<Application>().voiceDataStore.edit { preferences ->
                 preferences[voiceOptionKey] = option.name
             }
         }

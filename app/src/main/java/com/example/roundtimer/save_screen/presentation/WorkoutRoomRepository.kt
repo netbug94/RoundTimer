@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface WorkoutRoomRepository {
     fun getAllWorkouts(): Flow<List<WorkoutRoomEntity>>
-    suspend fun addWorkout(workoutInput: WorkoutInput)
+    suspend fun addWorkout(workoutInput: WorkoutInput, firstWordString: String)
     suspend fun updateWorkout(workout: WorkoutRoomEntity)
     suspend fun deleteWorkout(workout: WorkoutRoomEntity)
 }

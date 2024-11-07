@@ -27,7 +27,7 @@ fun <T> ExpandableOptionGroup(
     isExpanded: Boolean,
     onExpandedChange: (Boolean) -> Unit,
     onOptionSelected: (T) -> Unit,
-    optionLabel: (T) -> String,
+    optionLabel: @Composable (T) -> String,
     modifier: Modifier = Modifier
 ) {
     Column(

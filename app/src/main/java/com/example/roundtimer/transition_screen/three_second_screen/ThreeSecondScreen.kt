@@ -52,7 +52,7 @@ fun ThreeSecondScreen(
 
     val (soundThreeId, soundTwoId, soundOneId) = remember(selectedVoiceOption) {
         when (selectedVoiceOption) {
-            VoiceOption.GIRL_VOICE -> {
+            VoiceOption.WOMEN_VOICE -> {
                 Triple(
                     soundPool.load(context, R.raw.women_three_voice, 1),
                     soundPool.load(context, R.raw.women_two_voice, 1),

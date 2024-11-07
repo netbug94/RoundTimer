@@ -22,6 +22,7 @@ import com.example.roundtimer.R
 import com.example.roundtimer.common.BackIconButton
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.getDisplayName
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceOption
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceSettingsViewModel
 
