@@ -38,7 +38,6 @@ fun FiveSecondScreen(
     val isVoiceOptionLoaded by voiceSettingsViewModel.isVoiceOptionLoaded.collectAsState()
     val startingString = stringResource(R.string.StartingInString)
     val context = LocalContext.current
-
     val soundPool = remember {
         SoundPool.Builder()
             .setMaxStreams(1)
@@ -50,7 +49,6 @@ fun FiveSecondScreen(
             )
             .build()
     }
-
     val soundIds = remember(selectedVoiceOption) {
         when (selectedVoiceOption) {
             VoiceOption.WOMAN_VOICE -> {
