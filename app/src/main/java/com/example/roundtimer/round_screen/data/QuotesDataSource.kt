@@ -1,4 +1,4 @@
-package com.example.roundtimer.round_screen
+package com.example.roundtimer.round_screen.data
 
 import com.example.roundtimer.quote.domain.Quote
 

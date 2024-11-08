@@ -1,10 +1,11 @@
-package com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen
+package com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation
 
 import android.app.Application
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.data.dataStore
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

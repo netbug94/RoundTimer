@@ -1,6 +1,6 @@
 package com.example.roundtimer.first_screen.domain
 
-data class WorkoutInput(
+data class WorkoutParameters(
     val roundNumber: Int,
     val roundMinutes: Int,
     val roundSeconds: Int,

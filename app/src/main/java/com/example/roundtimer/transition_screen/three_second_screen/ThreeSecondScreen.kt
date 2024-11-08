@@ -17,13 +17,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
-import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondScreenEvent
 import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceOption
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
 
 @Composable
 fun ThreeSecondScreen(
@@ -35,7 +35,7 @@ fun ThreeSecondScreen(
     val secondsRemaining by threeSecondViewModel.secondsRemaining.collectAsState()
     val selectedVoiceOption by voiceSettingsViewModel.selectedVoiceOption.collectAsState()
     val isVoiceOptionLoaded by voiceSettingsViewModel.isVoiceOptionLoaded.collectAsState()
-    val startingString = "Starting in"
+    val startingString = stringResource(R.string.StartingInString)
     val context = LocalContext.current
 
     val soundPool = remember {
@@ -52,11 +52,18 @@ fun ThreeSecondScreen(
 
     val (soundThreeId, soundTwoId, soundOneId) = remember(selectedVoiceOption) {
         when (selectedVoiceOption) {
-            VoiceOption.WOMEN_VOICE -> {
+            VoiceOption.WOMAN_VOICE -> {
                 Triple(
-                    soundPool.load(context, R.raw.women_three_voice, 1),
-                    soundPool.load(context, R.raw.women_two_voice, 1),
-                    soundPool.load(context, R.raw.women_one_voice, 1)
+                    soundPool.load(context, R.raw.woman_voice_three, 1),
+                    soundPool.load(context, R.raw.woman_voice_two, 1),
+                    soundPool.load(context, R.raw.woman_voice_one, 1)
+                )
+            }
+            VoiceOption.MAN_VOICE -> {
+                Triple(
+                    soundPool.load(context, R.raw.man_voice_three, 1),
+                    soundPool.load(context, R.raw.man_voice_two, 1),
+                    soundPool.load(context, R.raw.man_voice_one, 1)
                 )
             }
             VoiceOption.MUTE -> {

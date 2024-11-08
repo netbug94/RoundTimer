@@ -20,11 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
 import com.example.roundtimer.common.BackIconButton
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionScreenOption
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.TransitionSettingsViewModel
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.getDisplayName
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceOption
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.VoiceSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionScreenOption
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.getDisplayName
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.getDisplayName
 
 @Composable
 fun SettingsScreen(
@@ -38,6 +39,7 @@ fun SettingsScreen(
     val voiceSettingsViewModel: VoiceSettingsViewModel = viewModel()
     val selectedVoiceOption by voiceSettingsViewModel.selectedVoiceOption.collectAsState()
     var isVoiceOptionsExpanded by remember { mutableStateOf(false) }
+    val voiceOptionsString = stringResource(R.string.VoiceOptionsString)
 
     BackHandler {
         onSwipeBack()
@@ -76,10 +78,9 @@ fun SettingsScreen(
                 modifier = Modifier.fillMaxWidth()
             )
         }
-
         item {
             ExpandableOptionGroup(
-                title = "Voice Options",
+                title = voiceOptionsString,
                 options = VoiceOption.entries,
                 selectedOption = selectedVoiceOption,
                 isExpanded = isVoiceOptionsExpanded,
@@ -89,7 +90,7 @@ fun SettingsScreen(
                 onOptionSelected = { option ->
                     voiceSettingsViewModel.selectVoiceOption(option)
                 },
-                optionLabel = { option -> option.displayName },
+                optionLabel = { option -> option.getDisplayName() },
                 modifier = Modifier.fillMaxWidth()
             )
         }

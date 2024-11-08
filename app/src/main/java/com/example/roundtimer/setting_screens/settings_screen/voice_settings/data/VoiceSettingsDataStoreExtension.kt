@@ -1,4 +1,4 @@
-package com.example.roundtimer.setting_screens.settings_screen.voice_settings
+package com.example.roundtimer.setting_screens.settings_screen.voice_settings.data
 
 import android.content.Context
 import androidx.datastore.preferences.preferencesDataStore

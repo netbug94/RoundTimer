@@ -1,9 +1,9 @@
-package com.example.roundtimer.save_screen.presentation
+package com.example.roundtimer.save_screen.data
 
-import com.example.roundtimer.first_screen.domain.WorkoutInput
+import com.example.roundtimer.first_screen.domain.WorkoutParameters
 import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
 
-fun WorkoutInput.toEntity(
+fun WorkoutParameters.toEntity(
     displayId: Int,
     firstWordString: String
 ): WorkoutRoomEntity {
@@ -18,7 +18,7 @@ fun WorkoutInput.toEntity(
     )
 }
 
-fun WorkoutRoomEntity.toWorkoutInput() = WorkoutInput(
+fun WorkoutRoomEntity.toWorkoutInput() = WorkoutParameters(
     roundNumber = this.roundNumber,
     roundMinutes = this.roundMinutes,
     roundSeconds = this.roundSeconds,

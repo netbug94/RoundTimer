@@ -2,6 +2,7 @@ package com.example.roundtimer.save_screen.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.roundtimer.save_screen.domain.WorkoutRoomRepository
 
 class WorkoutRoomViewModelFactory(private val repository: WorkoutRoomRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

@@ -1,6 +1,6 @@
 package com.example.roundtimer.quote.data
 
-import com.example.roundtimer.round_screen.QuotesDataSource
+import com.example.roundtimer.round_screen.data.QuotesDataSource
 import com.example.roundtimer.quote.domain.Quote
 
 object LocalQuotesDataBase : QuotesDataSource {

@@ -1,15 +1,15 @@
 package com.example.roundtimer.first_screen.presentation
 
 import androidx.lifecycle.ViewModel
-import com.example.roundtimer.first_screen.domain.WorkoutInput
+import com.example.roundtimer.first_screen.domain.WorkoutParameters
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class WorkoutInputViewModel : ViewModel() {
 
-    private val _workoutInput = MutableStateFlow(WorkoutInput(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds =  0))
-    val workoutInput: StateFlow<WorkoutInput> = _workoutInput.asStateFlow()
+    private val _workoutInput = MutableStateFlow(WorkoutParameters(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds =  0))
+    val workoutInput: StateFlow<WorkoutParameters> = _workoutInput.asStateFlow()
 
     fun updateRoundNumber(newValue: Int) {
         _workoutInput.value = _workoutInput.value.copy(roundNumber = newValue)
@@ -32,9 +32,9 @@ class WorkoutInputViewModel : ViewModel() {
     }
 
     fun clearWorkoutInput() {
-        _workoutInput.value = WorkoutInput(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds = 0)
+        _workoutInput.value = WorkoutParameters(roundNumber = 1, roundMinutes = 0, roundSeconds = 0, restMinutes = 0, restSeconds = 0)
     }
-    fun setWorkoutInput(workoutInput: WorkoutInput) {
+    fun setWorkoutInput(workoutInput: WorkoutParameters) {
         _workoutInput.value = workoutInput
     }
 }

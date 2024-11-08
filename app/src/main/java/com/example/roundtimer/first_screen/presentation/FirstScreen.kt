@@ -37,7 +37,7 @@ import com.example.roundtimer.R
 import com.example.roundtimer.first_screen.presentation.preview_round_box.PreviewRoundBox
 import com.example.roundtimer.first_screen.presentation.save_round_banner.SaveRoundBanner
 import com.example.roundtimer.first_screen.presentation.settings_button.SettingsButton
-import com.example.roundtimer.first_screen.presentation.start_and_clear_buttons.StartAndClearButton
+import com.example.roundtimer.first_screen.presentation.start_and_clear_buttons.StartAndClearButtons
 import com.example.roundtimer.common.getImageIds
 import com.example.roundtimer.focus_handler.presentation.rememberFocusHandler
 import com.example.roundtimer.save_screen.presentation.WorkoutRoomViewModel
@@ -234,7 +234,7 @@ fun FirstScreenContent(
                 .padding(top = 20.dp),
                 verticalArrangement = Arrangement.Center
             ) {
-                StartAndClearButton(
+                StartAndClearButtons(
                     onStartClickFive = onStartClickFive,
                     onStartClickThree = onStartClickThree,
                     onClearClick = onClearClick

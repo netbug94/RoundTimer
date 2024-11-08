@@ -3,7 +3,6 @@ package com.example.roundtimer.transition_screen.three_second_screen
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.roundtimer.presentation.transition_screen.three_second_screen.ThreeSecondScreenEvent
 import kotlinx.coroutines.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
