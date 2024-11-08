@@ -1,4 +1,4 @@
-package com.example.roundtimer.transition_screen.five_second_screen
+package com.example.roundtimer.transition_screen.five_second_screen.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

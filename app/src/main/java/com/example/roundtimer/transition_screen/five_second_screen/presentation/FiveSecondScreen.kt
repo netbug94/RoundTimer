@@ -1,4 +1,4 @@
-package com.example.roundtimer.transition_screen.five_second_screen
+package com.example.roundtimer.transition_screen.five_second_screen.presentation
 
 import android.media.AudioAttributes
 import android.media.SoundPool
@@ -24,6 +24,7 @@ import com.example.roundtimer.R
 import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
+import com.example.roundtimer.transition_screen.five_second_screen.domain.SoundIds
 
 @Composable
 fun FiveSecondScreen(
