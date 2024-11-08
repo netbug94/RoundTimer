@@ -1,8 +1,9 @@
-package com.example.roundtimer.save_screen.presentation
+package com.example.roundtimer.save_screen.data
 
-import com.example.roundtimer.first_screen.domain.WorkoutInput
+import com.example.roundtimer.first_screen.domain.WorkoutParameters
 import com.example.roundtimer.save_screen.domain.WorkoutRoomDao
 import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
+import com.example.roundtimer.save_screen.domain.WorkoutRoomRepository
 import kotlinx.coroutines.flow.Flow
 
 class WorkoutRoomRepositoryImpl(private val workoutDao: WorkoutRoomDao) : WorkoutRoomRepository {
@@ -10,7 +11,7 @@ class WorkoutRoomRepositoryImpl(private val workoutDao: WorkoutRoomDao) : Workou
     override fun getAllWorkouts(): Flow<List<WorkoutRoomEntity>> =
         workoutDao.getAllRoomWorkouts()
 
-    override suspend fun addWorkout(workoutInput: WorkoutInput, firstWordString: String) {
+    override suspend fun addWorkout(workoutInput: WorkoutParameters, firstWordString: String) {
         val maxDisplayId = workoutDao.getMaxDisplayId() ?: 0
         val newDisplayId = maxDisplayId + 1
 

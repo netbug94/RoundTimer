@@ -13,7 +13,7 @@
     <string name="Clear">Borrar</string>
 
     <!-- FiveSecondScreenText -->
-    <string name="Starting_in">Comienza en:</string>
+    <string name="StartingInString">Comienza en:</string>
 
     <!-- RoundScreenText -->
     <string name="Rest">Descanso</string>
@@ -110,6 +110,7 @@
 
     <!-- SettingsScreen -->
     <string name="TransitionScreenDuration">Duración de la pantalla de transición</string>
+    <string name="VoiceOptionsString">Opciones de voz</string>
 
     <!-- TransitionScreenOptionExtensions -->
     <string name="TransitionOptionFiveSeconds">Pantalla de cinco segundos</string>
@@ -117,5 +118,10 @@
 
     <!-- FirstScreenContent -->
     <string name="EntityFirstWord">Entidad</string>
+
+    <!-- VoiceOptionExtensions -->
+    <string name="MuteString">Silenciar</string>
+    <string name="WomanVoiceString">Mujer</string>
+    <string name="ManVoiceString">Hombre</string>
 
 </resources>

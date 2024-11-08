@@ -85,6 +85,10 @@ fun RoundScreen(
     }
 
     LaunchedEffect(timerStatus, currentRound, isRest) {
+        if (timerStatus == TimerStatus.Running && currentRound == 1 && !isRest) {
+            toneGenerator.startTone(ToneGenerator.TONE_SUP_PIP, 100)
+        }
+
         while (timerStatus == TimerStatus.Running && (currentRound <= totalRounds || isRest)) {
             delay(1000L)
             if (timeRemaining > 0) {

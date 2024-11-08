@@ -1,4 +1,4 @@
-package com.example.roundtimer.transition_screen.three_second_screen
+package com.example.roundtimer.transition_screen.five_second_screen.presentation
 
 import android.media.AudioAttributes
 import android.media.SoundPool
@@ -24,20 +24,20 @@ import com.example.roundtimer.R
 import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
+import com.example.roundtimer.transition_screen.five_second_screen.domain.SoundIds
 
 @Composable
-fun ThreeSecondScreen(
+fun FiveSecondScreen(
     onNavigation: () -> Unit,
     onSwipeBack: () -> Unit,
     voiceSettingsViewModel: VoiceSettingsViewModel = viewModel(),
-    threeSecondViewModel: ThreeSecondViewModel = viewModel()
+    fiveSecondViewModel: FiveSecondViewModel = viewModel()
 ) {
-    val secondsRemaining by threeSecondViewModel.secondsRemaining.collectAsState()
+    val secondsRemaining by fiveSecondViewModel.secondsRemaining.collectAsState()
     val selectedVoiceOption by voiceSettingsViewModel.selectedVoiceOption.collectAsState()
     val isVoiceOptionLoaded by voiceSettingsViewModel.isVoiceOptionLoaded.collectAsState()
     val startingString = stringResource(R.string.StartingInString)
     val context = LocalContext.current
-
     val soundPool = remember {
         SoundPool.Builder()
             .setMaxStreams(1)
@@ -49,25 +49,28 @@ fun ThreeSecondScreen(
             )
             .build()
     }
-
-    val (soundThreeId, soundTwoId, soundOneId) = remember(selectedVoiceOption) {
+    val soundIds = remember(selectedVoiceOption) {
         when (selectedVoiceOption) {
             VoiceOption.WOMAN_VOICE -> {
-                Triple(
-                    soundPool.load(context, R.raw.woman_voice_three, 1),
-                    soundPool.load(context, R.raw.woman_voice_two, 1),
-                    soundPool.load(context, R.raw.woman_voice_one, 1)
+                SoundIds(
+                    five = soundPool.load(context, R.raw.woman_voice_five, 1),
+                    four = soundPool.load(context, R.raw.woman_voice_four, 1),
+                    three = soundPool.load(context, R.raw.woman_voice_three, 1),
+                    two = soundPool.load(context, R.raw.woman_voice_two, 1),
+                    one = soundPool.load(context, R.raw.woman_voice_one, 1)
                 )
             }
             VoiceOption.MAN_VOICE -> {
-                Triple(
-                    soundPool.load(context, R.raw.man_voice_three, 1),
-                    soundPool.load(context, R.raw.man_voice_two, 1),
-                    soundPool.load(context, R.raw.man_voice_one, 1)
+                SoundIds(
+                    five = soundPool.load(context, R.raw.man_voice_five, 1),
+                    four = soundPool.load(context, R.raw.man_voice_four, 1),
+                    three = soundPool.load(context, R.raw.man_voice_three, 1),
+                    two = soundPool.load(context, R.raw.man_voice_two, 1),
+                    one = soundPool.load(context, R.raw.man_voice_one, 1)
                 )
             }
             VoiceOption.MUTE -> {
-                Triple(-1, -1, -1)
+                SoundIds(five = -1, four = -1, three = -1, two = -1, one = -1)
             }
         }
     }
@@ -80,50 +83,47 @@ fun ThreeSecondScreen(
 
     LaunchedEffect(isVoiceOptionLoaded) {
         if (isVoiceOptionLoaded) {
-            threeSecondViewModel.startCountdown()
+            fiveSecondViewModel.startCountdown()
         }
     }
 
     LaunchedEffect(secondsRemaining, selectedVoiceOption, isVoiceOptionLoaded) {
         if (isVoiceOptionLoaded && selectedVoiceOption != VoiceOption.MUTE) {
             when (secondsRemaining) {
-                3 -> if (soundThreeId != -1) {
-                    soundPool.play(soundThreeId, 1f, 1f, 1, 0, 1f)
-                }
-                2 -> if (soundTwoId != -1) {
-                    soundPool.play(soundTwoId, 1f, 1f, 1, 0, 1f)
-                }
-                1 -> if (soundOneId != -1) {
-                    soundPool.play(soundOneId, 1f, 1f, 1, 0, 1f)
-                }
+                5 -> soundIds.five.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }
+                4 -> soundIds.four.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }
+                3 -> soundIds.three.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }
+                2 -> soundIds.two.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }
+                1 -> soundIds.one.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }
             }
         }
     }
 
     LaunchedEffect(Unit) {
-        threeSecondViewModel.uiEvent.collect { event ->
+        fiveSecondViewModel.uiEvent.collect { event ->
             when (event) {
-                is ThreeSecondScreenEvent.Navigate -> onNavigation()
-                is ThreeSecondScreenEvent.SwipeBack -> onSwipeBack()
+                is FiveSecondScreenEvent.Navigate -> onNavigation()
+                is FiveSecondScreenEvent.SwipeBack -> onSwipeBack()
             }
         }
     }
 
-    ThreeSecondScreenContent(
+    FiveSecondScreenContent(
         secondsRemaining = secondsRemaining,
         startingString = startingString,
         onBackPressed = {
-            threeSecondViewModel.cancelCountdown()
+            fiveSecondViewModel.cancelCountdown()
         }
     )
 }
 
 @Composable
-fun ThreeSecondScreenContent(
+fun FiveSecondScreenContent(
     secondsRemaining: Int,
     startingString: String,
     onBackPressed: () -> Unit
 ) {
+
     TransitionScreenWallpaper()
 
     Column(

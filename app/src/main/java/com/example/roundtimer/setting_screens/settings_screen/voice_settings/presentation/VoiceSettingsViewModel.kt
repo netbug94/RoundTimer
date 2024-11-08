@@ -1,10 +1,11 @@
-package com.example.roundtimer.setting_screens.settings_screen.voice_settings
+package com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation
 
 import android.app.Application
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.data.voiceDataStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -23,16 +24,17 @@ class VoiceSettingsViewModel(application: Application) : AndroidViewModel(applic
     val selectedVoiceOption: StateFlow<VoiceOption> = getApplication<Application>().voiceDataStore.data
         .map { preferences ->
             when (preferences[voiceOptionKey]) {
+                VoiceOption.WOMAN_VOICE.name -> VoiceOption.WOMAN_VOICE
+                VoiceOption.MAN_VOICE.name -> VoiceOption.MAN_VOICE
                 VoiceOption.MUTE.name -> VoiceOption.MUTE
-                VoiceOption.WOMEN_VOICE.name -> VoiceOption.WOMEN_VOICE
 
-                else -> VoiceOption.WOMEN_VOICE
+                else -> VoiceOption.WOMAN_VOICE
             }
         }
         .onEach {
             _isVoiceOptionLoaded.value = true
         }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, VoiceOption.WOMEN_VOICE)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, VoiceOption.WOMAN_VOICE)
 
     fun selectVoiceOption(option: VoiceOption) {
         viewModelScope.launch {

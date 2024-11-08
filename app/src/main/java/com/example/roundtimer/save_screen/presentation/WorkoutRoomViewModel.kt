@@ -6,8 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.roundtimer.first_screen.domain.WorkoutInput
+import com.example.roundtimer.first_screen.domain.WorkoutParameters
 import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
+import com.example.roundtimer.save_screen.domain.WorkoutRoomRepository
 import kotlinx.coroutines.launch
 
 class WorkoutRoomViewModel(private val repository: WorkoutRoomRepository) : ViewModel() {
@@ -24,19 +25,13 @@ class WorkoutRoomViewModel(private val repository: WorkoutRoomRepository) : View
         _workoutToDelete.value = null
     }
 
-    fun addRoomWorkout(workoutInput: WorkoutInput, firstWordString: String) {
+    fun addRoomWorkout(workoutInput: WorkoutParameters, firstWordString: String) {
         viewModelScope.launch {
             try {
                 repository.addWorkout(workoutInput, firstWordString)
             } catch (e: Exception) {
                 Log.e("WorkoutRoomViewModel", "Error adding workout", e)
             }
-        }
-    }
-
-    fun updateRoomWorkout(workout: WorkoutRoomEntity) {
-        viewModelScope.launch {
-            repository.updateWorkout(workout)
         }
     }
 
