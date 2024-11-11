@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -43,6 +44,7 @@ fun <T> ExpandableOptionGroup(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.weight(1f)
             )
             Icon(
