@@ -109,8 +109,9 @@
     <string name="RestTimeString">Rest Time</string>
 
     <!-- SettingsScreen -->
-    <string name="TransitionScreenDuration">Transition Screen Duration</string>
+    <string name="TransitionScreenDuration">Transition screen duration</string>
     <string name="VoiceOptionsString">Voice options</string>
+    <string name="BeepOptionsString">Beep options</string>
 
     <!-- TransitionScreenOptionExtensions -->
     <string name="TransitionOptionFiveSeconds">Five second screen</string>
@@ -123,6 +124,9 @@
     <string name="MuteString">Mute</string>
     <string name="WomanVoiceString">Woman </string>
     <string name="ManVoiceString">Man</string>
+
+    <!-- BeepOptionExtensions -->
+    <string name="DefaultBeepString">Default beep</string>
 
     <!-- <string name=></string> -->
 

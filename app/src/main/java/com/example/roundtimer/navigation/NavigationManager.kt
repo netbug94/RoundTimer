@@ -12,10 +12,10 @@ import com.example.roundtimer.first_screen.presentation.FirstScreen
 import com.example.roundtimer.first_screen.presentation.WorkoutInputViewModel
 import com.example.roundtimer.round_screen.RoundScreen
 import com.example.roundtimer.save_screen.data.RoomDatabaseProvider
-import com.example.roundtimer.save_screen.domain.WorkoutRoomDao
-import com.example.roundtimer.save_screen.presentation.SavedWorkoutScreen
-import com.example.roundtimer.save_screen.domain.WorkoutRoomRepository
 import com.example.roundtimer.save_screen.data.WorkoutRoomRepositoryImpl
+import com.example.roundtimer.save_screen.domain.WorkoutRoomDao
+import com.example.roundtimer.save_screen.domain.WorkoutRoomRepository
+import com.example.roundtimer.save_screen.presentation.SavedWorkoutScreen
 import com.example.roundtimer.save_screen.presentation.WorkoutRoomViewModel
 import com.example.roundtimer.save_screen.presentation.WorkoutRoomViewModelFactory
 import com.example.roundtimer.setting_screens.TipsScreen
@@ -24,6 +24,7 @@ import com.example.roundtimer.setting_screens.about_screen.FeedbackForm
 import com.example.roundtimer.setting_screens.about_screen.PrivacyPolicyParagraph
 import com.example.roundtimer.setting_screens.about_screen.TermsOfServiceParagraph
 import com.example.roundtimer.setting_screens.settings_screen.SettingsScreen
+import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.RoundBeepViewModel
 import com.example.roundtimer.transition_screen.five_second_screen.presentation.FiveSecondScreen
 import com.example.roundtimer.transition_screen.three_second_screen.ThreeSecondScreen
 
@@ -38,6 +39,7 @@ fun NavigationManager(modifier: Modifier = Modifier) {
     val roomViewModel: WorkoutRoomViewModel = viewModel(
         factory = viewModelFactory
     )
+    val beepSettingsViewModel: RoundBeepViewModel = viewModel()
 
     NavHost(
         modifier = modifier,
@@ -106,7 +108,8 @@ fun NavigationManager(modifier: Modifier = Modifier) {
                 onListIconClick = {
                     navController.navigate(NavDestination.SavedWorkoutScreen)
                 },
-                workoutInputVM = workoutInputVM
+                workoutInputVM = workoutInputVM,
+                beepSettingsViewModel = beepSettingsViewModel
             )
         }
 

@@ -20,6 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
 import com.example.roundtimer.common.BackIconButton
+import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.BeepOption
+import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.RoundBeepViewModel
+import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.getDisplayName
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionScreenOption
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionSettingsViewModel
 import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.getDisplayName
@@ -40,6 +43,11 @@ fun SettingsScreen(
     val selectedVoiceOption by voiceSettingsViewModel.selectedVoiceOption.collectAsState()
     var isVoiceOptionsExpanded by remember { mutableStateOf(false) }
     val voiceOptionsString = stringResource(R.string.VoiceOptionsString)
+
+    val roundBeepViewModel: RoundBeepViewModel = viewModel()
+    val selectedBeepOption by roundBeepViewModel.selectedBeepOption.collectAsState()
+    var isBeepOptionsExpanded by remember { mutableStateOf(false) }
+    val beepOptionsString = stringResource(R.string.BeepOptionsString)
 
     BackHandler {
         onSwipeBack()
@@ -89,6 +97,20 @@ fun SettingsScreen(
                 },
                 onOptionSelected = { option ->
                     voiceSettingsViewModel.selectVoiceOption(option)
+                },
+                optionLabel = { option -> option.getDisplayName() },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        item {
+            ExpandableOptionGroup(
+                title = beepOptionsString,
+                options = BeepOption.entries,
+                selectedOption = selectedBeepOption,
+                isExpanded = isBeepOptionsExpanded,
+                onExpandedChange = { isBeepOptionsExpanded = it },
+                onOptionSelected = { option ->
+                    roundBeepViewModel.selectBeepOption(option)
                 },
                 optionLabel = { option -> option.getDisplayName() },
                 modifier = Modifier.fillMaxWidth()

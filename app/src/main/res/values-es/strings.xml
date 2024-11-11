@@ -111,6 +111,7 @@
     <!-- SettingsScreen -->
     <string name="TransitionScreenDuration">Duración de la pantalla de transición</string>
     <string name="VoiceOptionsString">Opciones de voz</string>
+    <string name="BeepOptionsString">Opcion de sonido del conteo</string>
 
     <!-- TransitionScreenOptionExtensions -->
     <string name="TransitionOptionFiveSeconds">Pantalla de cinco segundos</string>
@@ -123,5 +124,8 @@
     <string name="MuteString">Silenciar</string>
     <string name="WomanVoiceString">Mujer</string>
     <string name="ManVoiceString">Hombre</string>
+
+    <!-- BeepOptionExtensions -->
+    <string name="DefaultBeepString">Sonido por defecto</string>
 
 </resources>

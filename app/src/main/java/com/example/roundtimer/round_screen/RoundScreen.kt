@@ -36,9 +36,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roundtimer.R
-import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
 import com.example.roundtimer.common.BackIconButton
 import com.example.roundtimer.first_screen.presentation.WorkoutInputViewModel
+import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
+import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.RoundBeepViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 import kotlinx.coroutines.delay
 
@@ -47,6 +48,7 @@ fun RoundScreen(
     onSwipeBack: () -> Unit,
     workoutInputVM: WorkoutInputViewModel,
     selectedWorkout: WorkoutRoomEntity? = null,
+    beepSettingsViewModel: RoundBeepViewModel,
     onHomeIconClick: () -> Unit,
     onListIconClick: () -> Unit
 ) {
@@ -72,6 +74,7 @@ fun RoundScreen(
     val toneGenerator = remember {
         ToneGenerator(AudioManager.STREAM_MUSIC, 100)
     }
+    val isBeepMute by beepSettingsViewModel.isBeepOptionLoaded.collectAsState()
 
     DisposableEffect(Unit) {
         onDispose {
@@ -85,7 +88,7 @@ fun RoundScreen(
     }
 
     LaunchedEffect(timerStatus, currentRound, isRest) {
-        if (timerStatus == TimerStatus.Running && currentRound == 1 && !isRest) {
+        if (timerStatus == TimerStatus.Running && currentRound == 1 && !isRest && !isBeepMute) {
             toneGenerator.startTone(ToneGenerator.TONE_SUP_PIP, 100)
         }
 
@@ -113,10 +116,14 @@ fun RoundScreen(
     LaunchedEffect(timeRemaining) {
         when (timeRemaining) {
             in 1..3 -> {
-                toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 100)
+                if (!isBeepMute) {
+                    toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, 100)
+                }
             }
             0 -> {
-                toneGenerator.startTone(ToneGenerator.TONE_CDMA_PRESSHOLDKEY_LITE, 100)
+                if (!isBeepMute) {
+                    toneGenerator.startTone(ToneGenerator.TONE_CDMA_PRESSHOLDKEY_LITE, 100)
+                }
             }
         }
     }
