@@ -1,4 +1,4 @@
-package com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.data
+package com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.data
 
 import android.content.Context
 import androidx.datastore.preferences.preferencesDataStore

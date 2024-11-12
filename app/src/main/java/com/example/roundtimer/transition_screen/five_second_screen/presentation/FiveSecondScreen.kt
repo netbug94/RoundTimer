@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
 import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOptions
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
 import com.example.roundtimer.transition_screen.five_second_screen.domain.SoundIds
 
@@ -51,7 +51,7 @@ fun FiveSecondScreen(
     }
     val soundIds = remember(selectedVoiceOption) {
         when (selectedVoiceOption) {
-            VoiceOption.WOMAN_VOICE -> {
+            VoiceOptions.WOMAN_VOICE -> {
                 SoundIds(
                     five = soundPool.load(context, R.raw.woman_voice_five, 1),
                     four = soundPool.load(context, R.raw.woman_voice_four, 1),
@@ -60,7 +60,7 @@ fun FiveSecondScreen(
                     one = soundPool.load(context, R.raw.woman_voice_one, 1)
                 )
             }
-            VoiceOption.MAN_VOICE -> {
+            VoiceOptions.MAN_VOICE -> {
                 SoundIds(
                     five = soundPool.load(context, R.raw.man_voice_five, 1),
                     four = soundPool.load(context, R.raw.man_voice_four, 1),
@@ -69,7 +69,7 @@ fun FiveSecondScreen(
                     one = soundPool.load(context, R.raw.man_voice_one, 1)
                 )
             }
-            VoiceOption.MUTE -> {
+            VoiceOptions.MUTE -> {
                 SoundIds(five = -1, four = -1, three = -1, two = -1, one = -1)
             }
         }
@@ -88,7 +88,7 @@ fun FiveSecondScreen(
     }
 
     LaunchedEffect(secondsRemaining, selectedVoiceOption, isVoiceOptionLoaded) {
-        if (isVoiceOptionLoaded && selectedVoiceOption != VoiceOption.MUTE) {
+        if (isVoiceOptionLoaded && selectedVoiceOption != VoiceOptions.MUTE) {
             when (secondsRemaining) {
                 5 -> soundIds.five.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }
                 4 -> soundIds.four.takeIf { it != -1 }?.let { soundPool.play(it, 1f, 1f, 1, 0, 1f) }

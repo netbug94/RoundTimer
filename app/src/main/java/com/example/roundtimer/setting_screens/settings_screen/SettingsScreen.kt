@@ -20,13 +20,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
 import com.example.roundtimer.common.BackIconButton
-import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.BeepOption
+import com.example.roundtimer.setting_screens.settings_screen.a_o_d_settings.AlwaysOnDisplayOptions
+import com.example.roundtimer.setting_screens.settings_screen.a_o_d_settings.AlwaysOnDisplayViewModel
+import com.example.roundtimer.setting_screens.settings_screen.a_o_d_settings.getDisplayName
+import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.BeepOptions
 import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.RoundBeepViewModel
 import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.getDisplayName
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionScreenOption
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionSettingsViewModel
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.getDisplayName
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.TransitionScreenOption
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.TransitionSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.getDisplayName
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOptions
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.getDisplayName
 
@@ -48,6 +51,11 @@ fun SettingsScreen(
     val selectedBeepOption by roundBeepViewModel.selectedBeepOption.collectAsState()
     var isBeepOptionsExpanded by remember { mutableStateOf(false) }
     val beepOptionsString = stringResource(R.string.BeepOptionsString)
+
+    val alwaysOnDisplayViewModel: AlwaysOnDisplayViewModel = viewModel()
+    val selectedAlwaysOnDisplayOptions by alwaysOnDisplayViewModel.selectedAlwaysOnDisplayOption.collectAsState()
+    var isAlwaysOnDisplayOptionsExpanded by remember { mutableStateOf(false) }
+    val alwaysOnDisplayOptionsString = stringResource(R.string.AlwaysOnDisplay)
 
     BackHandler {
         onSwipeBack()
@@ -89,7 +97,7 @@ fun SettingsScreen(
         item {
             ExpandableOptionGroup(
                 title = voiceOptionsString,
-                options = VoiceOption.entries,
+                options = VoiceOptions.entries,
                 selectedOption = selectedVoiceOption,
                 isExpanded = isVoiceOptionsExpanded,
                 onExpandedChange = { expanded ->
@@ -105,12 +113,26 @@ fun SettingsScreen(
         item {
             ExpandableOptionGroup(
                 title = beepOptionsString,
-                options = BeepOption.entries,
+                options = BeepOptions.entries,
                 selectedOption = selectedBeepOption,
                 isExpanded = isBeepOptionsExpanded,
                 onExpandedChange = { isBeepOptionsExpanded = it },
                 onOptionSelected = { option ->
                     roundBeepViewModel.selectBeepOption(option)
+                },
+                optionLabel = { option -> option.getDisplayName() },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        item {
+            ExpandableOptionGroup(
+                title = alwaysOnDisplayOptionsString,
+                options = AlwaysOnDisplayOptions.entries,
+                selectedOption = selectedAlwaysOnDisplayOptions,
+                isExpanded = isAlwaysOnDisplayOptionsExpanded,
+                onExpandedChange = { isAlwaysOnDisplayOptionsExpanded = it },
+                onOptionSelected = { option ->
+                    alwaysOnDisplayViewModel.selectAlwaysOnDisplayOption(option)
                 },
                 optionLabel = { option -> option.getDisplayName() },
                 modifier = Modifier.fillMaxWidth()
