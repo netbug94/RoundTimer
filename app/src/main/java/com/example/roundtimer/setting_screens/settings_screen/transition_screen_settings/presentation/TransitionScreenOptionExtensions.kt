@@ -1,4 +1,4 @@
-package com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation
+package com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource

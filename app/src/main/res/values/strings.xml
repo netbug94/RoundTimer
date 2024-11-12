@@ -112,6 +112,7 @@
     <string name="TransitionScreenDuration">Transition screen duration</string>
     <string name="VoiceOptionsString">Voice options</string>
     <string name="BeepOptionsString">Beep options</string>
+    <string name="AlwaysOnDisplay">Always-on display</string>
 
     <!-- TransitionScreenOptionExtensions -->
     <string name="TransitionOptionFiveSeconds">Five second screen</string>
@@ -128,7 +129,10 @@
     <!-- BeepOptionExtensions -->
     <string name="DefaultBeepString">Default beep</string>
 
+    <!-- AlwaysOnDisplayOptionsExtensions -->
+    <string name="AODEnable">Enable</string>
+    <string name="AODDisable">Disable</string>
+
     <!-- <string name=></string> -->
 
 </resources>
-

@@ -18,8 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionScreenOption
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.TransitionScreenOption
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.TransitionSettingsViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
 
 @Composable

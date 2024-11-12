@@ -54,8 +54,8 @@ import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
 import com.example.roundtimer.common.BackIconButton
 import com.example.roundtimer.first_screen.presentation.WorkoutInputViewModel
 import com.example.roundtimer.save_screen.data.toWorkoutInput
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionScreenOption
-import com.example.roundtimer.setting_screens.settings_screen.transition_settings_screen.presentation.TransitionSettingsViewModel
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.TransitionScreenOption
+import com.example.roundtimer.setting_screens.settings_screen.transition_screen_settings.presentation.TransitionSettingsViewModel
 import kotlinx.coroutines.launch
 
 @Composable

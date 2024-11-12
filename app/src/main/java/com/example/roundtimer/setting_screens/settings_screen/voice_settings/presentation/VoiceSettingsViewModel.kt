@@ -21,22 +21,22 @@ class VoiceSettingsViewModel(application: Application) : AndroidViewModel(applic
     private val _isVoiceOptionLoaded = MutableStateFlow(false)
     val isVoiceOptionLoaded: StateFlow<Boolean> = _isVoiceOptionLoaded.asStateFlow()
 
-    val selectedVoiceOption: StateFlow<VoiceOption> = getApplication<Application>().voiceDataStore.data
+    val selectedVoiceOption: StateFlow<VoiceOptions> = getApplication<Application>().voiceDataStore.data
         .map { preferences ->
             when (preferences[voiceOptionKey]) {
-                VoiceOption.WOMAN_VOICE.name -> VoiceOption.WOMAN_VOICE
-                VoiceOption.MAN_VOICE.name -> VoiceOption.MAN_VOICE
-                VoiceOption.MUTE.name -> VoiceOption.MUTE
+                VoiceOptions.WOMAN_VOICE.name -> VoiceOptions.WOMAN_VOICE
+                VoiceOptions.MAN_VOICE.name -> VoiceOptions.MAN_VOICE
+                VoiceOptions.MUTE.name -> VoiceOptions.MUTE
 
-                else -> VoiceOption.WOMAN_VOICE
+                else -> VoiceOptions.WOMAN_VOICE
             }
         }
         .onEach {
             _isVoiceOptionLoaded.value = true
         }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, VoiceOption.WOMAN_VOICE)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, VoiceOptions.WOMAN_VOICE)
 
-    fun selectVoiceOption(option: VoiceOption) {
+    fun selectVoiceOption(option: VoiceOptions) {
         viewModelScope.launch {
             getApplication<Application>().voiceDataStore.edit { preferences ->
                 preferences[voiceOptionKey] = option.name

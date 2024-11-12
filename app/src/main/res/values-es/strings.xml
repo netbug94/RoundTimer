@@ -112,6 +112,7 @@
     <string name="TransitionScreenDuration">Duración de la pantalla de transición</string>
     <string name="VoiceOptionsString">Opciones de voz</string>
     <string name="BeepOptionsString">Opcion de sonido del conteo</string>
+    <string name="AlwaysOnDisplay">Pantalla siempre encendida</string>
 
     <!-- TransitionScreenOptionExtensions -->
     <string name="TransitionOptionFiveSeconds">Pantalla de cinco segundos</string>
@@ -127,5 +128,9 @@
 
     <!-- BeepOptionExtensions -->
     <string name="DefaultBeepString">Sonido por defecto</string>
+
+    <!-- AlwaysOnDisplayOptionsExtensions -->
+    <string name="AODEnable">Activar</string>
+    <string name="AODDisable">Desactivar</string>
 
 </resources>

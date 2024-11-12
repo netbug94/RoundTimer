@@ -5,9 +5,9 @@ import androidx.compose.ui.res.stringResource
 import com.example.roundtimer.R
 
 @Composable
-fun BeepOption.getDisplayName(): String {
+fun BeepOptions.getDisplayName(): String {
     return when (this) {
-        BeepOption.DEFAULT_BEEP -> stringResource(R.string.DefaultBeepString)
-        BeepOption.MUTE_BEEP -> stringResource(R.string.MuteString)
+        BeepOptions.DEFAULT_BEEP -> stringResource(R.string.DefaultBeepString)
+        BeepOptions.MUTE_BEEP -> stringResource(R.string.MuteString)
     }
 }

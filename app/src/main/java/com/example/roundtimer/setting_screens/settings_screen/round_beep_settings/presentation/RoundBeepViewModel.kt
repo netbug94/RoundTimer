@@ -21,21 +21,21 @@ class RoundBeepViewModel(application: Application) : AndroidViewModel(applicatio
     private val _isBeepOptionLoaded = MutableStateFlow(false)
     val isBeepOptionLoaded: StateFlow<Boolean> = _isBeepOptionLoaded.asStateFlow()
 
-    val selectedBeepOption: StateFlow<BeepOption> = getApplication<Application>().beepDataStore.data
+    val selectedBeepOption: StateFlow<BeepOptions> = getApplication<Application>().beepDataStore.data
         .map { preferences ->
             when (preferences[beepOptionKey]) {
-                BeepOption.DEFAULT_BEEP.name -> BeepOption.DEFAULT_BEEP
-                BeepOption.MUTE_BEEP.name -> BeepOption.MUTE_BEEP
-                else -> BeepOption.DEFAULT_BEEP
+                BeepOptions.DEFAULT_BEEP.name -> BeepOptions.DEFAULT_BEEP
+                BeepOptions.MUTE_BEEP.name -> BeepOptions.MUTE_BEEP
+                else -> BeepOptions.DEFAULT_BEEP
             }
         }
         .onEach { beepOption ->
-            _isBeepOptionLoaded.value = (beepOption == BeepOption.MUTE_BEEP)
+            _isBeepOptionLoaded.value = (beepOption == BeepOptions.MUTE_BEEP)
         }
-        .stateIn(viewModelScope, SharingStarted.Eagerly, BeepOption.DEFAULT_BEEP)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, BeepOptions.DEFAULT_BEEP)
 
 
-    fun selectBeepOption(option: BeepOption) {
+    fun selectBeepOption(option: BeepOptions) {
         viewModelScope.launch {
             getApplication<Application>().beepDataStore.edit { preferences ->
                 preferences[beepOptionKey] = option.name

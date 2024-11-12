@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roundtimer.R
 import com.example.roundtimer.presentation.transition_screen.wallpaper.TransitionScreenWallpaper
-import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOption
+import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceOptions
 import com.example.roundtimer.setting_screens.settings_screen.voice_settings.presentation.VoiceSettingsViewModel
 
 @Composable
@@ -52,21 +52,21 @@ fun ThreeSecondScreen(
 
     val (soundThreeId, soundTwoId, soundOneId) = remember(selectedVoiceOption) {
         when (selectedVoiceOption) {
-            VoiceOption.WOMAN_VOICE -> {
+            VoiceOptions.WOMAN_VOICE -> {
                 Triple(
                     soundPool.load(context, R.raw.woman_voice_three, 1),
                     soundPool.load(context, R.raw.woman_voice_two, 1),
                     soundPool.load(context, R.raw.woman_voice_one, 1)
                 )
             }
-            VoiceOption.MAN_VOICE -> {
+            VoiceOptions.MAN_VOICE -> {
                 Triple(
                     soundPool.load(context, R.raw.man_voice_three, 1),
                     soundPool.load(context, R.raw.man_voice_two, 1),
                     soundPool.load(context, R.raw.man_voice_one, 1)
                 )
             }
-            VoiceOption.MUTE -> {
+            VoiceOptions.MUTE -> {
                 Triple(-1, -1, -1)
             }
         }
@@ -85,7 +85,7 @@ fun ThreeSecondScreen(
     }
 
     LaunchedEffect(secondsRemaining, selectedVoiceOption, isVoiceOptionLoaded) {
-        if (isVoiceOptionLoaded && selectedVoiceOption != VoiceOption.MUTE) {
+        if (isVoiceOptionLoaded && selectedVoiceOption != VoiceOptions.MUTE) {
             when (secondsRemaining) {
                 3 -> if (soundThreeId != -1) {
                     soundPool.play(soundThreeId, 1f, 1f, 1, 0, 1f)
