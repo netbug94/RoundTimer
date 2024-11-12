@@ -81,7 +81,7 @@ fun SettingsScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-            ExpandableOptionGroup(
+            SettingsExpandableOptionGroup(
                 title = transitionScreenDurationString,
                 options = TransitionScreenOption.entries,
                 selectedOption = selectedOption,
@@ -95,7 +95,7 @@ fun SettingsScreen(
             )
         }
         item {
-            ExpandableOptionGroup(
+            SettingsExpandableOptionGroup(
                 title = voiceOptionsString,
                 options = VoiceOptions.entries,
                 selectedOption = selectedVoiceOption,
@@ -111,7 +111,7 @@ fun SettingsScreen(
             )
         }
         item {
-            ExpandableOptionGroup(
+            SettingsExpandableOptionGroup(
                 title = beepOptionsString,
                 options = BeepOptions.entries,
                 selectedOption = selectedBeepOption,
@@ -125,7 +125,7 @@ fun SettingsScreen(
             )
         }
         item {
-            ExpandableOptionGroup(
+            SettingsExpandableOptionGroup(
                 title = alwaysOnDisplayOptionsString,
                 options = AlwaysOnDisplayOptions.entries,
                 selectedOption = selectedAlwaysOnDisplayOptions,

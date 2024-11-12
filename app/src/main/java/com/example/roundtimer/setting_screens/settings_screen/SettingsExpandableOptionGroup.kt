@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun <T> ExpandableOptionGroup(
+fun <T> SettingsExpandableOptionGroup(
     title: String,
     options: List<T>,
     selectedOption: T,
@@ -31,6 +31,7 @@ fun <T> ExpandableOptionGroup(
     optionLabel: @Composable (T) -> String,
     modifier: Modifier = Modifier
 ) {
+
     Column(
         modifier = modifier
     ) {
