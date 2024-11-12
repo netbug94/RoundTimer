@@ -1,4 +1,4 @@
-package com.example.roundtimer.round_screen
+package com.example.roundtimer.quote.presentation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme

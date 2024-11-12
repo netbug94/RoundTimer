@@ -1,4 +1,4 @@
-package com.example.roundtimer.round_screen
+package com.example.roundtimer.round_screen.presentation
 
 import android.media.AudioManager
 import android.media.ToneGenerator
@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import com.example.roundtimer.R
 import com.example.roundtimer.common.BackIconButton
 import com.example.roundtimer.first_screen.presentation.WorkoutInputViewModel
+import com.example.roundtimer.quote.presentation.QuoteFetcher
 import com.example.roundtimer.save_screen.domain.WorkoutRoomEntity
 import com.example.roundtimer.setting_screens.settings_screen.round_beep_settings.presentation.RoundBeepViewModel
 import com.example.roundtimer.ui.theme.customColorScheme
