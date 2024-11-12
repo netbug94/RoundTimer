@@ -10,11 +10,13 @@ import androidx.compose.ui.Modifier
 import com.example.roundtimer.navigation.NavigationManager
 import com.example.roundtimer.ui.theme.Herrete
 import com.example.roundtimer.ui.theme.RoundTimerTheme
+import com.example.roundtimer.utils.LockScreenHelper
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        LockScreenHelper.setupLockScreenVisibility(this)
         setContent {
             RoundTimerTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
