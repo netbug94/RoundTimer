@@ -2,11 +2,11 @@
     <string name="app_name" translatable="false">Round Timer</string>
 
     <!-- FirstScreenText -->
-    <string name="Round_Min">Round Min</string>
-    <string name="Round_Sec">Round Sec</string>
-    <string name="Rest_Min">Rest Min</string>
-    <string name="Rest_Sec">"Rest Sec"</string>
-    <string name="Number_Of_Rounds">"Number of Rounds"</string>
+    <string name="Round_Min">Round min.</string>
+    <string name="Round_Sec">Round sec.</string>
+    <string name="Rest_Min">Rest min.</string>
+    <string name="Rest_Sec">Rest sec.</string>
+    <string name="Number_Of_Rounds">Number of rounds</string>
 
     <!-- FirstScreenButtonsText -->
     <string name="Ready">"Ready"</string>

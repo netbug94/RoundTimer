@@ -10,7 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roundtimer.first_screen.presentation.FirstScreen
 import com.example.roundtimer.first_screen.presentation.WorkoutInputViewModel
-import com.example.roundtimer.round_screen.RoundScreen
+import com.example.roundtimer.round_screen.presentation.RoundScreen
 import com.example.roundtimer.save_screen.data.RoomDatabaseProvider
 import com.example.roundtimer.save_screen.data.WorkoutRoomRepositoryImpl
 import com.example.roundtimer.save_screen.domain.WorkoutRoomDao
@@ -18,7 +18,7 @@ import com.example.roundtimer.save_screen.domain.WorkoutRoomRepository
 import com.example.roundtimer.save_screen.presentation.SavedWorkoutScreen
 import com.example.roundtimer.save_screen.presentation.WorkoutRoomViewModel
 import com.example.roundtimer.save_screen.presentation.WorkoutRoomViewModelFactory
-import com.example.roundtimer.setting_screens.TipsScreen
+import com.example.roundtimer.setting_screens.tips_screen.TipsScreen
 import com.example.roundtimer.setting_screens.about_screen.AboutScreen
 import com.example.roundtimer.setting_screens.about_screen.FeedbackForm
 import com.example.roundtimer.setting_screens.about_screen.PrivacyPolicyParagraph

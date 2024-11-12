@@ -2,11 +2,11 @@
 <resources>
 
     <!-- FirstScreenText -->
-    <string name="Round_Min">Ronda Min</string>
-    <string name="Round_Sec">Ronda Seg</string>
-    <string name="Rest_Min">Descanso Min</string>
-    <string name="Rest_Sec">Descanso Seg</string>
-    <string name="Number_Of_Rounds">Numero de Rondas</string>
+    <string name="Round_Min">Ronda min.</string>
+    <string name="Round_Sec">Ronda seg.</string>
+    <string name="Rest_Min">Descanso min.</string>
+    <string name="Rest_Sec">Descanso seg.</string>
+    <string name="Number_Of_Rounds">Numero de rondas</string>
 
     <!-- FirstScreenButtonsText -->
     <string name="Ready">Comenzar</string>
