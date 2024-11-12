@@ -50,7 +50,7 @@ fun <T> SettingsExpandableOptionGroup(
             )
             Icon(
                 imageVector = if (isExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                contentDescription = if (isExpanded) "Collapse" else "Expand"
+                contentDescription = if (isExpanded) "Settings collapse" else "Settings expand"
             )
         }
 
