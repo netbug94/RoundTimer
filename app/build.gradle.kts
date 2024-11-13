@@ -2,21 +2,21 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
-    id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.plugin.parcelize")
+    id("com.google.devtools.ksp") version "2.0.21-1.0.26"
+    id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 android {
-    namespace = "com.example.roundtimer"
-    compileSdk = 34
+    namespace = "com.netbug94.roundtimer"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.roundtimer"
+        applicationId = "com.netbug94.roundtimer"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -52,8 +52,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,12 +62,14 @@ dependencies {
 
     //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    //TypeSafeNavigation
-    implementation(libs.navigation.compose)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.androidx.runtime.livedata)
 
     //Serialization
-    implementation(libs.kotlinx.serialization.json)
+    implementation (libs.kotlinx.serialization.json)
+
+    //TypeSafeNavigation
+    implementation(libs.androidx.navigation.compose)
 
     //Room
     implementation(libs.androidx.room.runtime)

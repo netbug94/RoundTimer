@@ -2,49 +2,49 @@
 <resources>
 
     <!-- FirstScreenText -->
-    <string name="Round_Min">Ronda min.</string>
-    <string name="Round_Sec">Ronda seg.</string>
-    <string name="Rest_Min">Descanso min.</string>
-    <string name="Rest_Sec">Descanso seg.</string>
-    <string name="Number_Of_Rounds">Numero de rondas</string>
+    <string name="RoundMinString">Ronda min.</string>
+    <string name="RoundSecString">Ronda seg.</string>
+    <string name="RestMinString">Descanso min.</string>
+    <string name="RestSecString">Descanso seg.</string>
+    <string name="NumberOfRoundsString">Numero de rondas</string>
 
     <!-- FirstScreenButtonsText -->
-    <string name="Ready">Comenzar</string>
-    <string name="Clear">Borrar</string>
+    <string name="ReadyString">Comenzar</string>
+    <string name="ClearString">Borrar</string>
 
     <!-- FiveSecondScreenText -->
     <string name="StartingInString">Comienza en:</string>
 
     <!-- RoundScreenText -->
-    <string name="Rest">Descanso</string>
-    <string name="Round">Ronda</string>
-    <string name="Pause">Pausa</string>
-    <string name="Resume">Reanudar</string>
-    <string name="Finish">Finalizar</string>
+    <string name="RestString">Descanso</string>
+    <string name="RoundString">Ronda</string>
+    <string name="PauseString">Pausa</string>
+    <string name="ResumeString">Reanudar</string>
+    <string name="FinishString">Finalizar</string>
 
     <!-- PreviewRoundBoxText -->
-    <string name="Rounds">Rondas</string>
+    <string name="RoundsString">Rondas</string>
 
     <!-- SaveRoundBannerText -->
-    <string name="Saved">Guardado</string>
+    <string name="SavedString">Guardado</string>
 
     <!-- SettingsButtonText -->
-    <string name="Settings">Ajustes</string>
-    <string name="Tips">Consejos</string>
-    <string name="About">Acerca</string>
+    <string name="SettingsString">Ajustes</string>
+    <string name="TipsString">Consejos</string>
+    <string name="AboutString">Acerca</string>
 
     <!-- AboutScreen -->
-    <string name="Version">Versión</string>
-    <string name="Description">Maximiza tus entrenamientos con este temporizador personalizable para un entrenamiento de precisión. Establece tiempos específicos para lapsos activos e intervalos de descanso, adaptados a cualquier rutina de ejercicio. ¡Entrena de manera más inteligente y efectiva!</string>
+    <string name="VersionString">Versión</string>
+    <string name="DescriptionString">Maximiza tus entrenamientos con este temporizador personalizable para un entrenamiento de precisión. Establece tiempos específicos para lapsos activos e intervalos de descanso, adaptados a cualquier rutina de ejercicio. ¡Entrena de manera más inteligente y efectiva!</string>
 
-    <string name="PrivacyPolicy">Política de Privacidad</string>
-    <string name="TermsOfService">Términos de Servicio</string>
-    <string name="SendFeedback">Enviar comentarios</string>
-    <string name="ContactMe">Contacto:\u00A0</string>
+    <string name="PrivacyPolicyString">Política de Privacidad</string>
+    <string name="TermsOfServiceString">Términos de Servicio</string>
+    <string name="SendFeedbackString">Enviar comentarios</string>
+    <string name="ContactMeString">Contacto:\u00A0</string>
 
     <!-- Privacy Policy Paragraph -->
-    <string name="PrivacyPolicyParagraphTitle">Política de Privacidad para RoundTimer</string>
-    <string name="PrivacyPolicyParagraph">
+    <string name="PrivacyPolicyParagraphTitleString">Política de Privacidad para RoundTimer</string>
+    <string name="PrivacyPolicyParagraphString">
         Última Actualización: 23/Octubre/2024\n\n
         En RoundTimer, respetamos tu privacidad. Esta Política de Privacidad describe qué información recopilamos, cómo la usamos y cómo protegemos tus datos cuando utilizas la aplicación RoundTimer.\n\n
         1. Información que Recopilamos\n
@@ -70,8 +70,8 @@
         Si tienes alguna pregunta o inquietud sobre esta Política de Privacidad, no dudes en ponerte en contacto conmigo en netbug94@gmail.com.
     </string>
     <!-- Terms of Service Paragraph -->
-    <string name="TermsOfServiceParagraphTitle">Términos de Servicio para RoundTimer</string>
-    <string name="TermsOfServiceParagraph">Última Actualización: 23/Octubre/2024\n\nBienvenido a RoundTimer, una aplicación de temporizador de código abierto. Al utilizar esta aplicación, aceptas estar sujeto a los siguientes términos y condiciones. Si no estás de acuerdo con estos términos, por favor no uses la aplicación.\n\n
+    <string name="TermsOfServiceParagraphTitleString">Términos de Servicio para RoundTimer</string>
+    <string name="TermsOfServiceParagraphString">Última Actualización: 23/Octubre/2024\n\nBienvenido a RoundTimer, una aplicación de temporizador de código abierto. Al utilizar esta aplicación, aceptas estar sujeto a los siguientes términos y condiciones. Si no estás de acuerdo con estos términos, por favor no uses la aplicación.\n\n
         1. Uso de Código Abierto\nRoundTimer se proporciona como software de código abierto. Eres libre de usar, modificar y distribuir esta aplicación de acuerdo con la Licencia MIT. Sin embargo, el uso comercial de esta aplicación o cualquiera de sus modificaciones con fines de lucro está estrictamente prohibido. Esto significa que no puedes vender la aplicación, ni obras derivadas, ni cobrar por servicios relacionados con su uso.\n\n
         2. Uso Permitido\nPuedes usar esta aplicación para cualquier propósito legal y no comercial. Puedes modificar la aplicación y redistribuirla siempre y cuando sigas los términos establecidos en la Licencia MIT. Cualquier redistribución de la versión modificada debe incluir el aviso de copyright original y esta nota de permiso.\n\n
         3. Exención de Garantías\nEsta aplicación se proporciona "tal cual", sin ninguna garantía o aseguramiento. El uso de esta aplicación es bajo tu propio riesgo. La aplicación puede no funcionar como se espera en todos los entornos, y no somos responsables por daños, pérdida de datos o problemas resultantes del uso de la aplicación.\n\n
@@ -80,46 +80,46 @@
         6. Información de Contacto\nSi tienes alguna pregunta o inquietud sobre estos Términos de Servicio, por favor contáctame en netbug94@gmail.com.
     </string>
     <!-- Send Feedback -->
-    <string name="AttachRestrictionMessage">Solo puedes adjuntar hasta 2 archivos.</string>
-    <string name="FeedbackSubject">Asunto</string>
-    <string name="FeedbackMessage">Mensaje</string>
-    <string name="AttachmentButtonText">Adjuntar archivos (hasta 2)</string>
-    <string name="FileAttachedText">archivos adjuntos</string>
-    <string name="SendEmailText">Enviar email…</string>
-    <string name="NoEmailMessage">No hay cliente de correo instalado.</string>
-    <string name="SendButtonText">Enviar</string>
+    <string name="AttachRestrictionMessageString">Solo puedes adjuntar hasta 2 archivos.</string>
+    <string name="FeedbackSubjectString">Asunto</string>
+    <string name="FeedbackMessageString">Mensaje</string>
+    <string name="AttachmentButtonString">Adjuntar archivos (hasta 2)</string>
+    <string name="FileAttachedString">archivos adjuntos</string>
+    <string name="SendEmailString">Enviar email…</string>
+    <string name="NoEmailMessageString">No hay cliente de correo instalado.</string>
+    <string name="SendButtonString">Enviar</string>
 
     <!-- Delete Confirmation Dialog -->
-    <string name="Delete">Eliminar</string>
-    <string name="Cancel">Cancelar</string>
+    <string name="DeleteString">Eliminar</string>
+    <string name="CancelString">Cancelar</string>
 
     <!-- Delete Confirmation Dialog and  -->
-    <string name="DeleteEntity">Eliminar Entidad</string>
+    <string name="DeleteEntityString">Eliminar Entidad</string>
     <string name="AreYouSureString">¿Estás seguro de que deseas eliminar</string>
 
     <!-- WorkoutListScreen -->
-    <string name="DeleteSuccessful">Entidad eliminada con éxito</string>
+    <string name="DeleteSuccessfulString">Entidad eliminada con éxito</string>
     <string name="EmptyListString">Lista vacía</string>
 
     <!-- WorkoutListItem -->
-    <string name="TextFieldTitleWorkoutListItem">Nombre</string>
-    <string name="UpdatedSuccessful">Actualizado con éxito</string>
-    <string name="CannotBeEmpty">El nombre no puede estar vacío</string>
+    <string name="TextFieldTitleWorkoutListItemString">Nombre</string>
+    <string name="UpdatedSuccessfulString">Actualizado con éxito</string>
+    <string name="CannotBeEmptyString">El nombre no puede estar vacío</string>
     <string name="RoundTimeString">Tiempo de Ronda</string>
     <string name="RestTimeString">Tiempo de Descanso</string>
 
     <!-- SettingsScreen -->
-    <string name="TransitionScreenDuration">Duración de la pantalla de transición</string>
+    <string name="TransitionScreenDurationString">Duración de la pantalla de transición</string>
     <string name="VoiceOptionsString">Opciones de voz</string>
     <string name="BeepOptionsString">Opcion de sonido del conteo</string>
-    <string name="AlwaysOnDisplay">Pantalla siempre encendida</string>
+    <string name="AlwaysOnDisplayString">Pantalla siempre encendida</string>
 
     <!-- TransitionScreenOptionExtensions -->
-    <string name="TransitionOptionFiveSeconds">Pantalla de cinco segundos</string>
-    <string name="TransitionOptionThreeSeconds">Pantalla de tres segundos</string>
+    <string name="TransitionOptionFiveSecondsString">Pantalla de cinco segundos</string>
+    <string name="TransitionOptionThreeSecondsString">Pantalla de tres segundos</string>
 
     <!-- FirstScreenContent -->
-    <string name="EntityFirstWord">Entidad</string>
+    <string name="EntityFirstWordString">Entidad</string>
 
     <!-- VoiceOptionExtensions -->
     <string name="MuteString">Silenciar</string>
@@ -130,7 +130,16 @@
     <string name="DefaultBeepString">Sonido por defecto</string>
 
     <!-- AlwaysOnDisplayOptionsExtensions -->
-    <string name="AODEnable">Activar</string>
-    <string name="AODDisable">Desactivar</string>
+    <string name="AODEnableString">Activar</string>
+    <string name="AODDisableString">Desactivar</string>
+
+    <!-- TipsScreen -->
+    <string name="InputDataString">Ingresa de datos</string>
+    <string name="SaveEntityString">Guardar entidad</string>
+    <string name="ViewSavedString">Ver entidades guardadas</string>
+    <string name="EditSavedEntityString">Editar entidades guardadas</string>
+    <string name="UseSavedEntityString">Utilizar entidades guardadas</string>
+    <string name="AccessSettingsString">Acceder a configuración</string>
+    <string name="AlwaysOnDisplaySettingsString">(AOD) puede desactivarse</string>
 
 </resources>

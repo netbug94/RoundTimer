@@ -2,49 +2,49 @@
     <string name="app_name" translatable="false">Round Timer</string>
 
     <!-- FirstScreenText -->
-    <string name="Round_Min">Round min.</string>
-    <string name="Round_Sec">Round sec.</string>
-    <string name="Rest_Min">Rest min.</string>
-    <string name="Rest_Sec">Rest sec.</string>
-    <string name="Number_Of_Rounds">Number of rounds</string>
+    <string name="RoundMinString">Round min.</string>
+    <string name="RoundSecString">Round sec.</string>
+    <string name="RestMinString">Rest min.</string>
+    <string name="RestSecString">Rest sec.</string>
+    <string name="NumberOfRoundsString">Number of rounds</string>
 
     <!-- FirstScreenButtonsText -->
-    <string name="Ready">"Ready"</string>
-    <string name="Clear">"Clear"</string>
+    <string name="ReadyString">"Ready"</string>
+    <string name="ClearString">"Clear"</string>
 
     <!-- FiveSecondScreenText -->
     <string name="StartingInString">Starting in:</string>
 
     <!-- RoundScreenText -->
-    <string name="Rest">Rest</string>
-    <string name="Round">Round</string>
-    <string name="Pause">Pause</string>
-    <string name="Resume">Resume</string>
-    <string name="Finish">Finish</string>
+    <string name="RestString">Rest</string>
+    <string name="RoundString">Round</string>
+    <string name="PauseString">Pause</string>
+    <string name="ResumeString">Resume</string>
+    <string name="FinishString">Finish</string>
 
     <!-- PreviewRoundBoxText -->
-    <string name="Rounds">Rounds</string>
+    <string name="RoundsString">Rounds</string>
 
     <!-- SaveRoundBannerText -->
-    <string name="Saved">Saved</string>
+    <string name="SavedString">Saved</string>
 
     <!-- SettingsButtonText -->
-    <string name="Settings">Settings</string>
-    <string name="Tips">Tips</string>
-    <string name="About">About</string>
+    <string name="SettingsString">Settings</string>
+    <string name="TipsString">Tips</string>
+    <string name="AboutString">About</string>
 
     <!-- AboutScreen -->
-    <string name="Version">Version</string>
-    <string name="Description">Maximize your workouts with this customizable timer for precision training. Set specific times for active laps and rest intervals, tailored to any exercise routine. Train smarter and more effectively!</string>
+    <string name="VersionString">Version</string>
+    <string name="DescriptionString">Maximize your workouts with this customizable timer for precision training. Set specific times for active laps and rest intervals, tailored to any exercise routine. Train smarter and more effectively!</string>
 
-    <string name="PrivacyPolicy">Privacy Policy</string>
-    <string name="TermsOfService">Terms of Service</string>
-    <string name="SendFeedback">Send Feedback</string>
-    <string name="ContactMe">Contact me:\u00A0</string>
+    <string name="PrivacyPolicyString">Privacy Policy</string>
+    <string name="TermsOfServiceString">Terms of Service</string>
+    <string name="SendFeedbackString">Send Feedback</string>
+    <string name="ContactMeString">Contact me:\u00A0</string>
 
     <!-- Privacy Policy Paragraph -->
-    <string name="PrivacyPolicyParagraphTitle">Privacy Policy for RoundTimer</string>
-    <string name="PrivacyPolicyParagraph">
+    <string name="PrivacyPolicyParagraphTitleString">Privacy Policy for RoundTimer</string>
+    <string name="PrivacyPolicyParagraphString">
         Last Updated: 23/October/2024\n\n
         At RoundTimer, we respect your privacy. This Privacy Policy outlines what information we collect, how we use it, and how we protect your data when you use the RoundTimer application.\n\n
         1. Information We Collect\n
@@ -70,8 +70,8 @@
         If you have any questions or concerns about this Privacy Policy, please feel free to contact us at netbug94@gmail.com.
     </string>
     <!-- Terms of Service Paragraph -->
-    <string name="TermsOfServiceParagraphTitle">Terms of Service for RoundTimer</string>
-    <string name="TermsOfServiceParagraph">Last Updated: 23/October/2024\n\nWelcome to RoundTimer, an open-source timer application. By using this application, you agree to be bound by the following terms and conditions. If you do not agree with these terms, please do not use the app.\n\n
+    <string name="TermsOfServiceParagraphTitleString">Terms of Service for RoundTimer</string>
+    <string name="TermsOfServiceParagraphString">Last Updated: 23/October/2024\n\nWelcome to RoundTimer, an open-source timer application. By using this application, you agree to be bound by the following terms and conditions. If you do not agree with these terms, please do not use the app.\n\n
         1. Open-Source Usage\nRoundTimer is provided as open-source software. You are free to use, modify, and distribute this application in accordance with the MIT License. However, commercial use of this app or any of its modifications for profit is strictly prohibited. This means you may not sell the app, any derivative works, or charge for services related to its use.\n\n
         2. Permitted Use\nYou may use this app for any lawful, non-commercial purposes. You may modify the app and redistribute it as long as you follow the terms outlined in the MIT License. Any redistribution of the modified version must include the original copyright notice and this permission notice.\n\n
         3. Disclaimer of Warranties\nThis application is provided "as is" without any warranties or guarantees. Use of this app is at your own risk. The app may not function as expected in all environments, and we are not responsible for any damages, data loss, or issues resulting from the use of the app.\n\n
@@ -80,46 +80,46 @@
         6. Contact Information\nIf you have any questions or concerns about these Terms of Service, please contact me at netbug94@gmail.com.
     </string>
     <!-- Send Feedback -->
-    <string name="AttachRestrictionMessage">You can only attach up to 2 files.</string>
-    <string name="FeedbackSubject">Subject</string>
-    <string name="FeedbackMessage">Message</string>
-    <string name="AttachmentButtonText">Attach Files (up to 2)</string>
-    <string name="FileAttachedText">files attached</string>
-    <string name="SendEmailText">Send email…</string>
-    <string name="NoEmailMessage">No email client installed.</string>
-    <string name="SendButtonText">Send</string>
+    <string name="AttachRestrictionMessageString">You can only attach up to 2 files.</string>
+    <string name="FeedbackSubjectString">Subject</string>
+    <string name="FeedbackMessageString">Message</string>
+    <string name="AttachmentButtonString">Attach Files (up to 2)</string>
+    <string name="FileAttachedString">files attached</string>
+    <string name="SendEmailString">Send email…</string>
+    <string name="NoEmailMessageString">No email client installed.</string>
+    <string name="SendButtonString">Send</string>
 
     <!-- Delete & Cancel -->
-    <string name="Delete">Delete</string>
-    <string name="Cancel">Cancel</string>
+    <string name="DeleteString">Delete</string>
+    <string name="CancelString">Cancel</string>
 
     <!-- Delete Confirmation Dialog and  -->
-    <string name="DeleteEntity">Delete Entity</string>
+    <string name="DeleteEntityString">Delete Entity</string>
     <string name="AreYouSureString">Are you sure you want to delete</string>
 
     <!-- WorkoutListScreen -->
-    <string name="DeleteSuccessful">Workout deleted successfully</string>
+    <string name="DeleteSuccessfulString">Workout deleted successfully</string>
     <string name="EmptyListString">Empty list</string>
 
     <!-- WorkoutListItem -->
-    <string name="TextFieldTitleWorkoutListItem">Name</string>
-    <string name="UpdatedSuccessful">Updated successfully</string>
-    <string name="CannotBeEmpty">Name cannot be empty</string>
+    <string name="TextFieldTitleWorkoutListItemString">Name</string>
+    <string name="UpdatedSuccessfulString">Updated successfully</string>
+    <string name="CannotBeEmptyString">Name cannot be empty</string>
     <string name="RoundTimeString">Round Time</string>
     <string name="RestTimeString">Rest Time</string>
 
     <!-- SettingsScreen -->
-    <string name="TransitionScreenDuration">Transition screen duration</string>
+    <string name="TransitionScreenDurationString">Transition screen duration</string>
     <string name="VoiceOptionsString">Voice options</string>
     <string name="BeepOptionsString">Beep options</string>
-    <string name="AlwaysOnDisplay">Always-on display</string>
+    <string name="AlwaysOnDisplayString">Always-on display</string>
 
     <!-- TransitionScreenOptionExtensions -->
-    <string name="TransitionOptionFiveSeconds">Five second screen</string>
-    <string name="TransitionOptionThreeSeconds">Three second screen</string>
+    <string name="TransitionOptionFiveSecondsString">Five second screen</string>
+    <string name="TransitionOptionThreeSecondsString">Three second screen</string>
 
     <!-- FirstScreenContent -->
-    <string name="EntityFirstWord">Entity</string>
+    <string name="EntityFirstWordString">Entity</string>
 
     <!-- VoiceOptionExtensions -->
     <string name="MuteString">Mute</string>
@@ -130,9 +130,16 @@
     <string name="DefaultBeepString">Default beep</string>
 
     <!-- AlwaysOnDisplayOptionsExtensions -->
-    <string name="AODEnable">Enable</string>
-    <string name="AODDisable">Disable</string>
+    <string name="AODEnableString">Enable</string>
+    <string name="AODDisableString">Disable</string>
 
-    <!-- <string name=></string> -->
+    <!-- TipsScreen -->
+    <string name="InputDataString">Input data</string>
+    <string name="SaveEntityString">Save your entity</string>
+    <string name="ViewSavedString">View saved entities</string>
+    <string name="EditSavedEntityString">Edit saved entity</string>
+    <string name="UseSavedEntityString">Use saved entity</string>
+    <string name="AccessSettingsString">Access settings</string>
+    <string name="AlwaysOnDisplaySettingsString">(AOD) can be disabled</string>
 
 </resources>
