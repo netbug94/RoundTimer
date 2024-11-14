@@ -6,5 +6,5 @@
 ## Demo
 
 ## [Privacy Policy](https://www.netbug94.com/RoundTimer/)
-<h2><a href="https://www.netbug94.com/RoundTimer/" target="_blank">Privacy Policy</a></h2>
 
+## <a href="https://www.netbug94.com/RoundTimer/" target="_blank">Privacy Policy</a>
