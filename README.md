@@ -7,7 +7,7 @@ Maximize your workouts with this customizable timer for precision training. Set 
 https://github.com/user-attachments/assets/64ceef36-13dc-4f80-9301-e6cd57cfd95b
 
 ## Preview
-![image1](https://github.com/user-attachments/assets/a9f4c62f-04ea-41b1-ad4d-bc2baf9aeae6)
+![image1](https://github.com/user-attachments/assets/9c6e827f-c5bd-4a5a-b730-8a885a280633)
 
 
 ## [Privacy Policy](https://www.netbug94.com/RoundTimer/)
