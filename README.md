@@ -7,4 +7,4 @@
 
 ## [Privacy Policy](https://www.netbug94.com/RoundTimer/)
 
-## <a href="https://www.netbug94.com/RoundTimer/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+<h2><a href="https://www.netbug94.com/RoundTimer/" target="_blank">Privacy Policy</a></h2>
