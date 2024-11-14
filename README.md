@@ -7,12 +7,12 @@ Maximize your workouts with this customizable timer for precision training. Set 
 https://github.com/user-attachments/assets/64ceef36-13dc-4f80-9301-e6cd57cfd95b
 
 ## Preview![tip_shot_7](https://github.com/user-attachments/assets/61c55691-5413-4503-96ec-4f5bd7a07454)
-![image1](https://github.com/user-attachments/assets/21ecd25d-a6a3-4784-b8f7-0ea4488ff566)
-![image2](https://github.com/user-attachments/assets/18e32024-a426-460f-a5e7-695e820b1036)
-![image3](https://github.com/user-attachments/assets/e973793c-e44d-4def-a5fd-c9ecc4993319)
-![image4](https://github.com/user-attachments/assets/ec2452f9-119a-4c8a-988a-ea6f18722436)
-![image5](https://github.com/user-attachments/assets/b90d3f3b-3867-4aa9-a891-90f8e9f9d319)
-![image6](https://github.com/user-attachments/assets/bef28534-f480-478e-a5d8-a80e08d357e0)
-![image7](https://github.com/user-attachments/assets/e30fd1b6-6e91-41ed-acee-13caa9af2f9b)
+![image1](https://github.com/user-attachments/assets/76618dbe-6b21-4817-b87d-dd305e816b9f)
+![image2](https://github.com/user-attachments/assets/ce07f2c9-bb6e-4cee-95bb-c200f6e3288d)
+![image3](https://github.com/user-attachments/assets/40bb290e-57ed-4f7d-85c9-3873bd71d943)
+![image4](https://github.com/user-attachments/assets/e55c6f99-f120-47d4-aff1-7e36ddfc665f)
+![image5](https://github.com/user-attachments/assets/62fc5bd1-43cc-4453-9527-a7e0fe4ead93)
+![image6](https://github.com/user-attachments/assets/70d1aa84-dd0a-4025-974c-07a796096d4a)
+![image7](https://github.com/user-attachments/assets/be198296-e4ed-40a9-aba3-301b814728e9)
 
 ## [Privacy Policy](https://www.netbug94.com/RoundTimer/)
