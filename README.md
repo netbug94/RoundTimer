@@ -6,7 +6,7 @@ Maximize your workouts with this customizable timer for precision training. Set 
 ## [Demo](https://www.youtube.com/watch?v=rWquAaeUlDs&t=1s)
 https://github.com/user-attachments/assets/64ceef36-13dc-4f80-9301-e6cd57cfd95b
 
-## Preview![tip_shot_7](https://github.com/user-attachments/assets/61c55691-5413-4503-96ec-4f5bd7a07454)
+## Preview
 ![image1](https://github.com/user-attachments/assets/76618dbe-6b21-4817-b87d-dd305e816b9f)
 ![image2](https://github.com/user-attachments/assets/ce07f2c9-bb6e-4cee-95bb-c200f6e3288d)
 ![image3](https://github.com/user-attachments/assets/40bb290e-57ed-4f7d-85c9-3873bd71d943)
